@@ -89,7 +89,7 @@ class GenomaGUI:
 
 def GUI_Gera_Meko():
 
-    root = tk.Tk()
+    root = tk.Toplevel()
     app = GenomaGUI(root)
     root.mainloop()
 
