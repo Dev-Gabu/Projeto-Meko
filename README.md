@@ -27,17 +27,27 @@ Este projeto é uma simulação interativa de criaturas chamadas **Mekos**, perm
 
 ## Como Executar
 
-1. **Instale as dependências:**
+1. **Crie um ambiente virtual:**
    ```bash
-   pip install matplotlib pillow numpy
+   python -m venv venv
    ```
 
-2. **Execute a interface principal:**
+2. **Ative o ambiente virtual:**
+  ```bash
+  venv\Script\Activate
+  ```
+
+2. **Instale as dependências**
    ```bash
-   python main.py
+   pip install -r requirements.txt
    ```
 
-3. **Navegue pelo menu:**
+3. **Execute o projeto:**
+  ```bash
+  python main.py
+  ```
+
+4. **Navegue pelo menu:**
    - **Gerar Novo Meko:** Crie e visualize um novo Meko.
    - **Gerar Ambiente:** Visualize o grid do ambiente e distribua recursos.
 
