@@ -1,13 +1,14 @@
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
 
-cores = ["#B7C53F", "#48D441", "#0E5A28", '#BC0508', '#FFFFFF']
+cores = ["#5C9128", "#277B12", "#0E5A28", "#6F4823", "#BC0508", "#54CCED"]
+legendas = ["Deserto", "Campo", "Floresta", "Montanha", "Frutas", "Rios"]
 CMAP = ListedColormap(cores)
 bounds = np.arange(-0.5, len(cores)+0.5, 1)
 NORM = BoundaryNorm(bounds, CMAP.N)
 
 ## AMBIENTE
-GRID_SIZE = 20
+GRID_SIZE = 50
 
 ## MEKOS
 
