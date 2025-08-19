@@ -33,21 +33,21 @@ Este projeto é uma simulação interativa de criaturas chamadas **Mekos**, perm
    ```
 
 2. **Ative o ambiente virtual:**
-  ```bash
-  venv\Script\Activate
-  ```
+    ```bash
+    venv\Script\Activate
+    ```
 
-2. **Instale as dependências**
+3. **Instale as dependências**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Execute o projeto:**
-  ```bash
-  python main.py
-  ```
+4. **Execute o projeto:**
+    ```bash
+    python main.py
+    ```
 
-4. **Navegue pelo menu:**
+5. **Navegue pelo menu:**
    - **Gerar Novo Meko:** Crie e visualize um novo Meko.
    - **Gerar Ambiente:** Visualize o grid do ambiente e distribua recursos.
 

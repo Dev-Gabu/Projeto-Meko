@@ -1,5 +1,6 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
+import pickle as pick
+from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 import numpy as np
 import matplotlib.pyplot as plt
@@ -41,13 +42,70 @@ def GUI_Gera_Meko():
         entries[caracteristica] = var
         default_values[caracteristica] = opcoes[0]
 
-    def limpar():
+    def importar_meko():
         """
-        Limpa os campos do formulário.
+        Importa dados de Meko Salvos
         """
-        for caracteristica, var in entries.items():
-            var.set(default_values[caracteristica])
-        nome_var.set("")
+        caminho = filedialog.askopenfilename(
+            title="Selecione um arquivo",
+            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")]
+        )
+
+        if not caminho:
+            return
+
+        with open(caminho, "rb") as f:
+            dados = pick.load(f)
+        
+        if not isinstance(dados, dict) or "genoma" not in dados or "nome" not in dados:
+            messagebox.showerror("Erro", "Arquivo inválido ou corrompido")
+            return
+
+        try:
+            meko = Meko(**dados)
+        except Exception as e:
+            messagebox.showerror("Erro ao importar", str(e))
+            return
+
+        janela_atributos = tk.Toplevel(root)
+        janela_atributos.title(f"Atributos de {meko.nome}")
+
+        # Atributos à esquerda
+        row = 0
+        for attr in ["peso", "velocidade", "resistencia", "forca", "visao", "agressividade", "temperatura"]:
+            valor = getattr(meko, attr)
+            tk.Label(janela_atributos, text=f"{attr.capitalize()}: {valor}").grid(row=row, column=0, padx=10, pady=5, sticky="w")
+            row += 1
+
+        # Geração do sprite
+        sprite = sprite_por_genoma(meko.genoma)
+        sprite = sprite.resize((sprite.width * 4, sprite.height * 4), Image.NEAREST)
+
+        # Converter para ImageTk
+        sprite_tk = ImageTk.PhotoImage(sprite)
+        
+        # Label para imagem
+        label_imagem = tk.Label(janela_atributos, image=sprite_tk)
+        label_imagem.image = sprite_tk
+        label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
+
+    def exportar_meko():
+        caminho = filedialog.asksaveasfilename(
+            title="Salvar arquivo",
+            defaultextension=".pkl",
+            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")]
+        )
+
+        if not caminho:
+            return
+
+        dados = {
+            "nome": nome_var.get(),
+            "genoma": {caracteristica: var.get() for caracteristica, var in entries.items()}
+        }
+
+        with open(caminho, "wb") as f:
+            pick.dump(dados, f)
 
     def confirmar():
         """
@@ -84,9 +142,13 @@ def GUI_Gera_Meko():
         label_imagem.image = sprite_tk
         label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
 
+        tk.Button(root, text="Exportar", command=exportar).grid(row=0, column=1, rowspan=row, padx=10, pady=5)
+
+
+
     # Botões
-    tk.Button(root, text="Limpar Campos", command=limpar).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
-    tk.Button(root, text="Confirmar Criação", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
+    tk.Button(root, text="Importar", command=importar).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
+    tk.Button(root, text="Confirmar", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
 
 def GUI_Gera_Ambiente():
     size = GRID_SIZE
