@@ -1,5 +1,8 @@
-from utils import validar_genoma
+import random
+
+from utils import validar_genoma, distancia
 from settings import EFEITOS
+from FSM import *
 
 class Meko:
 
@@ -8,30 +11,11 @@ class Meko:
     Os Meko contarão com um conjunto de atributos que estarão diretamente relacionados com a sua sobrevivência dentro do ambiente, suas interações com outros seres e com seus comportamentos.
 
     Attributes:
-        genoma (list[str]): O genoma é  o conjunto de características de cada Meko.
-
-            [0] Tipo - "Fogo", "Agua", "Terra", "Inseto", "Sombra", "Luz"
-
-            [1] Alimentação - "Herbivoro", "Carnivoro", "Onivoro"
-
-            [2] Tamanho - "Pequeno", "Medio", "Grande"
-
-            [3] Olhos - "Simples", "Avançado", "Compostos"
-
-            [4] Presas - "Nenhuma", "Pequena", "Media", "Grande"
-
-            [5] Patas - "Apode", "Bipede", "Quadrupede", "Multipede"
-
-            [6] Garras - "Nenhuma", "Curta", "Longa", "Retrateis"
-
-            [7] Cauda - "Nenhuma", "Equilibrio", "Ataque", "Aquatica"
-
-            [8] Defesa - "Nenhuma", "Carapaça", "Escamas", "Pelagem"
-
-            [9] Extra - "Nenhuma, Camuflagem", "Veneno", "Bioluminescencia", "Campo-eletrico"
-
         nome (string): O nome é a identificação de cada indivíduo.
+        genoma (list[str]): O genoma é  o conjunto de características de cada Meko.
         idade (int): A idade máxima de um indivíduo, que corresponde à quantidade de iterações que ele vai permanecer vivo antes de morrer naturalmente.
+        posicao (tuple[int, int]): A posição atual do Meko no ambiente.
+        target (obj): O objeto que o Meko está atualmente buscando ou atacando.
         saude (int): O valor que representa a sobrevivência, diminui ao ser atacado ou quando a energia está baixa (fome). Quando chegar a zero ou menos, o indivíduo morre.
         energia(int): O valor que representa a capacidade de agir, sendo gasta com o tempo, ao se mover, ao usar habilidades em combate ou reprodução.
         fertilidade(int): Representa a capacidade do indivíduo se reproduzir. Aumenta quanto mais próximo a temperatura do ambiente for do seu nível ideal e dependendo da sua idade.
@@ -85,13 +69,73 @@ class Meko:
             for atributo, valor in efeitos.items():
                 setattr(self, atributo, getattr(self, atributo) + valor)
 
-    def __init__(self, nome, genoma, idade = 100):
+    def __init__(self, nome, genoma, posicao = (0,0),idade = 20):
      
+        # Atributos de criação
+        self.posicao = posicao
         self.genoma = genoma
-        self.saude = 100
-        self.energia = 100
-        self.fertilidade = 0
         self.nome = nome
         self.idade = idade
 
+        # Atributos de controle
+        self.saudeMAX = 20
+        self.saude = 20
+        self.energiaMAX = 50
+        self.energia = 50
+        self.fertilidade = 0
+
+        # Atributos de estado
+        self.fsm = FSM(self)
+        self.fsm.change_state(Wander())
+        self.target = None
+
         if(validar_genoma(genoma)): self.gerar_atributos(genoma)
+
+    def esta_vivo(self):
+        return self.energia > 0
+    
+    def search(self, objetos, tipo="Objeto"):
+        """
+        Busca objetos de um tipo específico no raio de visão.
+        objetos: lista de instâncias (Fruta, Carne, Meko, etc.)
+        tipo: string para debug
+        """
+        # Filtra apenas os que estão no raio de visão
+        proximos = [
+            obj for obj in objetos
+            if distancia(self, obj) <= self.visao and obj != self and obj != self.target
+        ]
+
+        if not proximos:
+            return None
+
+        # Ordena pelo mais próximo
+        alvo = min(proximos, key=lambda o: distancia(self,o))
+
+        # Define estado e alvo
+        self.fsm.change_state(MoveToTarget())
+        self.target = alvo
+
+        print(f"{self.nome} encontrou {tipo} em {alvo.posicao} e vai até lá.")
+
+    def update(self, matriz):
+        
+        self.energia -= 1
+
+        if self.energia <= self.energiaMAX * 0.5:
+            if self.target is not None and self.posicao == self.target.posicao:
+                print(f"{self.nome} alcançou o alvo {self.target}.")
+                self.fsm.change_state(Eat())
+            elif self.fsm.current_state.name != "Seguindo":
+                if self.genoma[1] == "Herbivoro":
+                    self.fsm.change_state(SearchFruits())
+                elif self.genoma[1] == "Carnivoro":
+                    #self.fsm.change_state(SearchMeat())
+                    self.fsm.change_state(SearchFruits())
+                else:
+                    self.fsm.change_state(SearchFruits())
+                    #self.fsm.change_state(SearchMeat())
+            else: pass
+        else:
+            self.fsm.change_state(Wander())
+        self.fsm.update(matriz)

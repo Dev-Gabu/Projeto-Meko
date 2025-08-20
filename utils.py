@@ -1,6 +1,8 @@
 from PIL import Image
 import numpy as np
 import pickle as pick
+from tkinter import filedialog
+import os
 
 from settings import LOC_CARACTERISTICAS, CARACTERISTICAS
 
@@ -235,3 +237,26 @@ def exportar_meko(caminho, dados):
 
     with open(caminho, "wb") as f:
         pick.dump(dados, f)
+
+def importar_ambiente():
+
+    caminho = filedialog.askopenfilename(
+        title="Selecione um ambiente",
+        filetypes=[("Arquivos NumPy", "*.npy"), ("Todos os arquivos", "*.*")],
+        initialdir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "assets",
+            "ambientes"
+)
+    )
+    if not caminho:
+        raise FileNotFoundError("Nenhum arquivo selecionado.")
+
+    matriz = np.load(caminho)
+    return matriz
+
+# Comportamentos
+
+def distancia(meko, outro):
+        return np.linalg.norm(meko.posicao - np.array(outro.posicao))
+

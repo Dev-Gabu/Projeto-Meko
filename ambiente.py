@@ -1,6 +1,60 @@
 import numpy as np
 
 from utils import generate_perlin_noise_2d
+from settings import CMAP
+
+class Ambiente:
+    def __init__(self, size, matriz = None, mekos = []):
+        self.size = size
+        self.matriz = matriz if matriz is not None else np.random.choice([0, 1, 2], size=(size, size), p=[0.2, 0.3, 0.5])
+        self.mekos = mekos
+
+    def adicionar_meko(self, meko):
+        self.mekos.append(meko)
+
+    def tick(self):
+        for meko in self.mekos:
+            if meko.esta_vivo():
+                meko.update(self.matriz)
+            else:
+                print(f"{meko.nome} morreu.")
+    
+    def renderizar(self, ax):
+        ax.clear()
+        ax.imshow(self.matriz, cmap=CMAP, interpolation="none")
+
+        for meko in self.mekos:
+            if meko.esta_vivo():
+                i, j = map(int, meko.posicao)
+                ax.scatter(j, i, c="red", s=100, alpha=0.6, marker="o")
+                ax.text(j, i, meko.nome, color="white", ha="center", va="center", weight="bold")
+            else:
+                i, j = map(int, meko.posicao)
+                ax.scatter(j, i, c="gray", s=100, alpha=0.6, marker="o")
+                ax.text(j, i, meko.nome, color="white", ha="center", va="center", weight="bold")
+
+class Fruta:
+    def __init__(self, posicao):
+        self.posicao = posicao
+        self.quantMAX = 3
+        self.quant = 1
+        self.recarga = 0
+
+    def recarregar(self):
+        if self.recarga >= 15:
+            self.quant = min(self.quant + 1, self.quantMAX)
+        else: self.recarga += 1
+
+class Carne:
+    def __init__(self, posicao):
+        self.posicao = posicao
+        self.quant = np.random.randint(1, 4)
+        self.podridao = 0
+
+    def apodrecer(self):
+        if self.podridao >= 15:
+            self.quant -=1
+        else: self.podridao += 1
 
 def biome_gen(grid, size, n_biomas=4, scale=10.0, seed=None, biome_weights=None):
     """

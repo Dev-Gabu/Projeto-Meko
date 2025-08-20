@@ -1,7 +1,7 @@
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
 
-cores = ["#5C9128", "#277B12", "#0E5A28", "#6F4823", "#BC0508", "#54CCED"]
+cores = ["#5C9128", "#277B12", "#0E5A28", "#6F4823", "#C47225", "#3B8B91"]
 legendas = ["Deserto", "Campo", "Floresta", "Montanha", "Frutas", "Rios"]
 CMAP = ListedColormap(cores)
 bounds = np.arange(-0.5, len(cores)+0.5, 1)
@@ -9,6 +9,7 @@ NORM = BoundaryNorm(bounds, CMAP.N)
 
 ## AMBIENTE
 GRID_SIZE = 50
+SIMULATION_STEPS = 50
 
 ## MEKOS
 
@@ -90,6 +91,11 @@ CARACTERISTICAS = [
     ("Defesa", ["Nenhuma", "Carapaca", "Escamas", "Pelagem"]),
     ("Extra", ["Nenhuma", "Camuflagem", "Veneno", "Bioluminescencia", "Campo-eletrico"])
 ]
+
+## LISTAS
+mekos_list = []
+fruit_list = []
+meat_list = []
 
 ## MODIFICADORES
 

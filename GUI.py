@@ -1,5 +1,5 @@
 import tkinter as tk
-import os
+import os, random
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 import numpy as np
@@ -7,11 +7,12 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
 
 import matplotlib.patches as mpatches
+import settings
 
-from ambiente import biome_gen, fruit_gen, river_gen
+from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
-from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas
-from utils import sprite_por_genoma, importar_meko, exportar_meko
+from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, fruit_list, meat_list, mekos_list
+from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente
 
 def GUI_Gera_Meko():
 
@@ -50,8 +51,11 @@ def GUI_Gera_Meko():
         caminho = filedialog.askopenfilename(
             title="Selecione um arquivo",
             filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
-        initialdir=os.path.dirname(os.path.abspath(__file__))
-        )
+        initialdir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "assets",
+            "mekos"
+        ))
 
         if not caminho:
             raise FileNotFoundError("Nenhum arquivo selecionado.")
@@ -92,8 +96,11 @@ def GUI_Gera_Meko():
             title="Salvar arquivo",
             defaultextension=".pkl",
             filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
-        initialdir=os.path.dirname(os.path.abspath(__file__))
-        )
+        initialdir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "assets",
+            "mekos"
+        ))
 
         if not caminho:
             return
@@ -149,7 +156,7 @@ def GUI_Gera_Meko():
 def GUI_Gera_Ambiente():
     size = GRID_SIZE
 
-    grid = np.random.choice([0, 1, 2], size=(size, size), p=[0.2, 0.3, 0.5])
+    grid = np.zeros((size, size))
 
     _, ax = plt.subplots()
 
@@ -214,15 +221,7 @@ def GUI_Gera_Ambiente():
         print("\n".join(" ".join(map(str, linha)) for linha in grid))
 
     def importarA():
-        caminho = filedialog.askopenfilename(
-        title="Selecione um arquivo",
-        filetypes=[("Arquivos NumPy", "*.npy"), ("Todos os arquivos", "*.*")],
-        initialdir=os.path.dirname(os.path.abspath(__file__))
-    )
-        if not caminho:
-            raise FileNotFoundError("Nenhum arquivo selecionado.")
-
-        matriz = np.load(caminho)
+        matriz = importar_ambiente()
 
         nonlocal grid
         grid = matriz
@@ -272,13 +271,118 @@ def GUI_Gera_Ambiente():
 
     plt.show()
 
+def GUI_Simulacao():
+    import matplotlib.pyplot as plt
+    from matplotlib import gridspec
+    import numpy as np
+
+    # --- Ambiente ---
+    ambiente_base = importar_ambiente()
+    ambiente = Ambiente(GRID_SIZE, ambiente_base)
+
+    # --- Frutas ---
+    for i, linha in enumerate(ambiente.matriz):
+        for j, valor in enumerate(linha):
+            if valor == 4:
+                fruta = Fruta((i, j))
+                settings.fruit_list.append(fruta)
+
+    # --- Mekos ---
+    Quantidade_Mekos = 3
+
+    for i in range(Quantidade_Mekos):
+        caminho = filedialog.askopenfilename(
+            title="Selecione um Meko",
+            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
+            initialdir=os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "assets",
+                "mekos"
+            )
+        )
+
+        if not caminho:
+            raise FileNotFoundError("Nenhum arquivo selecionado.")
+
+        dados = importar_meko(caminho)
+        try:
+            meko_inst = Meko(
+                dados["nome"],
+                dados["genoma"],
+                (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
+            )
+        except Exception as e:
+            messagebox.showerror("Erro ao importar", str(e))
+            return
+
+        ambiente.adicionar_meko(meko_inst)
+        settings.mekos_list.append(meko_inst)
+
+    # --- Configuração Simulação e Monitoramento
+    fig = plt.figure(figsize=(12, 6))
+    gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1])
+    
+    ax_sim = fig.add_subplot(gs[0])
+    ax_sim.set_title("Simulação")
+
+    ax_attr = fig.add_subplot(gs[1])
+    ax_attr.axis("off")
+    ax_attr.set_xlim(0, 2)
+    ax_attr.set_ylim(0, 1)
+    ax_attr.set_aspect('equal')
+
+    num_mekos = len(settings.mekos_list)
+    y_step = 1 / (num_mekos + 1)
+    meko_artists = []
+
+    sprite_size = 0.3
+    espaco_extra = 0.1
+
+    num_mekos = len(settings.mekos_list)
+    total_step = sprite_size + espaco_extra
+    y_start = 1 - total_step / 2
+
+    meko_artists = []
+
+    for idx, meko in enumerate(settings.mekos_list):
+        y = y_start - idx * total_step
+        sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
+        im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
+        txt_artist = ax_attr.text(1.1, y,
+                                f"E: {meko.energia}\nS: {meko.saude}\nEstado: {meko.fsm.current_state.name}",
+                                va="center", fontsize=8)
+        meko_artists.append((meko, im_artist, txt_artist))
+
+    plt.ion()
+    plt.show()
+
+    # --- Loop da simulação ---
+    for step in range(SIMULATION_STEPS):
+        ambiente.tick()
+        ambiente.renderizar(ax_sim)
+        
+        for meko, im_artist, txt_artist in meko_artists:
+            sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
+            im_artist.set_data(sprite)
+            txt_artist.set_text(f"E: {meko.energia}\nS: {meko.saude}\nEstado: {meko.fsm.current_state.name}")
+
+        plt.draw()
+        plt.pause(0.5)
+
+    plt.ioff()
+    plt.show()
+
 def GUI_Home():
     root = tk.Tk()
-    root.title("Gerador")
+    root.title("Projeto Meko")
 
-    tk.Label(root, text="Gerador de Ambientes e Mekos", font=("Helvetica", 16)).pack(pady=20)
+    tk.Label(root, text="Geradores", font=("Helvetica", 16)).pack(pady=20)
 
     tk.Button(root, text="Gerar Meko", command=GUI_Gera_Meko, width=20, height=2).pack(pady=10)
     tk.Button(root, text="Gerar Ambiente", command=GUI_Gera_Ambiente, width=20, height=2).pack(pady=10)
+
+    tk.Label(root, text="Simulação", font=("Helvetica", 16)).pack(pady=20)
+
+    tk.Button(root, text="Iniciar Simulação", command=GUI_Simulacao, width=20, height=2).pack(pady=10)
 
     root.mainloop()
