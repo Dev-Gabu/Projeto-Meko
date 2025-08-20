@@ -1,5 +1,5 @@
 import tkinter as tk
-import pickle as pick
+import os
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 import numpy as np
@@ -11,7 +11,7 @@ import matplotlib.patches as mpatches
 from ambiente import biome_gen, fruit_gen, river_gen
 from meko import Meko
 from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas
-from utils import sprite_por_genoma
+from utils import sprite_por_genoma, importar_meko, exportar_meko
 
 def GUI_Gera_Meko():
 
@@ -42,27 +42,25 @@ def GUI_Gera_Meko():
         entries[caracteristica] = var
         default_values[caracteristica] = opcoes[0]
 
-    def importar_meko():
+    def importarM():
         """
         Importa dados de Meko Salvos
         """
+
         caminho = filedialog.askopenfilename(
             title="Selecione um arquivo",
-            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")]
+            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
+        initialdir=os.path.dirname(os.path.abspath(__file__))
         )
 
         if not caminho:
-            return
+            raise FileNotFoundError("Nenhum arquivo selecionado.")
 
-        with open(caminho, "rb") as f:
-            dados = pick.load(f)
-        
-        if not isinstance(dados, dict) or "genoma" not in dados or "nome" not in dados:
-            messagebox.showerror("Erro", "Arquivo inválido ou corrompido")
-            return
+        dados = importar_meko(caminho)
 
         try:
-            meko = Meko(**dados)
+            meko = Meko(dados["nome"], dados["genoma"])
+
         except Exception as e:
             messagebox.showerror("Erro ao importar", str(e))
             return
@@ -89,23 +87,23 @@ def GUI_Gera_Meko():
         label_imagem.image = sprite_tk
         label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
 
-    def exportar_meko():
+    def exportarM():
         caminho = filedialog.asksaveasfilename(
             title="Salvar arquivo",
             defaultextension=".pkl",
-            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")]
+            filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
+        initialdir=os.path.dirname(os.path.abspath(__file__))
         )
 
         if not caminho:
             return
 
         dados = {
-            "nome": nome_var.get(),
-            "genoma": {caracteristica: var.get() for caracteristica, var in entries.items()}
+        "nome": nome_var.get(),
+        "genoma": {caracteristica: var.get() for caracteristica, var in entries.items()}
         }
-
-        with open(caminho, "wb") as f:
-            pick.dump(dados, f)
+    
+        exportar_meko(caminho, dados)
 
     def confirmar():
         """
@@ -130,6 +128,8 @@ def GUI_Gera_Meko():
             tk.Label(janela_atributos, text=f"{attr.capitalize()}: {valor}").grid(row=row, column=0, padx=10, pady=5, sticky="w")
             row += 1
 
+        tk.Button(janela_atributos, text="Exportar", command=exportarM).grid(row=row, column=0, padx=10, pady=5, sticky="w")
+
         # Geração do sprite
         sprite = sprite_por_genoma(meko.genoma)
         sprite = sprite.resize((sprite.width * 4, sprite.height * 4), Image.NEAREST)
@@ -142,12 +142,8 @@ def GUI_Gera_Meko():
         label_imagem.image = sprite_tk
         label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
 
-        tk.Button(root, text="Exportar", command=exportar).grid(row=0, column=1, rowspan=row, padx=10, pady=5)
-
-
-
     # Botões
-    tk.Button(root, text="Importar", command=importar).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
+    tk.Button(root, text="Importar", command=importarM).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
     tk.Button(root, text="Confirmar", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
 
 def GUI_Gera_Ambiente():
@@ -217,6 +213,36 @@ def GUI_Gera_Ambiente():
     def imprimir_matriz():
         print("\n".join(" ".join(map(str, linha)) for linha in grid))
 
+    def importarA():
+        caminho = filedialog.askopenfilename(
+        title="Selecione um arquivo",
+        filetypes=[("Arquivos NumPy", "*.npy"), ("Todos os arquivos", "*.*")],
+        initialdir=os.path.dirname(os.path.abspath(__file__))
+    )
+        if not caminho:
+            raise FileNotFoundError("Nenhum arquivo selecionado.")
+
+        matriz = np.load(caminho)
+
+        nonlocal grid
+        grid = matriz
+        im.set_data(grid)
+        plt.pause(0.1)
+    
+    def exportarA(grid):
+        caminho = filedialog.asksaveasfilename(
+        title="Salvar arquivo",
+        filetypes=[("Arquivos NumPy", "*.npy"), ("Todos os arquivos", "*.*")],
+        defaultextension=".npy",
+        initialdir=os.path.dirname(os.path.abspath(__file__))
+        )
+
+        if not caminho:
+            raise FileNotFoundError("Nenhum arquivo selecionado.")
+        
+        np.save(caminho, grid)
+        print(f"Matriz salva em: {caminho}")
+
     ax_bioma = plt.axes([0.7, 0.05, 0.075, 0.05])
     btn_bioma = Button(ax_bioma, 'Bioma')
     btn_bioma.on_clicked(lambda event: gerar_bioma())
@@ -229,6 +255,14 @@ def GUI_Gera_Ambiente():
     btn_rios = Button(ax_rios, 'Rios')
     btn_rios.on_clicked(lambda event: gerar_rios())
 
+    ax_importar = plt.axes([0.5, 0.05, 0.075, 0.05])
+    btn_importar = Button(ax_importar, 'Importar')
+    btn_importar.on_clicked(lambda event: importarA())
+
+    ax_exportar = plt.axes([0.4, 0.05, 0.075, 0.05])
+    btn_exportar = Button(ax_exportar, 'Exportar')
+    btn_exportar.on_clicked(lambda event: exportarA(grid))
+
     ax_print = plt.axes([0.6, 0.05, 0.075, 0.05])
     btn_print = Button(ax_print, 'Print')
     btn_print.on_clicked(lambda event: imprimir_matriz())
@@ -240,11 +274,11 @@ def GUI_Gera_Ambiente():
 
 def GUI_Home():
     root = tk.Tk()
-    root.title("Simulação de Meko")
+    root.title("Gerador")
 
-    tk.Label(root, text="Bem-vindo à Simulação de Meko!", font=("Helvetica", 16)).pack(pady=20)
+    tk.Label(root, text="Gerador de Ambientes e Mekos", font=("Helvetica", 16)).pack(pady=20)
 
-    tk.Button(root, text="Gerar Novo Meko", command=GUI_Gera_Meko, width=20, height=2).pack(pady=10)
+    tk.Button(root, text="Gerar Meko", command=GUI_Gera_Meko, width=20, height=2).pack(pady=10)
     tk.Button(root, text="Gerar Ambiente", command=GUI_Gera_Ambiente, width=20, height=2).pack(pady=10)
 
     root.mainloop()

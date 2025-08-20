@@ -1,7 +1,8 @@
 from PIL import Image
 import numpy as np
+import pickle as pick
 
-from settings import LOC_CARACTERISTICAS
+from settings import LOC_CARACTERISTICAS, CARACTERISTICAS
 
 class GenomaInvalidoError(Exception):
     """Erro lançado quando o genoma possui alguma característica/gene que é inválido."""
@@ -212,3 +213,25 @@ def generate_perlin_noise_2d(shape, scale=10, seed=0):
             noise[i][j] = perlin(x, y, perm)
     return noise
 
+# Importação e Exportação
+
+def importar_meko(caminho):
+
+    with open(caminho, "rb") as f:
+        dados = pick.load(f)
+    
+    if not isinstance(dados, dict) or "genoma" not in dados or "nome" not in dados:
+        raise ValueError("Arquivo inválido ou corrompido. Deve conter 'genoma' e 'nome'.")
+    
+    CARACTERISTICAS_NOMES = [c[0] for c in CARACTERISTICAS]
+    genoma_dict = dados["genoma"]
+    genoma = [genoma_dict[chave] for chave in CARACTERISTICAS_NOMES]
+
+    dados["genoma"] = genoma
+
+    return dados
+
+def exportar_meko(caminho, dados):
+
+    with open(caminho, "wb") as f:
+        pick.dump(dados, f)
