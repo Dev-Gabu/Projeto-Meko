@@ -8,8 +8,8 @@ bounds = np.arange(-0.5, len(cores)+0.5, 1)
 NORM = BoundaryNorm(bounds, CMAP.N)
 
 ## AMBIENTE
-GRID_SIZE = 50
-SIMULATION_STEPS = 50
+GRID_SIZE = 10
+SIMULATION_STEPS = 200
 
 ## MEKOS
 

@@ -1,7 +1,7 @@
 import random
 
 from utils import validar_genoma, distancia
-from settings import EFEITOS
+from settings import EFEITOS, GRID_SIZE, meat_list
 from FSM import *
 
 class Meko:
@@ -30,15 +30,6 @@ class Meko:
     """
 
     def gerar_atributos(self, genoma):
-
-        self.peso = 10
-        self.velocidade = 10
-        self.resistencia = 10
-        self.forca = 4
-        self.visao = 2
-        self.agressividade = 0
-        self.temperatura = 30
-
         """
         Gera os atributos iniciais de uma criatura a partir de seu genoma.
 
@@ -62,6 +53,14 @@ class Meko:
                 self.atributos (dict): Dicionário com os atributos finais.
         """
 
+        self.peso = 10
+        self.velocidade = 10
+        self.resistencia = 10
+        self.forca = 4
+        self.visao = 2
+        self.agressividade = 0
+        self.temperatura = 30
+
         # Os modificadores são aplicados aos atributos
 
         for i, efeitos_dict in enumerate(EFEITOS):
@@ -80,30 +79,46 @@ class Meko:
         # Atributos de controle
         self.saudeMAX = 20
         self.saude = 20
-        self.energiaMAX = 50
-        self.energia = 50
+        self.energiaMAX = 200
+        self.energia = 200
         self.fertilidade = 0
 
         # Atributos de estado
         self.fsm = FSM(self)
         self.fsm.change_state(Wander())
         self.target = None
+        self.ignore = None
 
         if(validar_genoma(genoma)): self.gerar_atributos(genoma)
 
     def esta_vivo(self):
+        """
+        Verifica se o Meko está vivo com base em sua energia.
+        """
         return self.energia > 0
     
-    def search(self, objetos, tipo="Objeto"):
+    def random_step(self):
+        """
+        Move o Meko aleatóriamente no intervalo do Grid
+        """
+        i, j = self.posicao
+        i = (i + random.choice([-1, 0, 1]))
+        j = (j + random.choice([-1, 0, 1]))
+        if 0 <= i < GRID_SIZE and 0 <= j < GRID_SIZE:
+            self.posicao = (i, j)
+            self.energia -= 1
+        else: self.random_step()
+
+    def search(self, objetos, tipo):
         """
         Busca objetos de um tipo específico no raio de visão.
         objetos: lista de instâncias (Fruta, Carne, Meko, etc.)
-        tipo: string para debug
+        tipo: tipo de objeto a ser buscado
         """
         # Filtra apenas os que estão no raio de visão
         proximos = [
             obj for obj in objetos
-            if distancia(self, obj) <= self.visao and obj != self and obj != self.target
+            if distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo
         ]
 
         if not proximos:
@@ -111,31 +126,14 @@ class Meko:
 
         # Ordena pelo mais próximo
         alvo = min(proximos, key=lambda o: distancia(self,o))
-
-        # Define estado e alvo
-        self.fsm.change_state(MoveToTarget())
-        self.target = alvo
-
-        print(f"{self.nome} encontrou {tipo} em {alvo.posicao} e vai até lá.")
+        
+        #Retorna o alvo
+        return alvo
 
     def update(self, matriz):
+        """
+        Atualiza a máquina de estados do Meko
+        """
         
-        self.energia -= 1
-
-        if self.energia <= self.energiaMAX * 0.5:
-            if self.target is not None and self.posicao == self.target.posicao:
-                print(f"{self.nome} alcançou o alvo {self.target}.")
-                self.fsm.change_state(Eat())
-            elif self.fsm.current_state.name != "Seguindo":
-                if self.genoma[1] == "Herbivoro":
-                    self.fsm.change_state(SearchFruits())
-                elif self.genoma[1] == "Carnivoro":
-                    #self.fsm.change_state(SearchMeat())
-                    self.fsm.change_state(SearchFruits())
-                else:
-                    self.fsm.change_state(SearchFruits())
-                    #self.fsm.change_state(SearchMeat())
-            else: pass
-        else:
-            self.fsm.change_state(Wander())
+        self.energia -= 1    
         self.fsm.update(matriz)

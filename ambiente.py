@@ -34,8 +34,23 @@ class Ambiente:
                 ax.text(j, i, meko.nome, color="white", ha="center", va="center", weight="bold")
 
 class Fruta:
+    """
+    Classe que representa as frutas. Os objetos são gerados nas áreas de recursos no ambiente.
+
+    Attributes:
+        posicao (tuple[int, int]): A posição da fruta no ambiente.
+        nome (string): O nome da fruta, gerado a partir de sua posição.
+        quantMAX (int): A quantidade máxima de frutas que podem ser geradas.
+        quant (int): A quantidade atual de frutas disponíveis.
+        recarga (int): Índice de contagem do tempo de recarga.
+
+    Methods:
+        recarregar: Recarrega a fruta após um tempo de espera.
+    """
     def __init__(self, posicao):
         self.posicao = posicao
+        x,y = posicao
+        self.nome = str("fruit" + str(x) + str(y))
         self.quantMAX = 3
         self.quant = 1
         self.recarga = 0
@@ -45,6 +60,7 @@ class Fruta:
             self.quant = min(self.quant + 1, self.quantMAX)
         else: self.recarga += 1
 
+#TODO Documentar depois que implementar
 class Carne:
     def __init__(self, posicao):
         self.posicao = posicao
@@ -100,8 +116,8 @@ def biome_gen(grid, size, n_biomas=4, scale=10.0, seed=None, biome_weights=None)
             for j in range(size):
                 neighbors = temp_grid[max(0, i-1):min(size, i+2),
                                       max(0, j-1):min(size, j+2)].flatten()
-                counts = np.bincount(neighbors, minlength=n_biomas)
-                current = temp_grid[i, j]
+                counts = np.bincount(neighbors.astype(int), minlength=n_biomas)
+                current = temp_grid[i, j].astype(int)
                 counts[current] -= 1
                 max_type = np.argmax(counts)
                 if max_type != current and counts[max_type] > 3:

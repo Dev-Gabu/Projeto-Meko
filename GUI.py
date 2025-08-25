@@ -11,8 +11,10 @@ import settings
 
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
-from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, fruit_list, meat_list, mekos_list
+from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, fruit_list, mekos_list, meat_list
 from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente
+
+
 
 def GUI_Gera_Meko():
 
@@ -154,6 +156,17 @@ def GUI_Gera_Meko():
     tk.Button(root, text="Confirmar", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
 
 def GUI_Gera_Ambiente():
+    """
+    A função cria uma grade que representa o ambiente onde os Mekos irão interagir.
+
+    Funcionalidade:
+        `gerar_bioma`: Gera biomas no ambiente.
+        `gerar_frutas`: Gera frutas no ambiente.
+        `gerar_rios`: Gera rios no ambiente.
+        `imprimir_matriz`: Imprime a matriz do ambiente no console.
+        `importarA`: Permite importar um ambiente previamente salvo.
+        `exportarA`: Permite salvar o ambiente atual em um arquivo.
+    """
     size = GRID_SIZE
 
     grid = np.zeros((size, size))
@@ -272,6 +285,10 @@ def GUI_Gera_Ambiente():
     plt.show()
 
 def GUI_Simulacao():
+    """
+    Função responsável pela interface gráfica da simulação. Onde o usuário pode selecionar o ambiente em arquivo `.npy` e mekos em arquivo `.pkl` previamente salvos.
+    """
+
     import matplotlib.pyplot as plt
     from matplotlib import gridspec
     import numpy as np
@@ -288,7 +305,7 @@ def GUI_Simulacao():
                 settings.fruit_list.append(fruta)
 
     # --- Mekos ---
-    Quantidade_Mekos = 3
+    Quantidade_Mekos = 5
 
     for i in range(Quantidade_Mekos):
         caminho = filedialog.askopenfilename(
@@ -316,7 +333,7 @@ def GUI_Simulacao():
             return
 
         ambiente.adicionar_meko(meko_inst)
-        settings.mekos_list.append(meko_inst)
+        mekos_list.append(meko_inst)
 
     # --- Configuração Simulação e Monitoramento
     fig = plt.figure(figsize=(12, 6))
@@ -331,20 +348,20 @@ def GUI_Simulacao():
     ax_attr.set_ylim(0, 1)
     ax_attr.set_aspect('equal')
 
-    num_mekos = len(settings.mekos_list)
+    num_mekos = len(mekos_list)
     y_step = 1 / (num_mekos + 1)
     meko_artists = []
 
     sprite_size = 0.3
     espaco_extra = 0.1
 
-    num_mekos = len(settings.mekos_list)
+    num_mekos = len(mekos_list)
     total_step = sprite_size + espaco_extra
     y_start = 1 - total_step / 2
 
     meko_artists = []
 
-    for idx, meko in enumerate(settings.mekos_list):
+    for idx, meko in enumerate(mekos_list):
         y = y_start - idx * total_step
         sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
         im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
@@ -373,6 +390,9 @@ def GUI_Simulacao():
     plt.show()
 
 def GUI_Home():
+    """
+    Função responsável pela interface gráfica do menu principal.
+    """
     root = tk.Tk()
     root.title("Projeto Meko")
 
