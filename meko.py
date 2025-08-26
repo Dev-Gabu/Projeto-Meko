@@ -3,6 +3,7 @@ import random
 from utils import validar_genoma, distancia
 from settings import EFEITOS, GRID_SIZE, meat_list
 from FSM import *
+from habilidades import *
 
 class Meko:
 
@@ -68,6 +69,21 @@ class Meko:
             for atributo, valor in efeitos.items():
                 setattr(self, atributo, getattr(self, atributo) + valor)
 
+    def gerar_habilidades(self, genoma):
+        categorias_genoma = [
+            "Tipo", "Alimentação", "Tamanho", "Olhos", "Presas",
+            "Patas", "Garras", "Cauda", "Defesa", "Extra"
+        ]
+
+        habilidades_do_meko = []
+        for i, categoria in enumerate(categorias_genoma):
+            traco_genetico = genoma[i]
+            if categoria in HABILIDADES_POR_GENOMA and \
+               traco_genetico in HABILIDADES_POR_GENOMA[categoria]:
+                habilidades_do_meko.extend(HABILIDADES_POR_GENOMA[categoria][traco_genetico])
+
+        return habilidades_do_meko
+
     def __init__(self, nome, genoma, posicao = (0,0),idade = 20):
      
         # Atributos de criação
@@ -89,7 +105,11 @@ class Meko:
         self.target = None
         self.ignore = None
 
+        # Gerar Atributos
         if(validar_genoma(genoma)): self.gerar_atributos(genoma)
+
+        #Gerar Habilidades
+        self.habilidades = self.gerar_habilidades(genoma)
 
     def esta_vivo(self):
         """

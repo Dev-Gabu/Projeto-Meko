@@ -1,6 +1,7 @@
 import random
 from ambiente import Fruta, Carne
 from settings import fruit_list, mekos_list, meat_list
+from habilidades import *
 
 class State:
     def __init__(self, name):
@@ -49,7 +50,9 @@ class Flee(State):
 class Combat(State):
     def __init__(self): super().__init__("Combate")
     def execute(self, meko, matriz):
-        print(f"{meko.nome} entra em combate!")
+        if meko.habilidades:
+            escolha = random.choice(meko.habilidades)
+            escolha.execute(meko, meko.target)
 
 
 class MoveToTarget(State):
