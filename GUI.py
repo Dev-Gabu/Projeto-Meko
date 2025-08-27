@@ -305,7 +305,7 @@ def GUI_Simulacao():
                 settings.fruit_list.append(fruta)
 
     # --- Mekos ---
-    Quantidade_Mekos = 5
+    Quantidade_Mekos = 6
 
     for i in range(Quantidade_Mekos):
         caminho = filedialog.askopenfilename(
@@ -366,8 +366,8 @@ def GUI_Simulacao():
         sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
         im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
         txt_artist = ax_attr.text(1.1, y,
-                                f"E: {meko.energia}\nS: {meko.saude}\nEstado: {meko.fsm.current_state.name}",
-                                va="center", fontsize=8)
+                                f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
+                                va="center", fontsize=8, color="green")
         meko_artists.append((meko, im_artist, txt_artist))
 
     plt.ion()
@@ -375,13 +375,15 @@ def GUI_Simulacao():
 
     # --- Loop da simulação ---
     for step in range(SIMULATION_STEPS):
+        print("\n Passo:", step)
         ambiente.tick()
         ambiente.renderizar(ax_sim)
         
         for meko, im_artist, txt_artist in meko_artists:
             sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
             im_artist.set_data(sprite)
-            txt_artist.set_text(f"E: {meko.energia}\nS: {meko.saude}\nEstado: {meko.fsm.current_state.name}")
+            txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
+            if not meko.esta_vivo(): txt_artist.set_color("gray")
 
         plt.draw()
         plt.pause(0.5)

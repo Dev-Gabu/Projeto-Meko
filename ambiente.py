@@ -1,7 +1,7 @@
 import numpy as np
 
 from utils import generate_perlin_noise_2d
-from settings import CMAP
+from settings import CMAP, meat_list, mekos_list
 
 class Ambiente:
     def __init__(self, size, matriz = None, mekos = []):
@@ -17,6 +17,10 @@ class Ambiente:
             if meko.esta_vivo():
                 meko.update(self.matriz)
             else:
+                self.mekos.remove(meko)
+                meat = Carne(meko.posicao)
+                meat_list.append(meat)
+                mekos_list.remove(meko)
                 print(f"{meko.nome} morreu.")
     
     def renderizar(self, ax):
@@ -63,14 +67,14 @@ class Fruta:
 #TODO Documentar depois que implementar
 class Carne:
     def __init__(self, posicao):
+        x, y = posicao
+        self.nome = str("meat" + str(x) + str(y))
         self.posicao = posicao
         self.quant = np.random.randint(1, 4)
-        self.podridao = 0
 
-    def apodrecer(self):
-        if self.podridao >= 15:
-            self.quant -=1
-        else: self.podridao += 1
+    def acabar(self):
+        if self.quant <= 0:
+            meat_list.remove(self)
 
 def biome_gen(grid, size, n_biomas=4, scale=10.0, seed=None, biome_weights=None):
     """

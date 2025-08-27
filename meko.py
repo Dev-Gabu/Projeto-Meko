@@ -1,7 +1,7 @@
 import random
 
 from utils import validar_genoma, distancia
-from settings import EFEITOS, GRID_SIZE, meat_list
+from settings import EFEITOS, GRID_SIZE
 from FSM import *
 from habilidades import *
 
@@ -84,7 +84,7 @@ class Meko:
 
         return habilidades_do_meko
 
-    def __init__(self, nome, genoma, posicao = (0,0),idade = 20):
+    def __init__(self, nome, genoma, posicao = (0,0),idade = 100):
      
         # Atributos de criação
         self.posicao = posicao
@@ -93,8 +93,8 @@ class Meko:
         self.idade = idade
 
         # Atributos de controle
-        self.saudeMAX = 20
-        self.saude = 20
+        self.saudeMAX = 70
+        self.saude = 70
         self.energiaMAX = 200
         self.energia = 200
         self.fertilidade = 0
@@ -113,9 +113,9 @@ class Meko:
 
     def esta_vivo(self):
         """
-        Verifica se o Meko está vivo com base em sua energia.
+        Verifica se o Meko está vivo com base em sua saúde.
         """
-        return self.energia > 0
+        return self.saude > 0 and self.idade > 0
     
     def random_step(self):
         """
@@ -155,5 +155,9 @@ class Meko:
         Atualiza a máquina de estados do Meko
         """
         
-        self.energia -= 1    
+        self.energia -= 1
+        self.idade -= 1
+        if self.energia <= 0 or self.saude <= 0 or self.idade <= 0:
+            self.saude -= 0
+
         self.fsm.update(matriz)

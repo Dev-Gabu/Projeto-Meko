@@ -1,6 +1,11 @@
 import random
 from settings import GRID_SIZE
 
+## MACROS
+
+fraco = 0.5
+forte = 1.5
+
 ## CLASSE PRINCIPAL
 
 class Habilidade():
@@ -24,7 +29,7 @@ class HabilidadeLancarBrasas(Habilidade):
 
     def executar(self, atacante, alvo):
         dano = 5
-        fraqueza = 2 if alvo.genoma[0] == "Inseto" or alvo.genoma[0] == "Terra" else 0.5 if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Agua" else 1
+        fraqueza = fraco if alvo.genoma[0] == "Inseto" or alvo.genoma[0] == "Terra" else fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Agua" else 1
 
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
         alvo.saude -= dano_total
@@ -39,7 +44,7 @@ class HabilidadeJatoDagua(Habilidade):
 
         # Dano
         dano = 5
-        fraqueza = 2 if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Inseto" else 0.5 if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Agua" else 1
+        fraqueza = fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Inseto" else fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Agua" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -57,7 +62,7 @@ class HabilidadeEnterrar(Habilidade):
 
         # Dano
         dano = 5
-        fraqueza = 2 if alvo.genoma[0] == "Agua" or alvo.genoma[0] == "Inseto" else 0.5 if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Fogo" else 1
+        fraqueza = fraco if alvo.genoma[0] == "Agua" or alvo.genoma[0] == "Inseto" else fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Fogo" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -94,11 +99,11 @@ class HabilidadeGarraNoturna(Habilidade):
 
         # Dano
         dano = 5
-        fraqueza = 2 if alvo.genoma[0] == "Luz" else 0.5 if alvo.genoma[0] == "Sombra" else 1
+        fraqueza = fraco if alvo.genoma[0] == "Luz" else fraco if alvo.genoma[0] == "Sombra" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
-        if random.random() > 0.5:
+        if random.random() > fraco:
             dano_total *= 2
             print(f"A habilidade Garra Noturna de {atacante.nome} causou um golpe crítico!")
         alvo.saude -= dano_total
@@ -137,7 +142,7 @@ class HabilidadeEsquivar(Habilidade):
         if 0 <= j < GRID_SIZE: j *= -1
 
         atacante.posicao = (i, j)
-        atacante.energia -= atacante.custo_energia
+        atacante.energia -= self.custo_energia
 
         # Resposta
         print(f"{atacante.nome} usa Esquivar e se move para {atacante.posicao}.")
@@ -150,7 +155,7 @@ class HabilidadeEsmagar(Habilidade):
 
         # Dano
         dano = 10
-        fraqueza = 2 if alvo.genoma[2] == "Pequeno" else 0.5 if alvo.genoma[2] == "Grande" or alvo.genoma[2] == "Medio" else 1
+        fraqueza = fraco if alvo.genoma[2] == "Pequeno" else fraco if alvo.genoma[2] == "Grande" or alvo.genoma[2] == "Medio" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -262,8 +267,8 @@ class HabilidadeRasgar(Habilidade):
     def executar(self, atacante, alvo):
 
         # Dano
-        dano = 10
-        fraqueza = 2 if alvo.genoma[8] == "Nenhuma" else 1 if alvo.genoma[8] == "Escamas" or alvo.genoma[8] == "Pelagem" else 0.5
+        dano = 5
+        fraqueza = fraco if alvo.genoma[8] == "Nenhuma" else 1 if alvo.genoma[8] == "Escamas" or alvo.genoma[8] == "Pelagem" else fraco
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito

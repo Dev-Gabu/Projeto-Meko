@@ -50,9 +50,13 @@ class Flee(State):
 class Combat(State):
     def __init__(self): super().__init__("Combate")
     def execute(self, meko, matriz):
-        if meko.habilidades:
+        if meko.target and meko.target.esta_vivo():
+            print(f"{meko.nome} está em combate com {meko.target.nome}!")
             escolha = random.choice(meko.habilidades)
-            escolha.execute(meko, meko.target)
+            escolha.executar(meko, meko.target)
+        else:
+            meko.target = None
+            meko.fsm.change_state(Wander())
 
 
 class MoveToTarget(State):
@@ -182,10 +186,12 @@ class Eat(State):
         elif isinstance(meko.target, Carne) and meko.genoma[1] == "Carnivoro" or meko.genoma[1] == "Onivoro":
             if meko.target.quant > 0:
                 meko.target.quant -= 1
-                meko.energia  = min(meko.energia + 15, meko.energiaMAX)
+                meko.energia  = min(meko.energia + 50, meko.energiaMAX)
             else:
                 print(f"{meko.target.nome} foi consumida.")
                 meko.fsm.change_state(Wander())
         else:
             print(f"{meko.nome} não sabe o que fazer com {meko.target.nome}.")
-        meko.fsm.change_state(Wander())
+        
+        if meko.energia >= meko.energiaMAX * 0.9 or meko.target.quant <= 0:
+            meko.fsm.change_state(Wander())
