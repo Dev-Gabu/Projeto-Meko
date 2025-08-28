@@ -136,10 +136,10 @@ class HabilidadeEsquivar(Habilidade):
         # Efeito
         i, j = atacante.posicao
         
-        i = (i + random.choice([-3, 0, 3]))
-        if 0 <= i < GRID_SIZE: i *= -1
-        j = (j + random.choice([-3, 0, 3]))
-        if 0 <= j < GRID_SIZE: j *= -1
+        randi = random.choice([-3, 0, 3])
+        randj = random.choice([-3, 0, 3])
+        i = i + randi if 0 >= i + randi < GRID_SIZE else i + (randi * -1)
+        j = j + randj if 0 >= j + randj < GRID_SIZE else j + (randj * -1)
 
         atacante.posicao = (i, j)
         atacante.energia -= self.custo_energia
@@ -304,7 +304,7 @@ class HabilidadeRetaliar(Habilidade):
     def executar(self, atacante, alvo):
 
         # Dano
-        dano = max(1, min(10, (11 - (atacante.saude / atacante.saudeMAX) *10)))
+        dano = int(max(1, min(10, (11 - (atacante.saude / atacante.saudeMAX) *10))))
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia)
 
         # Efeito

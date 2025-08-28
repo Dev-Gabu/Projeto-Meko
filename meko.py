@@ -84,26 +84,27 @@ class Meko:
 
         return habilidades_do_meko
 
-    def __init__(self, nome, genoma, posicao = (0,0),idade = 100):
+    def __init__(self, nome, genoma, posicao = (0,0),idade = 200):
      
         # Atributos de criação
         self.posicao = posicao
         self.genoma = genoma
         self.nome = nome
-        self.idade = idade
+        self.idadeMAX = idade
+        self.idade = 0
 
         # Atributos de controle
         self.saudeMAX = 70
         self.saude = 70
         self.energiaMAX = 200
         self.energia = 200
-        self.fertilidade = 0
+        self.fertilidade = "Incapaz"
 
         # Atributos de estado
         self.fsm = FSM(self)
         self.fsm.change_state(Wander())
         self.target = None
-        self.ignore = None
+        self.love = None
 
         # Gerar Atributos
         if(validar_genoma(genoma)): self.gerar_atributos(genoma)
@@ -115,30 +116,32 @@ class Meko:
         """
         Verifica se o Meko está vivo com base em sua saúde.
         """
-        return self.saude > 0 and self.idade > 0
+        return self.saude > 0 and self.idade < self.idadeMAX
     
     def random_step(self):
         """
         Move o Meko aleatóriamente no intervalo do Grid
         """
         i, j = self.posicao
-        i = (i + random.choice([-1, 0, 1]))
-        j = (j + random.choice([-1, 0, 1]))
+        step = 1 #min(1, random.randint(0, self.velocidade))
+        i = (i + random.choice([-1, 0, 1])) * step
+        j = (j + random.choice([-1, 0, 1])) * step
         if 0 <= i < GRID_SIZE and 0 <= j < GRID_SIZE:
             self.posicao = (i, j)
-            self.energia -= 1
+            self.energia -= step
         else: self.random_step()
 
-    def search(self, objetos, tipo):
+    def search(self, objetos, tipo, breed = False):
         """
         Busca objetos de um tipo específico no raio de visão.
         objetos: lista de instâncias (Fruta, Carne, Meko, etc.)
         tipo: tipo de objeto a ser buscado
         """
         # Filtra apenas os que estão no raio de visão
+        
         proximos = [
             obj for obj in objetos
-            if distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo
+            if distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == False or distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == True and obj.fertilidade == "Fertil" and obj.love == None
         ]
 
         if not proximos:
@@ -149,15 +152,30 @@ class Meko:
         
         #Retorna o alvo
         return alvo
+    
+    def gerar_filhote(self, nome, genoma):
+        filhote = Meko(nome, genoma, posicao=self.posicao)
+        mekos_list.append(filhote)
+        print(f"Um novo Meko nasceu: {nome}")
 
-    def update(self, matriz):
+    def update(self):
         """
         Atualiza a máquina de estados do Meko
         """
         
         self.energia -= 1
-        self.idade -= 1
-        if self.energia <= 0 or self.saude <= 0 or self.idade <= 0:
-            self.saude -= 0
+        self.idade += 1
+        
+        ## Dano por fome
+        if self.energia <= 0:
+            self.saude -= 5
+            
+        ## Fertilidade
+        if self.idade > 30 and self.saude > self.saudeMAX * 0.5 and self.energia > self.energiaMAX * 0.5 and self.fertilidade == "Incapaz":
+            self.fertilidade = "Fertil"
+        else: 
+            self.fertilidade = "Incapaz"
+            
+        print(self.fertilidade)
 
-        self.fsm.update(matriz)
+        self.fsm.update()

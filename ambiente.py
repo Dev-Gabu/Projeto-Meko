@@ -13,9 +13,15 @@ class Ambiente:
         self.mekos.append(meko)
 
     def tick(self):
+        for meko in mekos_list:
+            if meko in self.mekos:
+                continue
+            else:
+                self.adicionar_meko(meko)
+
         for meko in self.mekos:
             if meko.esta_vivo():
-                meko.update(self.matriz)
+                meko.update()
             else:
                 self.mekos.remove(meko)
                 meat = Carne(meko.posicao)

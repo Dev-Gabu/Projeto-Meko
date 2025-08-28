@@ -285,19 +285,32 @@ def GUI_Gera_Ambiente():
     plt.show()
 
 def GUI_Simulacao():
-    """
-    Função responsável pela interface gráfica da simulação. Onde o usuário pode selecionar o ambiente em arquivo `.npy` e mekos em arquivo `.pkl` previamente salvos.
-    """
-
     import matplotlib.pyplot as plt
     from matplotlib import gridspec
+    from matplotlib.widgets import Button
     import numpy as np
+    import os
+    from tkinter import filedialog, messagebox
+
+    # Variável de estado global para controlar o pause
+    global is_paused
+    is_paused = False
+    
+    # Função de callback do botão
+    def toggle_pause(event):
+        global is_paused
+        is_paused = not is_paused
+        if is_paused:
+            pause_button.label.set_text("Continuar")
+        else:
+            pause_button.label.set_text("Pausar")
+        plt.draw()
 
     # --- Ambiente ---
     ambiente_base = importar_ambiente()
     ambiente = Ambiente(GRID_SIZE, ambiente_base)
 
-    # --- Frutas ---
+#--- Frutas ---
     for i, linha in enumerate(ambiente.matriz):
         for j, valor in enumerate(linha):
             if valor == 4:
@@ -305,7 +318,7 @@ def GUI_Simulacao():
                 settings.fruit_list.append(fruta)
 
     # --- Mekos ---
-    Quantidade_Mekos = 6
+    Quantidade_Mekos = 4
 
     for i in range(Quantidade_Mekos):
         caminho = filedialog.askopenfilename(
@@ -344,10 +357,10 @@ def GUI_Simulacao():
 
     ax_attr = fig.add_subplot(gs[1])
     ax_attr.axis("off")
+    
     ax_attr.set_xlim(0, 2)
     ax_attr.set_ylim(0, 1)
     ax_attr.set_aspect('equal')
-
     num_mekos = len(mekos_list)
     y_step = 1 / (num_mekos + 1)
     meko_artists = []
@@ -358,7 +371,7 @@ def GUI_Simulacao():
     num_mekos = len(mekos_list)
     total_step = sprite_size + espaco_extra
     y_start = 1 - total_step / 2
-
+    
     meko_artists = []
 
     for idx, meko in enumerate(mekos_list):
@@ -369,12 +382,21 @@ def GUI_Simulacao():
                                 f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
                                 va="center", fontsize=8, color="green")
         meko_artists.append((meko, im_artist, txt_artist))
-
+    
+    # --- Adiciona o botão de pause
+    ax_button = fig.add_axes([0.8, 0.05, 0.1, 0.075])
+    pause_button = Button(ax_button, "Pausar")
+    pause_button.on_clicked(toggle_pause)
+    
     plt.ion()
     plt.show()
 
     # --- Loop da simulação ---
     for step in range(SIMULATION_STEPS):
+        # AQUI: Loop de espera para o estado de pausa
+        while is_paused:
+            plt.pause(0.1)
+
         print("\n Passo:", step)
         ambiente.tick()
         ambiente.renderizar(ax_sim)
@@ -388,8 +410,112 @@ def GUI_Simulacao():
         plt.draw()
         plt.pause(0.5)
 
-    plt.ioff()
-    plt.show()
+# def GUI_Simulacao():
+#     """
+#     Função responsável pela interface gráfica da simulação. Onde o usuário pode selecionar o ambiente em arquivo `.npy` e mekos em arquivo `.pkl` previamente salvos.
+#     """
+
+#     import matplotlib.pyplot as plt
+#     from matplotlib import gridspec
+#     import numpy as np
+
+#     # --- Ambiente ---
+#     ambiente_base = importar_ambiente()
+#     ambiente = Ambiente(GRID_SIZE, ambiente_base)
+
+#     # --- Frutas ---
+#     for i, linha in enumerate(ambiente.matriz):
+#         for j, valor in enumerate(linha):
+#             if valor == 4:
+#                 fruta = Fruta((i, j))
+#                 settings.fruit_list.append(fruta)
+
+#     # --- Mekos ---
+#     Quantidade_Mekos = 4
+
+#     for i in range(Quantidade_Mekos):
+#         caminho = filedialog.askopenfilename(
+#             title="Selecione um Meko",
+#             filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
+#             initialdir=os.path.join(
+#                 os.path.dirname(os.path.abspath(__file__)),
+#                 "assets",
+#                 "mekos"
+#             )
+#         )
+
+#         if not caminho:
+#             raise FileNotFoundError("Nenhum arquivo selecionado.")
+
+#         dados = importar_meko(caminho)
+#         try:
+#             meko_inst = Meko(
+#                 dados["nome"],
+#                 dados["genoma"],
+#                 (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
+#             )
+#         except Exception as e:
+#             messagebox.showerror("Erro ao importar", str(e))
+#             return
+
+#         ambiente.adicionar_meko(meko_inst)
+#         mekos_list.append(meko_inst)
+
+#     # --- Configuração Simulação e Monitoramento
+#     fig = plt.figure(figsize=(12, 6))
+#     gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1])
+    
+#     ax_sim = fig.add_subplot(gs[0])
+#     ax_sim.set_title("Simulação")
+
+#     ax_attr = fig.add_subplot(gs[1])
+#     ax_attr.axis("off")
+#     ax_attr.set_xlim(0, 2)
+#     ax_attr.set_ylim(0, 1)
+#     ax_attr.set_aspect('equal')
+
+#     num_mekos = len(mekos_list)
+#     y_step = 1 / (num_mekos + 1)
+#     meko_artists = []
+
+#     sprite_size = 0.3
+#     espaco_extra = 0.1
+
+#     num_mekos = len(mekos_list)
+#     total_step = sprite_size + espaco_extra
+#     y_start = 1 - total_step / 2
+
+#     meko_artists = []
+
+#     for idx, meko in enumerate(mekos_list):
+#         y = y_start - idx * total_step
+#         sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
+#         im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
+#         txt_artist = ax_attr.text(1.1, y,
+#                                 f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
+#                                 va="center", fontsize=8, color="green")
+#         meko_artists.append((meko, im_artist, txt_artist))
+
+#     plt.ion()
+#     plt.show()
+
+#     # --- Loop da simulação ---
+#     for step in range(SIMULATION_STEPS):
+#         print("\n Passo:", step)
+#         ambiente.tick()
+#         ambiente.renderizar(ax_sim)
+        
+#         for meko, im_artist, txt_artist in meko_artists:
+#             sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
+#             im_artist.set_data(sprite)
+#             txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
+#             if not meko.esta_vivo(): txt_artist.set_color("gray")
+
+#         plt.draw()
+#         plt.pause(0.5)
+
+#     plt.ioff()
+#     plt.show()
 
 def GUI_Home():
     """
