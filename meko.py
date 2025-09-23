@@ -175,7 +175,5 @@ class Meko:
             self.fertilidade = "Fertil"
         else: 
             self.fertilidade = "Incapaz"
-            
-        print(self.fertilidade)
 
         self.fsm.update()

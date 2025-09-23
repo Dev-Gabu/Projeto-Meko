@@ -11,10 +11,8 @@ import settings
 
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
-from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, fruit_list, mekos_list, meat_list
+from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, mekos_list
 from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente
-
-
 
 def GUI_Gera_Meko():
 
@@ -94,6 +92,11 @@ def GUI_Gera_Meko():
         label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
 
     def exportarM():
+        
+        """
+        Exporta os dados de um meko como arquivo .pkl
+        """
+        
         caminho = filedialog.asksaveasfilename(
             title="Salvar arquivo",
             defaultextension=".pkl",
@@ -150,7 +153,7 @@ def GUI_Gera_Meko():
         label_imagem = tk.Label(janela_atributos, image=sprite_tk)
         label_imagem.image = sprite_tk
         label_imagem.grid(row=0, column=1, rowspan=row, padx=10, pady=5)
-
+        
     # Botões
     tk.Button(root, text="Importar", command=importarM).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
     tk.Button(root, text="Confirmar", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
@@ -318,7 +321,7 @@ def GUI_Simulacao():
                 settings.fruit_list.append(fruta)
 
     # --- Mekos ---
-    Quantidade_Mekos = 4
+    Quantidade_Mekos = 5
 
     for i in range(Quantidade_Mekos):
         caminho = filedialog.askopenfilename(
@@ -409,113 +412,6 @@ def GUI_Simulacao():
 
         plt.draw()
         plt.pause(0.5)
-
-# def GUI_Simulacao():
-#     """
-#     Função responsável pela interface gráfica da simulação. Onde o usuário pode selecionar o ambiente em arquivo `.npy` e mekos em arquivo `.pkl` previamente salvos.
-#     """
-
-#     import matplotlib.pyplot as plt
-#     from matplotlib import gridspec
-#     import numpy as np
-
-#     # --- Ambiente ---
-#     ambiente_base = importar_ambiente()
-#     ambiente = Ambiente(GRID_SIZE, ambiente_base)
-
-#     # --- Frutas ---
-#     for i, linha in enumerate(ambiente.matriz):
-#         for j, valor in enumerate(linha):
-#             if valor == 4:
-#                 fruta = Fruta((i, j))
-#                 settings.fruit_list.append(fruta)
-
-#     # --- Mekos ---
-#     Quantidade_Mekos = 4
-
-#     for i in range(Quantidade_Mekos):
-#         caminho = filedialog.askopenfilename(
-#             title="Selecione um Meko",
-#             filetypes=[("Arquivos Pickle", "*.pkl"), ("Todos os arquivos", "*.*")],
-#             initialdir=os.path.join(
-#                 os.path.dirname(os.path.abspath(__file__)),
-#                 "assets",
-#                 "mekos"
-#             )
-#         )
-
-#         if not caminho:
-#             raise FileNotFoundError("Nenhum arquivo selecionado.")
-
-#         dados = importar_meko(caminho)
-#         try:
-#             meko_inst = Meko(
-#                 dados["nome"],
-#                 dados["genoma"],
-#                 (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
-#             )
-#         except Exception as e:
-#             messagebox.showerror("Erro ao importar", str(e))
-#             return
-
-#         ambiente.adicionar_meko(meko_inst)
-#         mekos_list.append(meko_inst)
-
-#     # --- Configuração Simulação e Monitoramento
-#     fig = plt.figure(figsize=(12, 6))
-#     gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1])
-    
-#     ax_sim = fig.add_subplot(gs[0])
-#     ax_sim.set_title("Simulação")
-
-#     ax_attr = fig.add_subplot(gs[1])
-#     ax_attr.axis("off")
-#     ax_attr.set_xlim(0, 2)
-#     ax_attr.set_ylim(0, 1)
-#     ax_attr.set_aspect('equal')
-
-#     num_mekos = len(mekos_list)
-#     y_step = 1 / (num_mekos + 1)
-#     meko_artists = []
-
-#     sprite_size = 0.3
-#     espaco_extra = 0.1
-
-#     num_mekos = len(mekos_list)
-#     total_step = sprite_size + espaco_extra
-#     y_start = 1 - total_step / 2
-
-#     meko_artists = []
-
-#     for idx, meko in enumerate(mekos_list):
-#         y = y_start - idx * total_step
-#         sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
-#         im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
-#         txt_artist = ax_attr.text(1.1, y,
-#                                 f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
-#                                 va="center", fontsize=8, color="green")
-#         meko_artists.append((meko, im_artist, txt_artist))
-
-#     plt.ion()
-#     plt.show()
-
-#     # --- Loop da simulação ---
-#     for step in range(SIMULATION_STEPS):
-#         print("\n Passo:", step)
-#         ambiente.tick()
-#         ambiente.renderizar(ax_sim)
-        
-#         for meko, im_artist, txt_artist in meko_artists:
-#             sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
-#             im_artist.set_data(sprite)
-#             txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
-#             if not meko.esta_vivo(): txt_artist.set_color("gray")
-
-#         plt.draw()
-#         plt.pause(0.5)
-
-#     plt.ioff()
-#     plt.show()
 
 def GUI_Home():
     """

@@ -1,21 +1,19 @@
 import random
 from settings import GRID_SIZE
 
-## MACROS
-
-fraco = 0.5
-forte = 1.5
-
-## CLASSE PRINCIPAL
+## CLASSE GERAL
 
 class Habilidade():
-    def __init__(self, custo_energia):
+    
+    def __init__(self, custo_energia, nome):
         self.custo_energia = custo_energia
+        self.nome = nome
+        self.fraco = 0.5
+        self.forte = 1.5
 
     def execute(self, user, alvo):
         if self.custo_energia > user.energia:
-            print(f"{user.nome} não tem energia suficiente para usar essa habilidade.")
-            # TODO Adicionar nome nas habilidades para resposta inteligente
+            print(f"{user.nome} não tem energia suficiente para usar {self.nome}.")
             return
         user.energia -= self.custo_energia
 
@@ -26,10 +24,11 @@ class Habilidade():
 class HabilidadeLancarBrasas(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Lançar Brasas")
 
     def executar(self, atacante, alvo):
         dano = 5
-        fraqueza = fraco if alvo.genoma[0] == "Inseto" or alvo.genoma[0] == "Terra" else fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Agua" else 1
+        fraqueza = self.forte if alvo.genoma[0] == "Inseto" or alvo.genoma[0] == "Terra" else self.fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Agua" else 1
 
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
         alvo.saude -= dano_total
@@ -39,12 +38,13 @@ class HabilidadeLancarBrasas(Habilidade):
 class HabilidadeJatoDagua(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Jato D'agua")
 
     def executar(self, atacante, alvo):
 
         # Dano
         dano = 5
-        fraqueza = fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Inseto" else fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Agua" else 1
+        fraqueza = self.forte if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Inseto" else self.fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Agua" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -57,12 +57,13 @@ class HabilidadeJatoDagua(Habilidade):
 class HabilidadeEnterrar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Enterrar")
 
     def executar(self, atacante, alvo):
 
         # Dano
         dano = 5
-        fraqueza = fraco if alvo.genoma[0] == "Agua" or alvo.genoma[0] == "Inseto" else fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Fogo" else 1
+        fraqueza = self.forte if alvo.genoma[0] == "Agua" or alvo.genoma[0] == "Inseto" else self.fraco if alvo.genoma[0] == "Terra" or alvo.genoma[0] == "Fogo" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -75,6 +76,7 @@ class HabilidadeEnterrar(Habilidade):
 class HabilidadeSanguessuga(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Sanguessuga")
 
     def executar(self, atacante, alvo):
 
@@ -94,16 +96,17 @@ class HabilidadeSanguessuga(Habilidade):
 class HabilidadeGarraNoturna(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Garra Noturna")
 
     def executar(self, atacante, alvo):
 
         # Dano
         dano = 5
-        fraqueza = fraco if alvo.genoma[0] == "Luz" else fraco if alvo.genoma[0] == "Sombra" else 1
+        fraqueza = self.forte if alvo.genoma[0] == "Luz" else self.fraco if alvo.genoma[0] == "Sombra" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
-        if random.random() > fraco:
+        if random.random() > 0.2:
             dano_total *= 2
             print(f"A habilidade Garra Noturna de {atacante.nome} causou um golpe crítico!")
         alvo.saude -= dano_total
@@ -115,6 +118,7 @@ class HabilidadeGarraNoturna(Habilidade):
 class HabilidadeCura(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Cura")
 
     def executar(self, atacante, alvo):
         
@@ -130,6 +134,7 @@ class HabilidadeCura(Habilidade):
 class HabilidadeEsquivar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Esquivar")
 
     def executar(self, atacante, alvo):
 
@@ -150,12 +155,13 @@ class HabilidadeEsquivar(Habilidade):
 class HabilidadeEsmagar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Esmagar")
 
     def executar(self, atacante, alvo):
 
         # Dano
         dano = 10
-        fraqueza = fraco if alvo.genoma[2] == "Pequeno" else fraco if alvo.genoma[2] == "Grande" or alvo.genoma[2] == "Medio" else 1
+        fraqueza = self.forte if alvo.genoma[2] == "Pequeno" else self.fraco if alvo.genoma[2] == "Grande" or alvo.genoma[2] == "Medio" else 1
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -168,6 +174,7 @@ class HabilidadeEsmagar(Habilidade):
 class HabilidadeMordiscar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Mordiscar")
 
     def executar(self, atacante, alvo):
 
@@ -185,6 +192,7 @@ class HabilidadeMordiscar(Habilidade):
 class HabilidadeMordida(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Mordida")
 
     def executar(self, atacante, alvo):
 
@@ -202,6 +210,7 @@ class HabilidadeMordida(Habilidade):
 class HabilidadeMordidaAprimorada(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Mordida Aprimorada")
 
     def executar(self, atacante, alvo):
 
@@ -219,6 +228,7 @@ class HabilidadeMordidaAprimorada(Habilidade):
 class HabilidadePrender(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Prender")
 
     def executar(self, atacante, alvo):
         # TODO Implementar Prender
@@ -228,6 +238,7 @@ class HabilidadePrender(Habilidade):
 class HabilidadeEscalar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Escalar")
 
     def executar(self, atacante, alvo):
         # TODO Implementar Escalar
@@ -237,6 +248,7 @@ class HabilidadeEscalar(Habilidade):
 class HabilidadeCorrer(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Correr")
 
     def executar(self, atacante, alvo):
         # TODO Implementar Correr
@@ -246,6 +258,7 @@ class HabilidadeCorrer(Habilidade):
 class HabilidadeArranhar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Arranhar")
 
     def executar(self, atacante, alvo):
 
@@ -263,12 +276,13 @@ class HabilidadeArranhar(Habilidade):
 class HabilidadeRasgar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Rasgar")
 
     def executar(self, atacante, alvo):
 
         # Dano
         dano = 5
-        fraqueza = fraco if alvo.genoma[8] == "Nenhuma" else 1 if alvo.genoma[8] == "Escamas" or alvo.genoma[8] == "Pelagem" else fraco
+        fraqueza = self.forte if alvo.genoma[8] == "Nenhuma" else 1 if alvo.genoma[8] == "Escamas" or alvo.genoma[8] == "Pelagem" else self.fraco
         dano_total = max(dano, dano + atacante.forca - alvo.resistencia) * fraqueza
 
         # Efeito
@@ -281,6 +295,7 @@ class HabilidadeRasgar(Habilidade):
 class HabilidadeMartelar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Martelar")
 
     def executar(self, atacante, alvo):
 
@@ -300,6 +315,7 @@ class HabilidadeMartelar(Habilidade):
 class HabilidadeRetaliar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Retaliar")
 
     def executar(self, atacante, alvo):
 
@@ -317,6 +333,7 @@ class HabilidadeRetaliar(Habilidade):
 class HabilidadeNadar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Nadar")
 
     def executar(self, atacante, alvo):
         # TODO Implementar Nadar
@@ -326,6 +343,7 @@ class HabilidadeNadar(Habilidade):
 class HabilidadeDefender(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Defender")
 
     def executar(self, atacante, alvo):
         # TODO Implementar Defender
@@ -335,6 +353,7 @@ class HabilidadeDefender(Habilidade):
 class HabilidadeCamuflagem(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Camuflagem")
 
     def executar(self, atacante, alvo):
         # TODO Efeito Camuflagem
@@ -344,6 +363,7 @@ class HabilidadeCamuflagem(Habilidade):
 class HabilidadeVeneno(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Veneno")
 
     def executar(self, atacante, alvo):
         # TODO Efeito Veneno
@@ -353,6 +373,7 @@ class HabilidadeVeneno(Habilidade):
 class HabilidadeIluminar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Iluminar")
 
     def executar(self, atacante, alvo):
         # TODO Efeito Cegueira
@@ -362,6 +383,7 @@ class HabilidadeIluminar(Habilidade):
 class HabilidadeEletrocutar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5)
+        super().__init__(nome="Eletrocutar")
 
     def executar(self, atacante, alvo):
 
@@ -377,7 +399,7 @@ class HabilidadeEletrocutar(Habilidade):
         #TODO Efeito Confusão
 
         # Resposta
-        print(f"{atacante.nome} usa Martelar em {alvo.nome} e causa {dano_total} de dano.")
+        print(f"{atacante.nome} usa Eletrocutar em {alvo.nome} e causa {dano_total} de dano.")
 
 
 HABILIDADES_POR_GENOMA = {
