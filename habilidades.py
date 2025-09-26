@@ -23,10 +23,9 @@ class Habilidade():
 
 class HabilidadeLancarBrasas(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Lançar Brasas")
+        super().__init__(custo_energia=5,nome="Lançar Brasas")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         dano = 5
         fraqueza = self.forte if alvo.genoma[0] == "Inseto" or alvo.genoma[0] == "Terra" else self.fraco if alvo.genoma[0] == "Fogo" or alvo.genoma[0] == "Agua" else 1
 
@@ -37,10 +36,9 @@ class HabilidadeLancarBrasas(Habilidade):
 
 class HabilidadeJatoDagua(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Jato D'agua")
+        super().__init__(custo_energia=5,nome="Jato D'agua")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -56,10 +54,9 @@ class HabilidadeJatoDagua(Habilidade):
 
 class HabilidadeEnterrar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Enterrar")
+        super().__init__(custo_energia=5,nome="Enterrar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -75,10 +72,9 @@ class HabilidadeEnterrar(Habilidade):
 
 class HabilidadeSanguessuga(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Sanguessuga")
+        super().__init__(custo_energia=5,nome="Sanguessuga")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -95,10 +91,9 @@ class HabilidadeSanguessuga(Habilidade):
 
 class HabilidadeGarraNoturna(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Garra Noturna")
+        super().__init__(custo_energia=5,nome="Garra Noturna")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -117,10 +112,9 @@ class HabilidadeGarraNoturna(Habilidade):
 
 class HabilidadeCura(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Cura")
+        super().__init__(custo_energia=5,nome="Cura")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         
         # Efeito
         atacante.saude += 10
@@ -133,10 +127,9 @@ class HabilidadeCura(Habilidade):
 
 class HabilidadeEsquivar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Esquivar")
+        super().__init__(custo_energia=5,nome="Esquivar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Efeito
         i, j = atacante.posicao
@@ -154,10 +147,9 @@ class HabilidadeEsquivar(Habilidade):
 
 class HabilidadeEsmagar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Esmagar")
+        super().__init__(custo_energia=5,nome="Esmagar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 10
@@ -173,10 +165,9 @@ class HabilidadeEsmagar(Habilidade):
 
 class HabilidadeMordiscar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Mordiscar")
+        super().__init__(custo_energia=5,nome="Mordiscar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 2
@@ -191,10 +182,9 @@ class HabilidadeMordiscar(Habilidade):
 
 class HabilidadeMordida(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Mordida")
+        super().__init__(custo_energia=5,nome="Mordida")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -209,10 +199,9 @@ class HabilidadeMordida(Habilidade):
 
 class HabilidadeMordidaAprimorada(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Mordida Aprimorada")
+        super().__init__(custo_energia=5,nome="Mordida Aprimorada")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 7
@@ -227,40 +216,36 @@ class HabilidadeMordidaAprimorada(Habilidade):
 
 class HabilidadePrender(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Prender")
+        super().__init__(custo_energia=5,nome="Prender")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Implementar Prender
         # Resposta
         print(f"{atacante.nome} usa Prender em {alvo.nome}.")
 
 class HabilidadeEscalar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Escalar")
+        super().__init__(custo_energia=5,nome="Escalar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Implementar Escalar
         # Resposta
         print(f"{atacante.nome} usa Escalar.")
 
 class HabilidadeCorrer(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Correr")
+        super().__init__(custo_energia=5,nome="Correr")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Implementar Correr
         # Resposta
         print(f"{atacante.nome} usa Correr.")
 
 class HabilidadeArranhar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Arranhar")
+        super().__init__(custo_energia=5,nome="Arranhar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -275,10 +260,9 @@ class HabilidadeArranhar(Habilidade):
     
 class HabilidadeRasgar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Rasgar")
+        super().__init__(custo_energia=5,nome="Rasgar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -294,10 +278,9 @@ class HabilidadeRasgar(Habilidade):
 
 class HabilidadeMartelar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Martelar")
+        super().__init__(custo_energia=5,nome="Martelar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 5
@@ -314,10 +297,9 @@ class HabilidadeMartelar(Habilidade):
 
 class HabilidadeRetaliar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Retaliar")
+        super().__init__(custo_energia=5,nome="Retaliar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = int(max(1, min(10, (11 - (atacante.saude / atacante.saudeMAX) *10))))
@@ -332,60 +314,54 @@ class HabilidadeRetaliar(Habilidade):
 
 class HabilidadeNadar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Nadar")
+        super().__init__(custo_energia=5,nome="Nadar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Implementar Nadar
         # Resposta
         print(f"{atacante.nome} usa Nadar.")
 
 class HabilidadeDefender(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Defender")
+        super().__init__(custo_energia=5,nome="Defender")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Implementar Defender
         # Resposta
         print(f"{atacante.nome} usa Defender.")
 
 class HabilidadeCamuflagem(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Camuflagem")
+        super().__init__(custo_energia=5,nome="Camuflagem")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Efeito Camuflagem
         # Resposta
         print(f"{atacante.nome} usa Camuflagem.")
 
 class HabilidadeVeneno(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Veneno")
+        super().__init__(custo_energia=5,nome="Veneno")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Efeito Veneno
         # Resposta
         print(f"{atacante.nome} usa Veneno.")
 
 class HabilidadeIluminar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Iluminar")
+        super().__init__(custo_energia=5,nome="Iluminar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
         # TODO Efeito Cegueira
         # Resposta
         print(f"{atacante.nome} usa Iluminar.")
 
 class HabilidadeEletrocutar(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5)
-        super().__init__(nome="Eletrocutar")
+        super().__init__(custo_energia=5,nome="Eletrocutar")
 
-    def executar(self, atacante, alvo):
+    def execute(self, atacante, alvo):
 
         # Dano
         dano = 1
@@ -418,7 +394,7 @@ HABILIDADES_POR_GENOMA = {
     },
     "Presas": {
         "Pequena": [HabilidadeMordiscar()],
-        "Pequena": [HabilidadeMordida()],
+        "Media": [HabilidadeMordida()],
         "Grande": [HabilidadeMordida(), HabilidadeMordidaAprimorada(), HabilidadePrender()]
     },
     "Patas": {
