@@ -1,18 +1,20 @@
 import tkinter as tk
 import os, random
-from tkinter import ttk, messagebox, filedialog
-from PIL import Image, ImageTk
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+from matplotlib import gridspec
+from tkinter import ttk, messagebox, filedialog
+from PIL import Image, ImageTk
 from matplotlib.widgets import Button
 
-import matplotlib.patches as mpatches
 import settings
 
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
 from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, mekos_list
-from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente
+from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente, gerar_nome
 
 def GUI_Gera_Meko():
 
@@ -288,13 +290,6 @@ def GUI_Gera_Ambiente():
     plt.show()
 
 def GUI_Simulacao():
-    import matplotlib.pyplot as plt
-    from matplotlib import gridspec
-    from matplotlib.widgets import Button
-    import numpy as np
-    import os
-    from tkinter import filedialog, messagebox
-
     # Variável de estado global para controlar o pause
     global is_paused
     is_paused = False
@@ -413,12 +408,132 @@ def GUI_Simulacao():
         plt.draw()
         plt.pause(0.5)
 
+def GUI_Aleatoria(n_mekos):
+    # Variável de estado global para controlar o pause
+    global is_paused
+    is_paused = False
+    
+    # Função de callback do botão
+    def toggle_pause(event):
+        global is_paused
+        is_paused = not is_paused
+        if is_paused:
+            pause_button.label.set_text("Continuar")
+        else:
+            pause_button.label.set_text("Pausar")
+        plt.draw()
+
+    # --- Ambiente ---
+    
+    size = GRID_SIZE
+    grid = np.zeros((size, size))
+    n_biomas = random.randint(2, 4)
+    scale = random.uniform(5.0, 30.0)
+    random_weights = [random.random() for _ in range(n_biomas)]
+    soma_total = sum(random_weights)
+    biome_weights = [w / soma_total for w in random_weights]
+    seed = random.randint(0, 99999)
+    
+    ambiente_base = biome_gen(grid,size,n_biomas,scale,seed,biome_weights)
+    ambiente_base = fruit_gen(ambiente_base,size)
+    ambiente_base = river_gen(ambiente_base,size)
+    
+    ambiente = Ambiente(GRID_SIZE, ambiente_base)
+
+#--- Frutas ---
+    for i, linha in enumerate(ambiente.matriz):
+        for j, valor in enumerate(linha):
+            if valor == 4:
+                fruta = Fruta((i, j))
+                settings.fruit_list.append(fruta)
+
+    # --- Mekos ---
+    n_iteracoes = max(n_mekos.get(),1)
+    for i in range(n_iteracoes):
+        
+        genoma = [random.choice(valores) for _, valores in CARACTERISTICAS]
+        if genoma[3] == "Compostos" and genoma[0] != "Inseto":
+            genoma[3] = random.choice(["Simples","Avancado"])
+        if genoma[5] == "Apode" and genoma[6] != "Nenhuma":
+            genoma[6] = "Nenhuma"
+        
+        try:
+            meko_inst = Meko(
+                gerar_nome(),
+                genoma,
+                (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
+            )
+            
+        except Exception as e:
+            messagebox.showerror("Erro ao criar meko aleatório", str(e))
+            continue
+
+        ambiente.adicionar_meko(meko_inst)
+        mekos_list.append(meko_inst)
+
+    # --- Configuração Simulação e Monitoramento
+    fig = plt.figure(figsize=(12, 6))
+    gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1])
+    
+    ax_sim = fig.add_subplot(gs[0])
+    ax_sim.set_title("Simulação")
+
+    ax_attr = fig.add_subplot(gs[1])
+    ax_attr.axis("off")
+    
+    ax_attr.set_xlim(0, 2)
+    ax_attr.set_ylim(0, 1)
+    
+    sprite_size = 0.3 
+    espaco_extra = 0.1
+
+    num_mekos = len(mekos_list)
+    total_step = sprite_size + espaco_extra
+    y_start = 1 - total_step / 2
+    
+    meko_artists = []
+
+    for idx, meko in enumerate(mekos_list):
+        y = y_start - idx * total_step
+        
+        txt_artist = ax_attr.text(0.1, y,
+                                  f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
+                                  va="center", fontsize=8, color="green")
+        meko_artists.append((meko, None, txt_artist))
+    
+    # --- Adiciona o botão de pause
+    ax_button = fig.add_axes([0.8, 0.05, 0.1, 0.075])
+    pause_button = Button(ax_button, "Pausar")
+    pause_button.on_clicked(toggle_pause)
+    
+    plt.ion()
+    plt.show()
+
+    # --- Loop da simulação ---
+    for step in range(SIMULATION_STEPS):
+        while is_paused:
+            plt.pause(0.1)
+
+        print("\n Passo:", step)
+        ambiente.tick()
+        ambiente.renderizar(ax_sim)
+        
+        for meko, im_artist, txt_artist in meko_artists:
+            txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
+            if not meko.esta_vivo(): 
+                txt_artist.set_color("gray")
+
+        plt.draw()
+        plt.pause(0.5)
+
 def GUI_Home():
     """
     Função responsável pela interface gráfica do menu principal.
     """
     root = tk.Tk()
     root.title("Projeto Meko")
+    
+    N_Mekos = tk.IntVar(value=10)
 
     tk.Label(root, text="Geradores", font=("Helvetica", 16)).pack(pady=20)
 
@@ -427,6 +542,25 @@ def GUI_Home():
 
     tk.Label(root, text="Simulação", font=("Helvetica", 16)).pack(pady=20)
 
-    tk.Button(root, text="Iniciar Simulação", command=GUI_Simulacao, width=20, height=2).pack(pady=10)
+    tk.Button(root, text="Simulação Controlada", command=GUI_Simulacao, width=20, height=2).pack(pady=10)
+    
+    frame_aleatoria = tk.Frame(root)
+    frame_aleatoria.pack(pady=10)
+
+    tk.Entry(
+        frame_aleatoria,
+        textvariable = N_Mekos,
+        width=5,
+        font=("Helvetica", 12),
+        justify='center'
+    ).pack(side=tk.LEFT, padx=5)
+
+    tk.Button(
+        frame_aleatoria,
+        text="Simulação Aleatória",
+        command=lambda: GUI_Aleatoria(N_Mekos),
+        width=20,
+        height=2
+    ).pack(side=tk.LEFT)
 
     root.mainloop()

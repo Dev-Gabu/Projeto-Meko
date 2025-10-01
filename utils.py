@@ -1,10 +1,14 @@
-from PIL import Image
 import numpy as np
 import pickle as pick
-from tkinter import filedialog
 import os
+import random
+
+from PIL import Image
+from tkinter import filedialog
 
 from settings import LOC_CARACTERISTICAS, CARACTERISTICAS
+
+## Criação de Mekos
 
 class GenomaInvalidoError(Exception):
     """Erro lançado quando o genoma possui alguma característica/gene que é inválido."""
@@ -67,12 +71,14 @@ def validar_genoma(genoma):
         # Característica não listada:
         if valor not in valores_validos[i]:
             raise GenomaInvalidoError(f"Posicao {i} contem valor invalido, '{valor}' (Valores validos: {valores_validos[i]}).")
-        # Olhos Compostos:
-        if valor == "Compostos" and genoma[0] != "Inseto":
-            raise GenomaInvalidoError("Olhos Compostos só são válidos para Insetos.")
-        # Garras em ápodes:
-        if genoma[5] == "Apode" and genoma[6] != "Nenhuma":
-            raise GenomaInvalidoError("Garras só são válidas para criaturas com patas.")
+    
+    # Olhos Compostos:
+    if genoma[3] == "Compostos" and genoma[0] != "Inseto":
+        raise GenomaInvalidoError("Olhos Compostos só são válidos para Insetos.")
+    
+    # Garras em ápodes:
+    if genoma[5] == "Apode" and genoma[6] != "Nenhuma":
+        raise GenomaInvalidoError("Garras só são válidas para criaturas com patas.")
 
     return True
 
@@ -115,6 +121,35 @@ def sprite_por_genoma(genoma):
             else:
                 sprite_final = Image.alpha_composite(sprite_final, camada)
         return sprite_final
+
+def gerar_nome():
+    lista = [
+    # Sílabas Iniciais/Gerais Comuns (CVC, CV)
+    "al", "an", "ar", "bal", "bar", "bel", "dor", "dra", "dun", 
+    "fen", "gal", "gon", "gor", "gla", "hel", "il", "kas", "kla", 
+    "lan", "lar", "mal", "mor", "nar", "nor", "rin", "ser", "sol", 
+    "tal", "thar", "tor", "val", "vin", "zor", "zer", "zyr", "vex",
+
+    # Sílabas com Duplas Vogais/Consoantes (Efeito Élfico/Suave)
+    "ae", "ai", "aur", "eon", "el", "ela", "eth", "iël", "lië", 
+    "myr", "nys", "oan", "rië", "syl", "tari", "ven", "vy", "yl", 
+    "yv", "xil", "zen", "zel", "zul",
+
+    # Sílabas Duras/Fortes (Efeito Dracônico/Nórdico)
+    "arth", "bren", "charn", "drak", "krul", "khor", "loth", "macht", 
+    "narg", "ork", "rakt", "skal", "thal", "thun", "urg", "vor", "vras", 
+    "zhag", "zhor", "gron", "grol", "krak", "kroz", "vok", "vrak", 
+
+    # Sílabas Finais Típicas (Sufixos)
+    "dan", "dar", "ion", "ius", "ius", "los", "lys", "mar", "morn", 
+    "nus", "os", "ron", "rus", "sian", "tas", "tin", "var", "wen", 
+    "wyn", "xus", "zan", "zir", "zyx", "rix", "vex", "lex", "mon",
+    "kor", "lok", "nok", "rex", "tus", "tur", "lor", "nis", "nis"
+    ]
+    
+    nome = "".join(random.choice(lista) for _ in range(random.randint(2,4))).capitalize()
+    
+    return nome
 
 ## Perlin Noise
 
