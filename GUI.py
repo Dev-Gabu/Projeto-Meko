@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from matplotlib import gridspec
+from matplotlib import gridspec, animation
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 from matplotlib.widgets import Button
@@ -13,8 +13,98 @@ import settings
 
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
-from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, mekos_list
+from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, SIMULATION_DELAY, mekos_list
 from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente, gerar_nome
+
+class MekoDetailWindow(tk.Toplevel):
+    def __init__(self, parent_root, meko):
+        super().__init__(parent_root)
+        self.title(f"Detalhes: {meko.nome}")
+        self.meko = meko
+        self.sprite = sprite_por_genoma(self.meko.genoma)
+        
+        self.create_widgets()
+        
+    def create_widgets(self):
+        if self.sprite is None:
+            tk.Label(self, text="Erro ao carregar sprite").pack(pady=10)
+        else:
+            self.sprite = self.sprite.resize(
+                (self.sprite.width * 4, self.sprite.height * 4), 
+                Image.NEAREST
+            )
+            self.sprite_tk = ImageTk.PhotoImage(self.sprite,master=self) 
+            self.label_imagem = tk.Label(self, image=self.sprite_tk)
+            self.label_imagem.pack(pady=10)
+
+        # --- Exibição dos Atributos ---
+        attr_text = f"Nome: {self.meko.nome}\n"
+        attr_text += f"Saúde: {self.meko.saude}/{self.meko.saudeMAX}\n"
+        attr_text += f"Estado: {self.meko.fsm.current_state.name}\n"
+        attr_text += f"Genoma: {', '.join(self.meko.genoma)}"
+        
+        tk.Label(self, text=attr_text, justify=tk.LEFT).pack(padx=20, pady=10)
+
+class MekoMonitorWindow:
+    def __init__(self, mekos_list):
+        self.root = tk.Tk()
+        self.root.title("Monitoramento da Simulação")
+        self.mekos_list = mekos_list
+        self.detail_windows = []
+        
+        self.create_widgets()
+        self.root.protocol("WM_DELETE_WINDOW", self.hide) 
+        
+        self.update_list(mekos_list)
+
+    def close_all_windows(self):
+        """Fecha todas as janelas de detalhes e oculta a janela principal."""
+        for window in self.detail_windows:
+            if window.root.winfo_exists():
+                window.root.destroy()
+        self.detail_windows = []
+        self.hide()
+
+    def hide(self):
+        """Oculta a janela principal."""
+        self.root.withdraw()
+
+    def show(self):
+        """Mostra a janela principal."""
+        self.root.deiconify()
+
+    def update_list(self, mekos_list):
+        """Atualiza a lista de Mekos exibida."""
+        self.mekos_list = mekos_list
+        
+        # Condição 2: Ordena a lista de Mekos pelo Fitness
+        # Assumindo que o atributo 'fitness' existe no objeto Meko
+        # self.mekos_list.sort(key=lambda m: getattr(m, 'fitness', 0), reverse=True)
+        
+        # Limpa o conteúdo antigo
+        for widget in self.list_frame.winfo_children():
+            widget.destroy()
+
+        # Exibe a lista de Mekos como itens clicáveis
+        for meko in self.mekos_list:
+            display_text = f"[{getattr(meko, 'fitness', 0):.2f}] {meko.nome}"
+            
+            btn = tk.Button(self.list_frame, 
+                            text=display_text, 
+                            anchor="w", 
+                            command=lambda m=meko: self.open_detail(m))
+            btn.pack(fill='x', padx=5, pady=2)
+
+    def open_detail(self, meko):
+        """Abre uma nova janela de detalhes para o Meko selecionado."""
+        detail_window = MekoDetailWindow(self.root, meko)
+        self.detail_windows.append(detail_window)
+
+    def create_widgets(self):
+        tk.Label(self.root, text="Monitor de Mekos", font=("Helvetica", 16)).pack(pady=10)
+        self.list_frame = tk.Frame(self.root)
+        self.list_frame.pack(padx=10, pady=5, fill='both', expand=True)
+        tk.Button(self.root, text="Ocultar Monitor", command=self.hide).pack(pady=10)
 
 def GUI_Gera_Meko():
 
@@ -293,22 +383,33 @@ def GUI_Simulacao():
     # Variável de estado global para controlar o pause
     global is_paused
     is_paused = False
-    
-    # Função de callback do botão
-    def toggle_pause(event):
-        global is_paused
+    monitor_window = None
+
+    def toggle_pause_monitor(event, mekos_list):
+        global is_paused, monitor_window
         is_paused = not is_paused
+        
         if is_paused:
-            pause_button.label.set_text("Continuar")
+            event.button.label.set_text("Continuar")
+            
+            if monitor_window is None:
+                monitor_window = MekoMonitorWindow(mekos_list)
+            else:
+                monitor_window.update_list(mekos_list)
+                monitor_window.show() 
+
         else:
-            pause_button.label.set_text("Pausar")
-        plt.draw()
+            event.button.label.set_text("Pausar")
+            
+            if monitor_window is not None:
+                monitor_window.close_all_windows()
+                monitor_window = None
 
     # --- Ambiente ---
     ambiente_base = importar_ambiente()
     ambiente = Ambiente(GRID_SIZE, ambiente_base)
 
-#--- Frutas ---
+    #--- Frutas ---
     for i, linha in enumerate(ambiente.matriz):
         for j, valor in enumerate(linha):
             if valor == 4:
@@ -352,39 +453,11 @@ def GUI_Simulacao():
     
     ax_sim = fig.add_subplot(gs[0])
     ax_sim.set_title("Simulação")
-
-    ax_attr = fig.add_subplot(gs[1])
-    ax_attr.axis("off")
-    
-    ax_attr.set_xlim(0, 2)
-    ax_attr.set_ylim(0, 1)
-    ax_attr.set_aspect('equal')
-    num_mekos = len(mekos_list)
-    y_step = 1 / (num_mekos + 1)
-    meko_artists = []
-
-    sprite_size = 0.3
-    espaco_extra = 0.1
-
-    num_mekos = len(mekos_list)
-    total_step = sprite_size + espaco_extra
-    y_start = 1 - total_step / 2
-    
-    meko_artists = []
-
-    for idx, meko in enumerate(mekos_list):
-        y = y_start - idx * total_step
-        sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
-        im_artist = ax_attr.imshow(sprite, extent=(0, 1, y - sprite_size/2, y + sprite_size/2))
-        txt_artist = ax_attr.text(1.1, y,
-                                f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
-                                va="center", fontsize=8, color="green")
-        meko_artists.append((meko, im_artist, txt_artist))
     
     # --- Adiciona o botão de pause
     ax_button = fig.add_axes([0.8, 0.05, 0.1, 0.075])
     pause_button = Button(ax_button, "Pausar")
-    pause_button.on_clicked(toggle_pause)
+    pause_button.on_clicked(lambda event: toggle_pause_monitor(event, mekos_list))
     
     plt.ion()
     plt.show()
@@ -398,30 +471,47 @@ def GUI_Simulacao():
         print("\n Passo:", step)
         ambiente.tick()
         ambiente.renderizar(ax_sim)
-        
-        for meko, im_artist, txt_artist in meko_artists:
-            sprite = np.array(sprite_por_genoma(meko.genoma).resize((32, 32)))
-            im_artist.set_data(sprite)
-            txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
-            if not meko.esta_vivo(): txt_artist.set_color("gray")
 
         plt.draw()
-        plt.pause(0.5)
+        plt.pause(SIMULATION_DELAY)
 
 def GUI_Aleatoria(n_mekos):
-    # Variável de estado global para controlar o pause
-    global is_paused
+    global is_paused, monitor_window
     is_paused = False
-    
-    # Função de callback do botão
-    def toggle_pause(event):
-        global is_paused
+    monitor_window = None
+
+    def toggle_pause_monitor(event, button_object, mekos_list):
+        global is_paused, monitor_window
         is_paused = not is_paused
+        
         if is_paused:
-            pause_button.label.set_text("Continuar")
+            button_object.label.set_text("Continuar")
+            
+            if monitor_window is None:
+                monitor_window = MekoMonitorWindow(mekos_list)
+            else:
+                monitor_window.update_list(mekos_list)
+                monitor_window.show() 
+
         else:
-            pause_button.label.set_text("Pausar")
-        plt.draw()
+            button_object.label.set_text("Pausar")
+            
+            if monitor_window is not None:
+                monitor_window.close_all_windows()
+                monitor_window = None
+                
+    def update_frame(i):
+        """Executa um passo de simulação."""
+        global is_paused
+        
+        if is_paused:
+            return
+            
+        print("\n Passo:", i)
+        ambiente.tick()
+        ambiente.renderizar(ax_sim)
+        
+        return ax_sim
 
     # --- Ambiente ---
     
@@ -477,54 +567,23 @@ def GUI_Aleatoria(n_mekos):
     
     ax_sim = fig.add_subplot(gs[0])
     ax_sim.set_title("Simulação")
-
-    ax_attr = fig.add_subplot(gs[1])
-    ax_attr.axis("off")
-    
-    ax_attr.set_xlim(0, 2)
-    ax_attr.set_ylim(0, 1)
-    
-    sprite_size = 0.3 
-    espaco_extra = 0.1
-
-    num_mekos = len(mekos_list)
-    total_step = sprite_size + espaco_extra
-    y_start = 1 - total_step / 2
-    
-    meko_artists = []
-
-    for idx, meko in enumerate(mekos_list):
-        y = y_start - idx * total_step
-        
-        txt_artist = ax_attr.text(0.1, y,
-                                  f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}",
-                                  va="center", fontsize=8, color="green")
-        meko_artists.append((meko, None, txt_artist))
     
     # --- Adiciona o botão de pause
     ax_button = fig.add_axes([0.8, 0.05, 0.1, 0.075])
     pause_button = Button(ax_button, "Pausar")
-    pause_button.on_clicked(toggle_pause)
-    
-    plt.ion()
-    plt.show()
+    pause_button.on_clicked(lambda event: toggle_pause_monitor(event, pause_button, mekos_list))
 
     # --- Loop da simulação ---
-    for step in range(SIMULATION_STEPS):
-        while is_paused:
-            plt.pause(0.1)
-
-        print("\n Passo:", step)
-        ambiente.tick()
-        ambiente.renderizar(ax_sim)
-        
-        for meko, im_artist, txt_artist in meko_artists:
-            txt_artist.set_text(f"{meko.nome}\nE: {meko.energia} S: {meko.saude}\n{meko.fsm.current_state.name}")
-            if not meko.esta_vivo(): 
-                txt_artist.set_color("gray")
-
-        plt.draw()
-        plt.pause(0.5)
+    anim = animation.FuncAnimation(
+        fig, 
+        update_frame, 
+        frames=SIMULATION_STEPS, 
+        interval=500, 
+        blit=False,
+        repeat=False
+    )
+    
+    plt.show()
 
 def GUI_Home():
     """

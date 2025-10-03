@@ -83,44 +83,48 @@ def validar_genoma(genoma):
     return True
 
 def sprite_por_genoma(genoma):
+    """
+    Gera uma imagem composta de um Meko a partir do genoma.
+    Retorna None se nenhuma camada puder ser carregada.
+    """
+    categorias = ["Tipo", "Alimentacao", "Tamanho", "Olhos", "Presas", "Patas", "Garras", "Cauda", "Defesa", "Extra"]
+    
+    try:
+        caminho_base = LOC_CARACTERISTICAS["Tipo"].get(genoma[0])
+        base_sprite = Image.open(caminho_base).convert("RGBA")
         
-        """
-        Gera uma imagem composta de um Meko a partir do genoma.
-        """
-        categorias = ["Tipo", "Alimentacao", "Tamanho", "Olhos", "Presas", "Patas", "Garras", "Cauda", "Defesa", "Extra"]
-        sprite_final = None
+    except (FileNotFoundError, OSError, KeyError):
+        return None
 
-        for i, cat in enumerate(categorias):
-            caracteristica = genoma[i]
-            if cat == "Garras":
-                tipo_patas = genoma[5]
-                chave_sprite = f"{tipo_patas}_{caracteristica}"
-                caminho = LOC_CARACTERISTICAS[cat].get(chave_sprite)
-                if caminho is None:
-                    continue
-                try:
-                    camada = Image.open(caminho).convert("RGBA")
-                except (FileNotFoundError, OSError):
-                    camada = None
-                    continue
-            else:
-                caminho = LOC_CARACTERISTICAS[cat].get(caracteristica)
-                if caminho is None:
-                    continue
-                try:
-                    camada = Image.open(caminho).convert("RGBA")
-                except (FileNotFoundError, OSError):
-                    camada = None
-                    continue
-                if camada is None:
-                    continue
-            if sprite_final is None:
-                if camada is None:
-                    continue
-                sprite_final = camada
-            else:
-                sprite_final = Image.alpha_composite(sprite_final, camada)
-        return sprite_final
+    sprite_final = Image.new("RGBA", base_sprite.size, (255, 255, 255, 0))
+    
+    sprite_final.paste(base_sprite, (0, 0), base_sprite)
+
+    for i, cat in enumerate(categorias):
+            
+        caracteristica = genoma[i]
+        
+        if cat == "Tamanho":
+            continue
+        elif cat == "Garras":
+            tipo_patas = genoma[5]
+            chave_sprite = f"{tipo_patas}_{caracteristica}"
+            caminho = LOC_CARACTERISTICAS[cat].get(chave_sprite)
+        else:
+            caminho = LOC_CARACTERISTICAS[cat].get(caracteristica)
+            
+        if caminho == None:
+            continue
+            
+        try:
+            camada = Image.open(caminho).convert("RGBA")
+        except (FileNotFoundError, OSError):
+            print(f"Falha ao criar sprite: Arquivo não encontrado no caminho: {caminho}.\n Função cancelada.")
+            return None
+        
+        sprite_final.paste(camada, (0, 0), camada) 
+        
+    return sprite_final
 
 def gerar_nome():
     lista = [
