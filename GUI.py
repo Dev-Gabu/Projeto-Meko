@@ -45,6 +45,34 @@ class MekoDetailWindow(tk.Toplevel):
         
         tk.Label(self, text=attr_text, justify=tk.LEFT).pack(padx=20, pady=10)
 
+class MekoOverviewWindow(tk.Toplevel):
+    def __init__(self, parent_root, mekos_list):
+        super().__init__(parent_root)
+        self.title("Visão Geral da Simulação")
+        self.mekos_list = mekos_list
+        self.sprites = [sprite_por_genoma(meko.genoma) for meko in mekos_list] 
+        
+        self.create_widgets()
+        
+    def create_widgets(self):
+        main_frame = tk.Frame(self)
+        main_frame.pack(fill="both", expand=True)
+
+        for index, meko in enumerate(self.mekos_list):
+            column = index % 2
+            row = index // 2
+            
+            meko_frame = tk.Frame(main_frame, borderwidth=1, relief="groove")
+            meko_frame.grid(row=row, column=column, padx=10, pady=10, sticky="n")
+
+            attr_text = (
+            f"Nome: {meko.nome} || Idade: {meko.idade}\n"
+            f"Saúde: {meko.saude}/{meko.saudeMAX} || Energia: {meko.energia}/{meko.energiaMAX}\n"
+            f"Estado: {meko.fsm.current_state.name}"
+            )
+        
+            tk.Label(meko_frame, text=attr_text, justify=tk.LEFT, anchor="w").pack(padx=5, pady=5)
+
 class MekoMonitorWindow:
     def __init__(self, mekos_list):
         self.root = tk.Tk()
@@ -99,12 +127,18 @@ class MekoMonitorWindow:
         """Abre uma nova janela de detalhes para o Meko selecionado."""
         detail_window = MekoDetailWindow(self.root, meko)
         self.detail_windows.append(detail_window)
+        
+    def open_overview(self, mekos_list):
+        """Abre uma nova janela de detalhes gerais da simulação."""
+        overview_window = MekoOverviewWindow(self.root, mekos_list)
+        self.detail_windows.append(overview_window)
 
     def create_widgets(self):
         tk.Label(self.root, text="Monitor de Mekos", font=("Helvetica", 16)).pack(pady=10)
         self.list_frame = tk.Frame(self.root)
         self.list_frame.pack(padx=10, pady=5, fill='both', expand=True)
         tk.Button(self.root, text="Ocultar Monitor", command=self.hide).pack(pady=10)
+        tk.Button(self.root, text="Visualização Geral", command=lambda: self.open_overview(mekos_list)).pack(pady=10)
 
 def GUI_Gera_Meko():
 
