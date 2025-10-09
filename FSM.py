@@ -113,7 +113,7 @@ class Combat(State):
                 if meko.posicao == meko.target.posicao:
                     print(f"{meko.nome} está em combate com {meko.target.nome}!")
                     escolha = random.choice(meko.habilidades)
-                    escolha.executar(meko, meko.target)
+                    escolha.execute(meko, meko.target)
                 elif random.random() < 0.5: 
                     print(f"{meko.nome} persegue {meko.target.nome}!")
                     meko.fsm.change_state(MoveToTarget())

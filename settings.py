@@ -98,6 +98,42 @@ mekos_list = []
 fruit_list = []
 meat_list = []
 
+## HABILIDADES
+
+TABELA_EFETIVIDADE_TIPO = {
+    "Fogo": {
+        "Terra": 1.5,
+        "Inseto": 1.5,
+        "Agua": 0.5,
+        "Fogo": 0.5
+    },
+    "Agua": {
+        "Fogo": 1.5,
+        "Terra": 0.5,
+        "Agua": 0.5,
+        "Inseto": 0.5 
+    },
+    "Terra": {
+        "Terra": 0.5,
+        "Inseto": 1.5,
+        "Agua": 1.5,
+        "Fogo": 0.5
+    },
+    "Inseto": {
+        "Fogo": 0.5,
+        "Terra": 0.5,
+        "Inseto": 0.5 
+    },
+    "Sombra": {
+        "Sombra": 0.5,
+        "Luz": 1.5
+    },
+    "Luz": {
+        "Sombra": 1.5,
+        "Luz": 0.5
+    },
+}
+
 ## MODIFICADORES
 
 efeitos_tipo = {
