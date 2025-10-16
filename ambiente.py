@@ -19,7 +19,7 @@ class Ambiente:
     """
     def __init__(self, size, matriz = None, mekos = []):
         self.size = size
-        self.matriz = matriz if matriz is not None else np.random.choice([0, 1, 2], size=(size, size), p=[0.2, 0.3, 0.5])
+        self.matriz = matriz #if matriz is not None else np.random.choice([0, 1, 2], size=(size, size), p=[0.2, 0.3, 0.5])
         self.mekos = mekos
 
     def adicionar_meko(self, meko):

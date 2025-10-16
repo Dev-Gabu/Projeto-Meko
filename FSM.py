@@ -2,6 +2,7 @@ import random
 from ambiente import Fruta, Carne
 from settings import fruit_list, mekos_list, meat_list
 from habilidades import *
+from utils import distancia
 
 class State:
     """
@@ -65,7 +66,7 @@ class Defend(State):
     def execute(self, meko):
         print(f"{meko.nome} foi atacado e vai se defender.")
 
-        if random.random() < (meko.agressividade - max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10)))) / 30:
+        if random.random() < (meko.agressividade - max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10)))) / 20:
             meko.fsm.change_state(Flee())
         else:
             meko.fsm.change_state(Combat())
@@ -99,7 +100,7 @@ class Combat(State):
     2. Se o alvo estiver vivo, calcula a probabilidade de o Meko fugir com base na agressividade e saúde do Meko.
     3. Se a probabilidade de fugir for maior que um valor aleatório, o Meko muda para o estado `Flee`.
     4. Se o Meko estiver na mesma posição que o alvo, imprime uma mensagem indicando que está em combate e escolhe aleatoriamente uma habilidade para usar contra o alvo.
-    5. Se o Meko não estiver na mesma posição que o alvo, há uma chance de 50% de ele perseguir o alvo (mudando para o estado `MoveToTarget`) ou decidir não perseguir (mudando para o estado `Wander` e definindo o alvo como None).
+    5. Se o Meko não estiver na mesma posição que o alvo mais ainda estiver no campo de visão, ele irá perseguir o alvo (mudando para o estado `MoveToTarget`) caso contrário irá desistir de perseguir (mudando para o estado `Wander` e definindo o alvo como None).
     6. Se o alvo não estiver mais vivo, o Meko define o alvo como None e muda para o estado `Wander`.
     """
     
@@ -114,7 +115,7 @@ class Combat(State):
                     print(f"{meko.nome} está em combate com {meko.target.nome}!")
                     escolha = random.choice(meko.habilidades)
                     escolha.execute(meko, meko.target)
-                elif random.random() < 0.5: 
+                elif distancia(meko, meko.target) <= meko.visao: 
                     print(f"{meko.nome} persegue {meko.target.nome}!")
                     meko.fsm.change_state(MoveToTarget())
                 else:
@@ -142,15 +143,16 @@ class MoveToTarget(State):
 
         x, y = meko.posicao
         tx, ty = meko.target.posicao
+        distancia_passo = random.randint(0, max(1,meko.velocidade))
 
         if x < tx:
-            x += 1
+            x = min(x + distancia_passo, tx)
         elif x > tx:
-            x -= 1
+            x = max(x - distancia_passo, tx)
         if y < ty:
-            y += 1
+            y = min(y + distancia_passo, ty)
         elif y > ty:
-            y -= 1
+            y = max(y - distancia_passo, ty)
         meko.posicao = (x, y)
 
         if meko.posicao == meko.target.posicao:
@@ -179,15 +181,16 @@ class MoveToPartner(State):
 
         x, y = meko.posicao
         tx, ty = meko.love.posicao
+        distancia_passo = random.randint(0, max(1,meko.velocidade))
 
         if x < tx:
-            x += 1
+            x = min(x + distancia_passo, tx)
         elif x > tx:
-            x -= 1
+            x = max(x - distancia_passo, tx)
         if y < ty:
-            y += 1
+            y = min(y + distancia_passo, ty)
         elif y > ty:
-            y -= 1
+            y = max(y - distancia_passo, ty)
         meko.posicao = (x, y)
 
         if meko.posicao == meko.love.posicao:
@@ -323,18 +326,36 @@ class Reproduce(State):
         if meko.fertilidade == "Incapaz":
             print(f"{meko.nome} desistiu de reproduzir.")
             meko.fsm.change_state(Wander())
-        elif meko.love.fertilidade == "Incapaz" or meko.love.fertilidade == "Infertil":
+        elif meko.love.fertilidade == "Incapaz" or meko.love.fertilidade == "Gestante":
             print(f"{meko.love.nome} rejeitou {meko.nome}.")
             meko.fsm.change_state(Wander())
         else:
             print(f"{meko.nome} e {meko.love.nome} começam a acasalar.")
-            meko.fertilidade = "Infertil"
-            meko.love.fertilidade = "Infertil"
+            parceiro = meko.love
+            fitness_meko = meko.fitness
+            fitness_parceiro = parceiro.fitness
+            soma_fitness = fitness_meko + fitness_parceiro
+        
+        
+            peso_meko = fitness_meko / soma_fitness if soma_fitness > 0 else 0.5
+            peso_parceiro = 1.0 - peso_meko
+        
+            genoma_filhote = []
+            nome = f"{meko.nome[:len(meko.nome)//2]}{parceiro.nome[len(parceiro.nome)//2:]}".capitalize()
             
-            nome = f"{meko.nome[0:2]}{meko.love.nome[len(meko.love.nome)-2:len(meko.love.nome)]}"
+            for i in range(len(meko.genoma)):
+                gene_escolhido = random.choices(
+                    [meko.genoma[i], parceiro.genoma[i]],
+                    weights=[peso_meko, peso_parceiro],
+                    k=1
+                )[0]
+                genoma_filhote.append(gene_escolhido)
+            meko.iniciar_gestacao([genoma_filhote,nome], parceiro)
+
+            meko.energia -= 50
+            meko.parceiro.energia -= 50
+            meko.fsm.change_state(Wander())
             
-            genoma = [random.choice([meko.genoma[i], meko.love.genoma[i]]) for i in range(len(meko.genoma))]
-            meko.gerar_filhote(nome, genoma)
 
 class FindPartner(State):
     

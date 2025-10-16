@@ -12,6 +12,22 @@ GRID_SIZE = 50
 SIMULATION_STEPS = 200
 SIMULATION_DELAY = 0.5
 
+## CUSTOS DE MOVIMENTO
+
+CUSTO_TERRENO = {
+    0: 0,   # Deserto (0) - Custo normal
+    1: 0,   # Campo (1) - Custo normal
+    2: 1,   # Floresta (2) - Levemente mais lento
+    3: 3,   # Montanha (3) - Movimento lento
+    4: 0,   # Frutas (4) - Custo normal
+    5: 5    # Rios (5) - Movimento muito lento
+}
+
+# Tipos de Terreno
+TERRENO_FLORESTA = 2
+TERRENO_MONTANHA = 3
+TERRENO_RIO = 5
+
 ## MEKOS
 
 LOC_CARACTERISTICAS = {
@@ -98,6 +114,12 @@ mekos_list = []
 fruit_list = []
 meat_list = []
 
+# FITNESS
+
+C_LONGEVIDADE = 3
+C_SAUDE = 2
+C_ENERGIA = 2
+
 ## HABILIDADES
 
 TABELA_EFETIVIDADE_TIPO = {
@@ -137,8 +159,8 @@ TABELA_EFETIVIDADE_TIPO = {
 ## MODIFICADORES
 
 efeitos_tipo = {
-    "Fogo":         {"temperatura": 20, "agressividade": 4, "forca": 7},
-    "Agua":         {"temperatura": -10, "velocidade": 5, "peso": -5},
+    "Fogo":         {"agressividade": 4, "forca": 7},
+    "Agua":         {"velocidade": 5, "peso": -5},
     "Terra":        {"peso": 10, "forca": 3, "velocidade": -5, "resistencia": 5},
     "Inseto":       {"peso": -10, "velocidade": 5, "forca": -3, "resistencia": -5},
     "Sombra":       {"agressividade": 10, "velocidade": 5, "forca": 4},
@@ -188,14 +210,14 @@ efeitos_cauda = {
     "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
     "Equilibrio":   {"peso": 4, "velocidade": 5, "resistencia": 3},
     "Ataque":       {"peso": 5, "velocidade": 2, "forca": 4},
-    "Aquatica":     {"peso": 4, "velocidade": 2, "resistencia": 2} # Implementar aumento de velocidade na água / redução de cansaço
+    "Aquatica":     {"peso": 4, "velocidade": 2, "resistencia": 2}
 }
 
 efeitos_defesa = {
     "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
     "Carapaça":     {"peso": 10, "velocidade": -5, "resistencia": 5},
-    "Escamas":      {"peso": 5, "velocidade": -2, "resistencia": 2}, # Implementar aumento de velocidade na água / redução de cansaço
-    "Pelagem":      {"peso": 6, "velocidade": -3, "resistencia": 4, "temperatura": -10}
+    "Escamas":      {"peso": 5, "velocidade": -2, "resistencia": 2},
+    "Pelagem":      {"peso": 6, "velocidade": -3, "resistencia": 4}
 }
 
 efeitos_extras = {

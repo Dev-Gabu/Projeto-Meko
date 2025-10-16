@@ -1,7 +1,8 @@
 import random
+import numpy as np
 
-from utils import validar_genoma, distancia
-from settings import EFEITOS, GRID_SIZE
+from utils import gerar_nome, validar_genoma, distancia
+from settings import CUSTO_TERRENO, EFEITOS, GRID_SIZE, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
 from FSM import *
 from habilidades import *
 
@@ -60,7 +61,6 @@ class Meko:
         self.forca = 4
         self.visao = 2
         self.agressividade = 0
-        self.temperatura = 30
 
         # Os modificadores são aplicados aos atributos
 
@@ -84,8 +84,8 @@ class Meko:
 
         return habilidades_do_meko
 
-    def __init__(self, nome, genoma, posicao = (0,0),idade = 200):
-     
+    def __init__(self, nome, genoma, ambiente = None, posicao = (0,0),idade = 200):
+        
         # Atributos de criação
         self.posicao = posicao
         self.genoma = genoma
@@ -98,7 +98,13 @@ class Meko:
         self.saude = 70
         self.energiaMAX = 200
         self.energia = 200
+        self.fitness = 0
+        self.ambiente = ambiente
+        
+        # Atributos de Reprodução
         self.fertilidade = "Incapaz"
+        self.gestacao_contador = round(self.idadeMAX * 0.1)
+        self.genoma_espera = None
 
         # Atributos de estado
         self.fsm = FSM(self)
@@ -118,18 +124,71 @@ class Meko:
         """
         return self.saude > 0 and self.idade < self.idadeMAX
     
+    def calcular_fitness(self):
+        """
+        Calcula o Fitness baseado na Longevidade, Sobrevivência, Eficiência e Combate.
+        Fórmula: Fitness = C_Idade * (I/IMAX) + C_Saude * (S/SMAX) + C_Energia * (E/EMAX) + C_Combate * (F + R)
+        """
+        
+        longevidade_score = C_LONGEVIDADE * (self.idade / self.idadeMAX)
+        saude_score = C_SAUDE * (self.saude / self.saudeMAX)
+        energia_score = C_ENERGIA * (self.energia / self.energiaMAX)
+        
+        
+        self.fitness = longevidade_score + saude_score + energia_score
+
+        self.fitness = max(1.0, self.fitness)
+    
+    def calcular_custo_movimento(self):
+        """
+        Calcula o gasto extra de movimento devido ao terreno na posição atual.
+        Retorna a penalidade de velocidade (int).
+        """
+        
+        x, y = self.posicao
+        tipo_terreno = self.ambiente.matriz[x, y] 
+        
+        penalidade = CUSTO_TERRENO.get(tipo_terreno, 0)
+
+        if tipo_terreno == TERRENO_RIO:
+            if any(habilidade.nome == "Nadar" for habilidade in self.habilidades):
+                penalidade = 0 
+
+        elif tipo_terreno == TERRENO_MONTANHA:
+            if any(habilidade.nome == "Escalar" for habilidade in self.habilidades):
+                penalidade = 0
+                
+        elif tipo_terreno == TERRENO_FLORESTA:
+            if any(habilidade.nome == "Camuflagem" for habilidade in self.habilidades):
+                penalidade = 0
+                
+        return penalidade
+    
     def random_step(self):
         """
-        Move o Meko aleatóriamente no intervalo do Grid
+        Move o Meko aleatóriamente usando self.velocidade como distância máxima.
         """
+        if self.ambiente is None:
+            
+            max_size = GRID_SIZE 
+        else:
+            max_size = self.ambiente.size
+            
         i, j = self.posicao
-        step = 1 #min(1, random.randint(0, self.velocidade))
-        i = (i + random.choice([-1, 0, 1])) * step
-        j = (j + random.choice([-1, 0, 1])) * step
-        if 0 <= i < GRID_SIZE and 0 <= j < GRID_SIZE:
-            self.posicao = (i, j)
-            self.energia -= step
-        else: self.random_step()
+        
+        distancia_passo = random.randint(0, max(1,self.velocidade))
+        di = random.choice([-1, 0, 1])
+        dj = random.choice([-1, 0, 1])
+
+        new_i = i + di * distancia_passo
+        new_j = j + dj * distancia_passo
+    
+        new_i = np.clip(new_i, 0, max_size - 1)
+        new_j = np.clip(new_j, 0, max_size - 1)
+
+        if (new_i, new_j) != self.posicao:
+            self.posicao = (new_i, new_j)
+            self.energia -= distancia_passo
 
     def search(self, objetos, tipo, breed = False):
         """
@@ -138,6 +197,8 @@ class Meko:
         tipo: tipo de objeto a ser buscado
         """
         # Filtra apenas os que estão no raio de visão
+        
+        print("Buscando por parceiro...")
         
         proximos = [
             obj for obj in objetos
@@ -151,12 +212,43 @@ class Meko:
         alvo = min(proximos, key=lambda o: distancia(self,o))
         
         #Retorna o alvo
+        print("Retornando alvo...")
         return alvo
     
-    def gerar_filhote(self, nome, genoma):
-        filhote = Meko(nome, genoma, posicao=self.posicao)
-        mekos_list.append(filhote)
-        print(f"Um novo Meko nasceu: {nome}")
+    def iniciar_gestacao(self, genoma_filhote, parceiro):
+        """
+        Inicia a gestação, armazenando o genoma e definindo o estado.
+        O Meko que inicia a gestação fica impedido de reproduzir imediatamente.
+        """
+        self.gestacao_contador = 0
+        self.genoma_espera = genoma_filhote
+        self.fertilidade = "Gestante"
+        
+        if parceiro.love == self:
+            parceiro.love = None
+            
+        self.love = None
+        print(f"{self.nome} iniciou a gestação. Filhote nascerá em {int(self.idadeMAX * 0.05)} ticks.")
+
+
+    def gerar_filhote(self, genoma_espera):
+        """
+        Cria o objeto Meko no ambiente, chamado no final da gestação.
+        """
+        genoma = genoma_espera[0]
+        nome = genoma_espera[1]
+        
+        offset = random.choice([-1, 0, 1])
+        posicao_nascimento = (
+            np.clip(self.posicao[0] + offset, 0, self.ambiente.size - 1),
+            np.clip(self.posicao[1] + offset, 0, self.ambiente.size - 1)
+        )
+        
+        filhote = Meko(nome, genoma, ambiente=self.ambiente, posicao=posicao_nascimento, idade=1)
+        self.ambiente.adicionar_meko(filhote)
+        mekos_list.append(filhote) 
+        print(f"Um novo Meko nasceu: {nome} na posição {filhote.posicao}")
+
 
     def update(self):
         """
@@ -165,6 +257,7 @@ class Meko:
         
         self.energia -= 1
         self.idade += 1
+        self.calcular_fitness()
         
         ## Dano por fome
         if self.energia <= 0:
@@ -175,5 +268,15 @@ class Meko:
             self.fertilidade = "Fertil"
         else: 
             self.fertilidade = "Incapaz"
+            
+        ## Gestação
+
+        if self.fertilidade == "Gestante":
+            self.gestacao_contador += 1
+            if self.gestacao_contador >= self.gestacao_contador:
+                self.gerar_filhote(self.genoma_espera)
+                self.gestacao_contador = 0
+                self.genoma_espera = None
+                self.fertilidade = "Incapaz"
 
         self.fsm.update()

@@ -41,7 +41,8 @@ class MekoDetailWindow(tk.Toplevel):
         attr_text = f"Nome: {self.meko.nome}\n"
         attr_text += f"Saúde: {self.meko.saude}/{self.meko.saudeMAX}\n"
         attr_text += f"Estado: {self.meko.fsm.current_state.name}\n"
-        attr_text += f"Genoma: {', '.join(self.meko.genoma)}"
+        attr_text += f"Genoma: {', '.join(self.meko.genoma)}\n\n"
+        attr_text += f"Atributos: PESO: {self.meko.peso}, VELOCIDADE: {self.meko.velocidade}, RESISTÊNCIA: {self.meko.resistencia}\nFORÇA: {self.meko.forca}, VISÃO: {self.meko.visao}, AGRESSIVIDADE: {self.meko.agressividade}"
         
         tk.Label(self, text=attr_text, justify=tk.LEFT).pack(padx=20, pady=10)
 
@@ -284,7 +285,7 @@ def GUI_Gera_Meko():
     tk.Button(root, text="Importar", command=importarM).grid(row=len(CARACTERISTICAS)+1, column=0, pady=10)
     tk.Button(root, text="Confirmar", command=confirmar).grid(row=len(CARACTERISTICAS)+1, column=1, pady=10)
 
-def GUI_Gera_Ambiente():
+def GUI_Gera_Ambiente(size):
     """
     A função cria uma grade que representa o ambiente onde os Mekos irão interagir.
 
@@ -296,7 +297,7 @@ def GUI_Gera_Ambiente():
         `importarA`: Permite importar um ambiente previamente salvo.
         `exportarA`: Permite salvar o ambiente atual em um arquivo.
     """
-    size = GRID_SIZE
+    size = size.get()
 
     grid = np.zeros((size, size))
 
@@ -413,7 +414,7 @@ def GUI_Gera_Ambiente():
 
     plt.show()
 
-def GUI_Simulacao():
+def GUI_Simulacao(N_mekos):
     # Variável de estado global para controlar o pause
     global is_paused
     is_paused = False
@@ -451,7 +452,7 @@ def GUI_Simulacao():
                 settings.fruit_list.append(fruta)
 
     # --- Mekos ---
-    Quantidade_Mekos = 5
+    Quantidade_Mekos = N_mekos.get()
 
     for i in range(Quantidade_Mekos):
         caminho = filedialog.askopenfilename(
@@ -472,6 +473,7 @@ def GUI_Simulacao():
             meko_inst = Meko(
                 dados["nome"],
                 dados["genoma"],
+                ambiente,
                 (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
             )
         except Exception as e:
@@ -509,10 +511,12 @@ def GUI_Simulacao():
         plt.draw()
         plt.pause(SIMULATION_DELAY)
 
-def GUI_Aleatoria(n_mekos):
+def GUI_Aleatoria(n_mekos,size_var,loop_var):
     global is_paused, monitor_window
     is_paused = False
     monitor_window = None
+    size = size_var.get()
+    loop = loop_var.get()
 
     def toggle_pause_monitor(event, button_object, mekos_list):
         global is_paused, monitor_window
@@ -549,7 +553,6 @@ def GUI_Aleatoria(n_mekos):
 
     # --- Ambiente ---
     
-    size = GRID_SIZE
     grid = np.zeros((size, size))
     n_biomas = random.randint(2, 4)
     scale = random.uniform(5.0, 30.0)
@@ -562,7 +565,7 @@ def GUI_Aleatoria(n_mekos):
     ambiente_base = fruit_gen(ambiente_base,size)
     ambiente_base = river_gen(ambiente_base,size)
     
-    ambiente = Ambiente(GRID_SIZE, ambiente_base)
+    ambiente = Ambiente(size, ambiente_base)
 
 #--- Frutas ---
     for i, linha in enumerate(ambiente.matriz):
@@ -576,15 +579,12 @@ def GUI_Aleatoria(n_mekos):
     for i in range(n_iteracoes):
         
         genoma = [random.choice(valores) for _, valores in CARACTERISTICAS]
-        if genoma[3] == "Compostos" and genoma[0] != "Inseto":
-            genoma[3] = random.choice(["Simples","Avancado"])
-        if genoma[5] == "Apode" and genoma[6] != "Nenhuma":
-            genoma[6] = "Nenhuma"
         
         try:
             meko_inst = Meko(
                 gerar_nome(),
                 genoma,
+                ambiente,
                 (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
             )
             
@@ -611,7 +611,7 @@ def GUI_Aleatoria(n_mekos):
     anim = animation.FuncAnimation(
         fig, 
         update_frame, 
-        frames=SIMULATION_STEPS, 
+        frames= loop, 
         interval=500, 
         blit=False,
         repeat=False
@@ -627,15 +627,50 @@ def GUI_Home():
     root.title("Projeto Meko")
     
     N_Mekos = tk.IntVar(value=10)
+    loop = tk.IntVar(value=GRID_SIZE)
+    size = tk.IntVar(value=SIMULATION_STEPS)
 
     tk.Label(root, text="Geradores", font=("Helvetica", 16)).pack(pady=20)
 
     tk.Button(root, text="Gerar Meko", command=GUI_Gera_Meko, width=20, height=2).pack(pady=10)
-    tk.Button(root, text="Gerar Ambiente", command=GUI_Gera_Ambiente, width=20, height=2).pack(pady=10)
+    
+    frame_ambiente = tk.Frame(root)
+    frame_ambiente.pack(pady=10)
+    
+    tk.Entry(
+        frame_ambiente,
+        textvariable = size,
+        width=5,
+        font=("Helvetica", 12),
+        justify='center'
+    ).pack(side=tk.LEFT, padx=5)
+    
+    tk.Button(
+        frame_ambiente, 
+        text="Gerar Ambiente", 
+        command=lambda:GUI_Gera_Ambiente(size), 
+        width=20, 
+        height=2).pack(side=tk.LEFT)
 
     tk.Label(root, text="Simulação", font=("Helvetica", 16)).pack(pady=20)
-
-    tk.Button(root, text="Simulação Controlada", command=GUI_Simulacao, width=20, height=2).pack(pady=10)
+    
+    frame_controlada = tk.Frame(root)
+    frame_controlada.pack(pady=10)
+    
+    tk.Entry(
+        frame_controlada,
+        textvariable = N_Mekos,
+        width=5,
+        font=("Helvetica", 12),
+        justify='center'
+    ).pack(side=tk.LEFT, padx=5)
+    
+    tk.Button(
+        frame_controlada, 
+        text="Simulação Controlada", 
+        command=lambda:GUI_Simulacao(N_Mekos), 
+        width=20, 
+        height=2).pack(side=tk.LEFT)
     
     frame_aleatoria = tk.Frame(root)
     frame_aleatoria.pack(pady=10)
@@ -647,11 +682,27 @@ def GUI_Home():
         font=("Helvetica", 12),
         justify='center'
     ).pack(side=tk.LEFT, padx=5)
+    
+    tk.Entry(
+        frame_aleatoria,
+        textvariable = size,
+        width=5,
+        font=("Helvetica", 12),
+        justify='center'
+    ).pack(side=tk.LEFT, padx=5)
+    
+    tk.Entry(
+        frame_aleatoria,
+        textvariable = loop,
+        width=5,
+        font=("Helvetica", 12),
+        justify='center'
+    ).pack(side=tk.LEFT, padx=5)
 
     tk.Button(
         frame_aleatoria,
         text="Simulação Aleatória",
-        command=lambda: GUI_Aleatoria(N_Mekos),
+        command=lambda: GUI_Aleatoria(N_Mekos, size, loop),
         width=20,
         height=2
     ).pack(side=tk.LEFT)

@@ -1,5 +1,5 @@
 import random
-from settings import GRID_SIZE, TABELA_EFETIVIDADE_TIPO
+from settings import TABELA_EFETIVIDADE_TIPO
 
 ## CLASSE GERAL
 
@@ -97,7 +97,7 @@ class HabilidadeSanguessuga(Habilidade):
         if not super().execute(atacante, alvo):
             return
 
-        dano_total = self.calcular_dano_base(atacante,alvo,self.dano) * self.calcular_fraqueza("Fogo",alvo.genoma[0])
+        dano_total = self.calcular_dano_base(atacante,alvo,self.dano) * self.calcular_fraqueza("Inseto",alvo.genoma[0])
         cura = round(dano_total / 2)
 
         # Efeito
@@ -119,7 +119,7 @@ class HabilidadeGarraNoturna(Habilidade):
         if not super().execute(atacante, alvo):
             return
 
-        dano_total = self.calcular_dano_base(atacante,alvo,self.dano) * self.calcular_fraqueza("Fogo",alvo.genoma[0])
+        dano_total = self.calcular_dano_base(atacante,alvo,self.dano) * self.calcular_fraqueza("Sombra",alvo.genoma[0])
 
         # Efeito
         if random.random() > 0.2:
@@ -165,8 +165,8 @@ class HabilidadeEsquivar(Habilidade):
         
         randi = random.choice([-3, 0, 3])
         randj = random.choice([-3, 0, 3])
-        i = i + randi if 0 >= i + randi < GRID_SIZE else i + (randi * -1)
-        j = j + randj if 0 >= j + randj < GRID_SIZE else j + (randj * -1)
+        i = i + randi if 0 >= i + randi < atacante.ambiente.size else i + (randi * -1)
+        j = j + randj if 0 >= j + randj < atacante.ambiente.size else j + (randj * -1)
 
         atacante.posicao = (i, j)
         
@@ -184,12 +184,14 @@ class HabilidadeEsmagar(Habilidade):
     def execute(self, atacante, alvo):
         if not super().execute(atacante, alvo):
             return
+        
+        dano = self.dano
 
-        if atacante.genoma[2] == "Grande": self.dano += 7
-        elif atacante.genoma[2] == "Medio": self.dano += 3
+        if atacante.genoma[2] == "Grande": dano += 7
+        elif atacante.genoma[2] == "Medio": dano += 3
 
         # Dano
-        dano_total = self.calcular_dano_base(atacante,alvo,self.dano)
+        dano_total = self.calcular_dano_base(atacante,alvo,dano)
 
         # Efeito
         alvo.saude -= dano_total

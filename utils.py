@@ -45,6 +45,10 @@ def validar_genoma(genoma):
         raise TypeError("Genoma deve ser uma lista de strings")
     if not all(isinstance(g, str) for g in genoma):
         raise TypeError("Todos os elementos do genoma devem ser strings")
+    if genoma[3] == "Compostos" and genoma[0] != "Inseto":
+            genoma[3] = random.choice(["Simples","Avancado"])
+    if genoma[5] == "Apode" and genoma[6] != "Nenhuma":
+            genoma[6] = "Nenhuma"
 
 
 
