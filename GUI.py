@@ -627,8 +627,8 @@ def GUI_Home():
     root.title("Projeto Meko")
     
     N_Mekos = tk.IntVar(value=10)
-    loop = tk.IntVar(value=GRID_SIZE)
-    size = tk.IntVar(value=SIMULATION_STEPS)
+    loop = tk.IntVar(value=SIMULATION_STEPS)
+    size = tk.IntVar(value=GRID_SIZE)
 
     tk.Label(root, text="Geradores", font=("Helvetica", 16)).pack(pady=20)
 

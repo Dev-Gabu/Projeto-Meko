@@ -1,3 +1,5 @@
+import numpy as np
+
 import random
 from ambiente import Fruta, Carne
 from settings import fruit_list, mekos_list, meat_list
@@ -152,7 +154,11 @@ class MoveToTarget(State):
         if y < ty:
             y = min(y + distancia_passo, ty)
         elif y > ty:
-            y = max(y - distancia_passo, ty)
+            y = max(y - distancia_passo, ty) 
+        
+        x = np.clip(x, 0, meko.ambiente.size - 1)
+        y = np.clip(y, 0, meko.ambiente.size - 1)
+
         meko.posicao = (x, y)
 
         if meko.posicao == meko.target.posicao:
@@ -190,7 +196,12 @@ class MoveToPartner(State):
         if y < ty:
             y = min(y + distancia_passo, ty)
         elif y > ty:
-            y = max(y - distancia_passo, ty)
+            y = max(y - distancia_passo, ty) # CORREÇÃO DE LÓGICA AQUI
+        
+        # CORREÇÃO CRÍTICA: Aplica o CLIPPING
+        x = np.clip(x, 0, meko.ambiente.size - 1) 
+        y = np.clip(y, 0, meko.ambiente.size - 1)
+
         meko.posicao = (x, y)
 
         if meko.posicao == meko.love.posicao:
@@ -353,7 +364,7 @@ class Reproduce(State):
             meko.iniciar_gestacao([genoma_filhote,nome], parceiro)
 
             meko.energia -= 50
-            meko.parceiro.energia -= 50
+            parceiro.energia -= 50
             meko.fsm.change_state(Wander())
             
 

@@ -103,7 +103,8 @@ class Meko:
         
         # Atributos de Reprodução
         self.fertilidade = "Incapaz"
-        self.gestacao_contador = round(self.idadeMAX * 0.1)
+        self.tempo_gestacao = round(self.idadeMAX * 0.1)
+        self.gestacao_contador = 0
         self.genoma_espera = None
 
         # Atributos de estado
@@ -198,8 +199,6 @@ class Meko:
         """
         # Filtra apenas os que estão no raio de visão
         
-        print("Buscando por parceiro...")
-        
         proximos = [
             obj for obj in objetos
             if distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == False or distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == True and obj.fertilidade == "Fertil" and obj.love == None
@@ -212,7 +211,6 @@ class Meko:
         alvo = min(proximos, key=lambda o: distancia(self,o))
         
         #Retorna o alvo
-        print("Retornando alvo...")
         return alvo
     
     def iniciar_gestacao(self, genoma_filhote, parceiro):
@@ -273,7 +271,7 @@ class Meko:
 
         if self.fertilidade == "Gestante":
             self.gestacao_contador += 1
-            if self.gestacao_contador >= self.gestacao_contador:
+            if self.gestacao_contador >= self.tempo_gestacao:
                 self.gerar_filhote(self.genoma_espera)
                 self.gestacao_contador = 0
                 self.genoma_espera = None
