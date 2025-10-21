@@ -333,39 +333,45 @@ class Reproduce(State):
     
     def __init__(self): super().__init__("Reproduzir")
     def execute(self, meko):
+        
+        parceiro = meko.love
+        
+        if meko.fertilidade != "Fertil":
+            print(f"{meko.nome} não é mais fértil e desistiu de reproduzir.")
+            meko.fsm.change_state(Wander())
+            meko.love = None
+            return
+        if parceiro is None or parceiro.fertilidade != "Fertil":
+            print(f"{meko.nome} desistiu, {parceiro.nome if parceiro else 'o alvo'} não está disponível.")
+            meko.fsm.change_state(Wander())
+            meko.love = None
+            return
 
-        if meko.fertilidade == "Incapaz":
-            print(f"{meko.nome} desistiu de reproduzir.")
-            meko.fsm.change_state(Wander())
-        elif meko.love.fertilidade == "Incapaz" or meko.love.fertilidade == "Gestante":
-            print(f"{meko.love.nome} rejeitou {meko.nome}.")
-            meko.fsm.change_state(Wander())
-        else:
-            print(f"{meko.nome} e {meko.love.nome} começam a acasalar.")
-            parceiro = meko.love
-            fitness_meko = meko.fitness
-            fitness_parceiro = parceiro.fitness
-            soma_fitness = fitness_meko + fitness_parceiro
+        print(f"{meko.nome} e {meko.love.nome} começam a acasalar.")
+        parceiro = meko.love
+        fitness_meko = meko.fitness
+        fitness_parceiro = parceiro.fitness
+        soma_fitness = fitness_meko + fitness_parceiro
+    
+    
+        peso_meko = fitness_meko / soma_fitness if soma_fitness > 0 else 0.5
+        peso_parceiro = 1.0 - peso_meko
+    
+        genoma_filhote = []
+        nome = f"{meko.nome[:len(meko.nome)//2]}{parceiro.nome[len(parceiro.nome)//2:]}".capitalize()
         
-        
-            peso_meko = fitness_meko / soma_fitness if soma_fitness > 0 else 0.5
-            peso_parceiro = 1.0 - peso_meko
-        
-            genoma_filhote = []
-            nome = f"{meko.nome[:len(meko.nome)//2]}{parceiro.nome[len(parceiro.nome)//2:]}".capitalize()
-            
-            for i in range(len(meko.genoma)):
-                gene_escolhido = random.choices(
-                    [meko.genoma[i], parceiro.genoma[i]],
-                    weights=[peso_meko, peso_parceiro],
-                    k=1
-                )[0]
-                genoma_filhote.append(gene_escolhido)
-            meko.iniciar_gestacao([genoma_filhote,nome], parceiro)
+        for i in range(len(meko.genoma)):
+            gene_escolhido = random.choices(
+                [meko.genoma[i], parceiro.genoma[i]],
+                weights=[peso_meko, peso_parceiro],
+                k=1
+            )[0]
+            genoma_filhote.append(gene_escolhido)
+        meko.iniciar_gestacao([genoma_filhote,nome], parceiro)
 
-            meko.energia -= 50
-            parceiro.energia -= 50
-            meko.fsm.change_state(Wander())
+        meko.energia -= 50
+        parceiro.energia -= 50
+        meko.fsm.change_state(Wander())
             
 
 class FindPartner(State):

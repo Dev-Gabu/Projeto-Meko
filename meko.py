@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 from utils import gerar_nome, validar_genoma, distancia
-from settings import CUSTO_TERRENO, EFEITOS, GRID_SIZE, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
+from settings import C_TEMPERATURA, CUSTO_TERRENO, EFEITOS, GRID_SIZE, TEMPERATURA_MAP, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
 from FSM import *
 from habilidades import *
 
@@ -30,7 +30,7 @@ class Meko:
         temperatura(int): Representa a temperatura ideal para o indivíduo. Afeta a sua fertilidade e consumo de energia.
 
     """
-
+# Criação do Meko
     def gerar_atributos(self, genoma):
         """
         Gera os atributos iniciais de uma criatura a partir de seu genoma.
@@ -56,11 +56,11 @@ class Meko:
         """
 
         self.peso = 10
-        self.velocidade = 10
-        self.resistencia = 10
-        self.forca = 4
-        self.visao = 2
-        self.agressividade = 0
+        self.velocidade = 5
+        self.resistencia = 8
+        self.forca = 8
+        self.visao = 10
+        self.agressividade = 8
 
         # Os modificadores são aplicados aos atributos
 
@@ -68,6 +68,23 @@ class Meko:
             efeitos = efeitos_dict.get(genoma[i], {})
             for atributo, valor in efeitos.items():
                 setattr(self, atributo, getattr(self, atributo) + valor)
+                
+        # Ajustes Finais Baseados em Peso
+        self.velocidade = max(1, self.velocidade - ((max(0, self.peso - 10)) // 15)) # Reduz 1 de velocidade a cada 15 pontos de peso
+        self.resistencia = max(1, self.resistencia + (self.peso // 8)) # Aumenta 1 de resistência a cada 8 pontos de peso
+
+        # A vida é maior quanto maior o Meko
+        mod_vida = 30 if genoma[2] == "Grande" else 0 if genoma[2] == "Medio" else -30
+        self.saudeMAX += mod_vida
+        self.saude = self.saudeMAX
+
+        # Garantir Limites Mínimos
+        self.forca = max(1, self.forca)
+        self.resistencia = max(1, self.resistencia)
+        self.visao = max(3, min(20, self.visao)) # Limita visão entre 3 e 20
+        self.velocidade = max(1, min(10, self.velocidade)) # Limita velocidade entre 1 e 10
+        self.agressividade = max(0, min(20, self.agressividade)) # Limita agressividade entre 0 e 20
+        self.temperatura = max(0, min(40, self.temperatura)) # Limita temperatura entre 0°C e 40°C
 
     def gerar_habilidades(self, genoma):
         categorias_genoma = [
@@ -100,10 +117,11 @@ class Meko:
         self.energia = 200
         self.fitness = 0
         self.ambiente = ambiente
+        self.temperatura = 20
         
         # Atributos de Reprodução
         self.fertilidade = "Incapaz"
-        self.tempo_gestacao = round(self.idadeMAX * 0.1)
+        self.tempo_gestacao = round(self.idadeMAX * 0.05)
         self.gestacao_contador = 0
         self.genoma_espera = None
 
@@ -118,12 +136,30 @@ class Meko:
 
         #Gerar Habilidades
         self.habilidades = self.gerar_habilidades(genoma)
-
+# Funções de acompanhamento do Meko
     def esta_vivo(self):
         """
         Verifica se o Meko está vivo com base em sua saúde.
         """
         return self.saude > 0 and self.idade < self.idadeMAX
+
+    def calcular_estresse_termico(self):
+        """
+        Calcula a penalidade de saúde ou energia baseada na diferença de temperatura.
+        """
+        
+        x, y = self.posicao
+        tipo_terreno = self.ambiente.matriz[x, y]
+        temp_ambiente = TEMPERATURA_MAP.get(tipo_terreno, 30) # Temperatura média do terreno atual
+
+        diferenca_temp = abs(self.temperatura - temp_ambiente) # Diferença absoluta entre o ideal do Meko e o ambiente
+
+        if diferenca_temp > 15:  # Penalidade: Aumenta drasticamente se a diferença for maior que 15 graus
+            # Penaliza a Energia
+            self.energia -= 1
+            print(f"{self.nome} sofre estresse térmico ({self.temperatura}°C - {temp_ambiente}°C).")
+        
+        return diferenca_temp
     
     def calcular_fitness(self):
         """
@@ -134,12 +170,15 @@ class Meko:
         longevidade_score = C_LONGEVIDADE * (self.idade / self.idadeMAX)
         saude_score = C_SAUDE * (self.saude / self.saudeMAX)
         energia_score = C_ENERGIA * (self.energia / self.energiaMAX)
+        termico_score = C_TEMPERATURA * self.calcular_estresse_termico()
         
-        
-        self.fitness = longevidade_score + saude_score + energia_score
+        SCORE_COMBATE = saude_score
+        SCORE_SOBREVIVENCIA = energia_score + termico_score + longevidade_score
+
+        self.fitness = SCORE_COMBATE + SCORE_SOBREVIVENCIA
 
         self.fitness = max(1.0, self.fitness)
-    
+# Funções de ações do Meko
     def calcular_custo_movimento(self):
         """
         Calcula o gasto extra de movimento devido ao terreno na posição atual.
@@ -212,7 +251,7 @@ class Meko:
         
         #Retorna o alvo
         return alvo
-    
+#Funções de reprodução do Meko
     def iniciar_gestacao(self, genoma_filhote, parceiro):
         """
         Inicia a gestação, armazenando o genoma e definindo o estado.
@@ -227,7 +266,6 @@ class Meko:
             
         self.love = None
         print(f"{self.nome} iniciou a gestação. Filhote nascerá em {int(self.idadeMAX * 0.05)} ticks.")
-
 
     def gerar_filhote(self, genoma_espera):
         """
@@ -246,8 +284,7 @@ class Meko:
         self.ambiente.adicionar_meko(filhote)
         mekos_list.append(filhote) 
         print(f"Um novo Meko nasceu: {nome} na posição {filhote.posicao}")
-
-
+# Função de atualização do Meko
     def update(self):
         """
         Atualiza a máquina de estados do Meko
@@ -262,13 +299,16 @@ class Meko:
             self.saude -= 5
             
         ## Fertilidade
-        if self.idade > 30 and self.saude > self.saudeMAX * 0.5 and self.energia > self.energiaMAX * 0.5 and self.fertilidade == "Incapaz":
+        is_adulto = self.idade > 30 and self.idade < self.idadeMAX * 0.8
+        is_saudavel = self.saude > self.saudeMAX * 0.5 and self.energia > self.energiaMAX * 0.5
+        
+        if is_adulto and is_saudavel and self.fertilidade != "Gestante":
             self.fertilidade = "Fertil"
-        else: 
-            self.fertilidade = "Incapaz"
+        else:
+            if self.fertilidade != "Gestante":
+                self.fertilidade = "Incapaz"
             
         ## Gestação
-
         if self.fertilidade == "Gestante":
             self.gestacao_contador += 1
             if self.gestacao_contador >= self.tempo_gestacao:

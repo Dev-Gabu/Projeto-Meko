@@ -7,10 +7,19 @@ CMAP = ListedColormap(cores)
 bounds = np.arange(-0.5, len(cores)+0.5, 1)
 NORM = BoundaryNorm(bounds, CMAP.N)
 
-## AMBIENTE
+# AMBIENTE
 GRID_SIZE = 50
 SIMULATION_STEPS = 200
 SIMULATION_DELAY = 0.5
+
+## TEMERATURA AMBIENTAL
+TEMPERATURA_MAP = {
+    0: 40, # Deserto - 40°C Quente
+    1: 30, # Campo - 30°C Ameno
+    2: 25, # Floresta - 25°C Fresco
+    3: 20, # Montanha - 20°C Frio
+    4: 25, # Frutas - 25°C Fresco
+    5: 15} # Rios - 15°C Frio
 
 ## CUSTOS DE MOVIMENTO
 
@@ -23,12 +32,17 @@ CUSTO_TERRENO = {
     5: 5    # Rios (5) - Movimento muito lento
 }
 
-# Tipos de Terreno
+## MACROS para Tipos de Terreno
 TERRENO_FLORESTA = 2
 TERRENO_MONTANHA = 3
 TERRENO_RIO = 5
 
-## MEKOS
+## LISTAS
+mekos_list = []
+fruit_list = []
+meat_list = []
+
+# MEKOS
 
 LOC_CARACTERISTICAS = {
 
@@ -109,16 +123,13 @@ CARACTERISTICAS = [
     ("Extra", ["Nenhuma", "Camuflagem", "Veneno", "Bioluminescencia", "Campo-eletrico"])
 ]
 
-## LISTAS
-mekos_list = []
-fruit_list = []
-meat_list = []
+## FITNESS
 
-# FITNESS
-
+### Coeficientes para cálculo de fitness
 C_LONGEVIDADE = 3
 C_SAUDE = 2
 C_ENERGIA = 2
+C_TEMPERATURA = 1
 
 ## HABILIDADES
 
@@ -159,73 +170,73 @@ TABELA_EFETIVIDADE_TIPO = {
 ## MODIFICADORES
 
 efeitos_tipo = {
-    "Fogo":         {"agressividade": 4, "forca": 7},
-    "Agua":         {"velocidade": 5, "peso": -5},
-    "Terra":        {"peso": 10, "forca": 3, "velocidade": -5, "resistencia": 5},
-    "Inseto":       {"peso": -10, "velocidade": 5, "forca": -3, "resistencia": -5},
-    "Sombra":       {"agressividade": 10, "velocidade": 5, "forca": 4},
-    "Luz":          {"visao": 5, "velocidade": 4, "agressividade": -10}
+    "Fogo":         {"agressividade": 4, "forca": 5, "temperatura": 10},
+    "Agua":         {"velocidade": 1, "peso": -5, "temperatura": -5},
+    "Terra":        {"peso": 10, "forca": 3, "velocidade": -1, "resistencia": 3, "temperatura": 5},
+    "Inseto":       {"peso": -10, "velocidade": 2, "forca": -3, "resistencia": -3, "temperatura": 0},
+    "Sombra":       {"agressividade": 5, "velocidade": 2, "forca": 4, "temperatura": 0},
+    "Luz":          {"visao": 5, "velocidade": 2, "agressividade": -5, "temperatura": 5}
 }
 
 efeitos_alimentacao = {
-    "Herbivoro":    {"agressividade": -10, "resistencia": 5},
-    "Carnivoro":    {"agressividade": 10, "resistencia": -5},
-    "Onivoro":      {"velocidade": 4}
+    "Herbivoro":    {"agressividade": -5, "resistencia": 5},
+    "Carnivoro":    {"agressividade": 5, "resistencia": -5},
+    "Onivoro":      {"velocidade": 1}
 }
 
 efeitos_tamanho = {
-    "Pequeno":      {"peso": -10, "resistencia": -10, "velocidade": 4},
+    "Pequeno":      {"peso": -10, "resistencia": -5, "velocidade": 4},
     "Medio":        {"peso": 4, "resistencia": 2, "velocidade": 2},
-    "Grande":       {"peso": 10, "resistencia": 10, "velocidade": -4}
+    "Grande":       {"peso": 10, "resistencia": 5, "velocidade": -4}
 }
 
 efeitos_olhos = {
-    "Simples":      {"visao": 2},
-    "Avancado":     {"visao": 4},
+    "Simples":      {"visao": -4},
+    "Avancado":     {"visao": 3},
     "Compostos":    {"visao": 5}
 }
 
 efeitos_presas = {
     "Nenhuma":      {"forca": 0, "agressividade": -3, "peso": 0},
     "Pequena":      {"forca": 3, "agressividade": 0, "peso": 1},
-    "Media":        {"forca": 5, "agressividade": 3, "peso": 2},
-    "Grande":       {"forca": 8, "agressividade": 6, "peso": 3}
+    "Media":        {"forca": 4, "agressividade": 3, "peso": 2},
+    "Grande":       {"forca": 5, "agressividade": 6, "peso": 3}
 }
 
 efeitos_patas = {
-    "Apode":        {"peso": 0, "velocidade": -10, "resistencia": 0},
-    "Bipede":       {"peso": 2, "velocidade": 9, "resistencia": 2},
-    "Quadrupede":   {"peso": 4, "velocidade": 6, "resistencia": 4},
-    "Multipede":    {"peso": 6, "velocidade": 3, "resistencia": 6}
+    "Apode":        {"peso": 0, "velocidade": -3, "resistencia": 0},
+    "Bipede":       {"peso": 2, "velocidade": 1, "resistencia": 2},
+    "Quadrupede":   {"peso": 4, "velocidade": 3, "resistencia": 4},
+    "Multipede":    {"peso": 6, "velocidade": 2, "resistencia": 6}
 }
 
 efeitos_garras = {
     "Nenhuma":      {"forca": 0, "agressividade": -3, "peso": 0, "velocidade": 0},
-    "Curta":        {"forca": 3, "agressividade": 2, "peso": 1, "velocidade": -3},
-    "Longa":        {"forca": 5, "agressividade": 4, "peso": 2, "velocidade": -6},
+    "Curta":        {"forca": 3, "agressividade": 2, "peso": 1, "velocidade": -1},
+    "Longa":        {"forca": 5, "agressividade": 4, "peso": 2, "velocidade": -2},
     "Retrateis":    {"forca": 4, "agressividade": 3, "peso": 3, "velocidade": 0}
 }
 
 efeitos_cauda = {
     "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
-    "Equilibrio":   {"peso": 4, "velocidade": 5, "resistencia": 3},
-    "Ataque":       {"peso": 5, "velocidade": 2, "forca": 4},
-    "Aquatica":     {"peso": 4, "velocidade": 2, "resistencia": 2}
+    "Equilibrio":   {"peso": 2, "velocidade": 2, "resistencia": 3},
+    "Ataque":       {"peso": 5, "velocidade": 1, "forca": 4},
+    "Aquatica":     {"peso": 3, "velocidade": 1, "resistencia": 2, "temperatura": -2}
 }
 
 efeitos_defesa = {
-    "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
-    "Carapaça":     {"peso": 10, "velocidade": -5, "resistencia": 5},
-    "Escamas":      {"peso": 5, "velocidade": -2, "resistencia": 2},
-    "Pelagem":      {"peso": 6, "velocidade": -3, "resistencia": 4}
+    "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0, "temperatura": 3},
+    "Carapaça":     {"peso": 10, "velocidade": -2, "resistencia": 5, "temperatura": -2},
+    "Escamas":      {"peso": 5, "velocidade": -1, "resistencia": 2, "temperatura": -5},
+    "Pelagem":      {"peso": 6, "velocidade": -1, "resistencia": 4, "temperatura": -5}
 }
 
 efeitos_extras = {
     "Nenhuma":       {"peso": 0, "velocidade": 0, "resistencia": 0},
     "Camuflagem":       {"peso": 0, "velocidade": 0, "resistencia": 0}, # Menor chance de ser avistado no campo de visão
-    "Veneno":           {"peso": 4, "velocidade": 5, "resistencia": 3}, # Aplica veneno, causa danos constantes
-    "Bioluminescencia": {"peso": 5, "velocidade": 2, "forca": 4}, # Atrai criaturas
-    "Campo-eletrico":   {"peso": 4, "velocidade": 2, "resistencia": 2} # Causa danos ao seu redor quando atacando
+    "Veneno":           {"peso": 4, "velocidade": 2, "resistencia": 3}, # Aplica veneno, causa danos constantes
+    "Bioluminescencia": {"peso": 5, "velocidade": 1, "forca": 4}, # Atrai criaturas
+    "Campo-eletrico":   {"peso": 4, "velocidade": 1, "resistencia": 2} # Causa danos ao seu redor quando atacando
 }
 
 EFEITOS = [

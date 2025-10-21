@@ -11,6 +11,7 @@ from matplotlib.widgets import Button
 
 import settings
 
+from logger import SimulationLogger
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
 from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, SIMULATION_DELAY, mekos_list
@@ -60,16 +61,18 @@ class MekoOverviewWindow(tk.Toplevel):
         main_frame.pack(fill="both", expand=True)
 
         for index, meko in enumerate(self.mekos_list):
-            column = index % 2
-            row = index // 2
+            column = index % 5
+            row = index // 5
             
             meko_frame = tk.Frame(main_frame, borderwidth=1, relief="groove")
             meko_frame.grid(row=row, column=column, padx=10, pady=10, sticky="n")
 
             attr_text = (
-            f"Nome: {meko.nome} || Idade: {meko.idade}\n"
-            f"Saúde: {meko.saude}/{meko.saudeMAX} || Energia: {meko.energia}/{meko.energiaMAX}\n"
-            f"Estado: {meko.fsm.current_state.name}"
+            f"ID: {meko.nome} | Idade: {meko.idade}y\n"
+            f"FITNESS: {meko.fitness:.2f} | Estado: {meko.fsm.current_state.name}\n\n"
+            f"HP: {meko.saude}/{meko.saudeMAX} | EN: {meko.energia}/{meko.energiaMAX}\n"
+            f"Fr/Rs/Vs: {meko.forca}/{meko.resistencia}/{meko.visao}\n"
+            f"Ve/Ag/Pe,Tp: {meko.velocidade}/{meko.agressividade}/{meko.peso}/{meko.temperatura}\n"
             )
         
             tk.Label(meko_frame, text=attr_text, justify=tk.LEFT, anchor="w").pack(padx=5, pady=5)
@@ -89,8 +92,8 @@ class MekoMonitorWindow:
     def close_all_windows(self):
         """Fecha todas as janelas de detalhes e oculta a janela principal."""
         for window in self.detail_windows:
-            if window.root.winfo_exists():
-                window.root.destroy()
+            if window.winfo_exists():
+                window.destroy()
         self.detail_windows = []
         self.hide()
 
@@ -135,11 +138,11 @@ class MekoMonitorWindow:
         self.detail_windows.append(overview_window)
 
     def create_widgets(self):
+        tk.Button(self.root, text="Visualização Geral", command=lambda: self.open_overview(mekos_list)).pack(pady=10)
         tk.Label(self.root, text="Monitor de Mekos", font=("Helvetica", 16)).pack(pady=10)
         self.list_frame = tk.Frame(self.root)
         self.list_frame.pack(padx=10, pady=5, fill='both', expand=True)
         tk.Button(self.root, text="Ocultar Monitor", command=self.hide).pack(pady=10)
-        tk.Button(self.root, text="Visualização Geral", command=lambda: self.open_overview(mekos_list)).pack(pady=10)
 
 def GUI_Gera_Meko():
 
@@ -517,6 +520,7 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     monitor_window = None
     size = size_var.get()
     loop = loop_var.get()
+    sim_logger = SimulationLogger(filename_prefix="sim_aleatoria")
 
     def toggle_pause_monitor(event, button_object, mekos_list):
         global is_paused, monitor_window
@@ -548,6 +552,14 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
         print("\n Passo:", i)
         ambiente.tick()
         ambiente.renderizar(ax_sim)
+        
+        ambiente.tick()
+        ambiente.renderizar(ax_sim)
+        
+        # Log da simulação
+        sim_logger.log_geral_tick(i, mekos_list)
+        for meko in mekos_list:
+            sim_logger.log_meko_data(i, meko)
         
         return ax_sim
 
@@ -618,6 +630,8 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     )
     
     plt.show()
+    
+    sim_logger.export_logs()
 
 def GUI_Home():
     """
