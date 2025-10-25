@@ -44,6 +44,8 @@ meat_list = []
 
 # MEKOS
 
+PERDA_ENERGIA_POR_TICK = 0.5
+
 LOC_CARACTERISTICAS = {
 
     # Lista com os endereços de sprites para cada característica dos Meko.

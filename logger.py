@@ -5,7 +5,7 @@ from datetime import datetime
 class SimulationLogger:
     def __init__(self, filename_prefix="sim_log"):
         self.log_geral = []
-        self.log_meko_individual = []
+        self.log_meko_individual = {}
         self.start_time = datetime.now()
         self.filename_prefix = filename_prefix
         
@@ -30,22 +30,35 @@ class SimulationLogger:
         })
 
     def log_meko_data(self, tick, meko):
-        """Coleta o estado atual de um Meko específico para análise individual."""
-        self.log_meko_individual.append({
-            "tick": tick,
-            "nome": meko.nome,
-            "fitness": round(meko.fitness, 2),
-            "saude": meko.saude,
-            "energia": meko.energia,
-            "idade": meko.idade,
-            "estado": meko.fsm.current_state.name,
-            "tipo": meko.genoma[0], 
-            "fertilidade": meko.fertilidade,
-            "agressividade": meko.agressividade,
-            "target_nome": meko.target.nome if meko.target else None,
-            "posicao": {"x": meko.posicao[0], "y": meko.posicao[1]},
-        })
+        """
+        Coleta o estado atual de um Meko específico e o armazena em seu histórico individual.
+        """
+        nome = meko.nome
+        
+        if nome not in self.log_meko_individual:
+            self.log_meko_individual[nome] = {
+                "Genoma": meko.genoma,
+                "Idade máxima": meko.idadeMAX,
+                "Atributos": {
+                    "Força": meko.forca,
+                    "Resistência": meko.resistencia,
+                    "Velocidade": meko.velocidade,
+                    "Visão": meko.visao,
+                    "Agressividade": meko.agressividade,
+                    "Temperatura": meko.temperatura
+                },
+                "Histórico": [] 
+            }
+        
+        estado_fsm = meko.fsm.current_state.name
 
+        evento_log = f"HP: {meko.saude}/{meko.saudeMAX}, E: {meko.energia}/{meko.energiaMAX}, Fit: {meko.fitness:.2f}\n {estado_fsm} em ({int(meko.posicao[0])}, {int(meko.posicao[1])})\n {meko.log}"
+
+        self.log_meko_individual[nome]["Histórico"].append({
+            "tick": int(tick),
+            "log": evento_log
+        })
+   
     def gerar_relatorio_final(self, ambiente):
         """
         Gera um relatório estatístico final usando os dados acumulados.

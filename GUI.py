@@ -515,7 +515,7 @@ def GUI_Simulacao(N_mekos):
         plt.pause(SIMULATION_DELAY)
 
 def GUI_Aleatoria(n_mekos,size_var,loop_var):
-    global is_paused, monitor_window
+    global is_paused, monitor_window, anim
     is_paused = False
     monitor_window = None
     size = size_var.get()
@@ -523,11 +523,14 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     sim_logger = SimulationLogger(filename_prefix="sim_aleatoria")
 
     def toggle_pause_monitor(event, button_object, mekos_list):
-        global is_paused, monitor_window
+        global is_paused, monitor_window, anim
         is_paused = not is_paused
         
         if is_paused:
             button_object.label.set_text("Continuar")
+            
+            if anim is not None:
+                anim.event_source.stop()
             
             if monitor_window is None:
                 monitor_window = MekoMonitorWindow(mekos_list)
@@ -537,6 +540,9 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
 
         else:
             button_object.label.set_text("Pausar")
+            
+            if anim is not None:
+                anim.event_source.start()
             
             if monitor_window is not None:
                 monitor_window.close_all_windows()

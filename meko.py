@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 from utils import gerar_nome, validar_genoma, distancia
-from settings import C_TEMPERATURA, CUSTO_TERRENO, EFEITOS, GRID_SIZE, TEMPERATURA_MAP, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
+from settings import C_TEMPERATURA, CUSTO_TERRENO, EFEITOS, GRID_SIZE, PERDA_ENERGIA_POR_TICK, TEMPERATURA_MAP, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
 from FSM import *
 from habilidades import *
 
@@ -113,11 +113,12 @@ class Meko:
         # Atributos de controle
         self.saudeMAX = 70
         self.saude = 70
-        self.energiaMAX = 200
-        self.energia = 200
+        self.energiaMAX = 500
+        self.energia = 500
         self.fitness = 0
         self.ambiente = ambiente
         self.temperatura = 20
+        self.log = []
         
         # Atributos de Reprodução
         self.fertilidade = "Incapaz"
@@ -136,6 +137,7 @@ class Meko:
 
         #Gerar Habilidades
         self.habilidades = self.gerar_habilidades(genoma)
+        
 # Funções de acompanhamento do Meko
     def esta_vivo(self):
         """
@@ -145,6 +147,12 @@ class Meko:
         if self.idade >= self.idadeMAX:
             self.ambiente.morte_meko(self, causa='Idade')
             return False
+        if self.energia <= 0:
+            if self.saude > 5:
+                self.saude -= 5
+            else:
+                self.ambiente.morte_meko(self, causa='Fome')
+                return False
         elif self.saude <= 0 and self.target and self.target.__class__.__name__ == "Meko" and self.target.target == self:
             self.ambiente.morte_meko(self, causa='Combate')
             return False
@@ -236,7 +244,7 @@ class Meko:
 
         if (new_i, new_j) != self.posicao:
             self.posicao = (new_i, new_j)
-            self.energia -= distancia_passo
+            self.energia -= distancia_passo * PERDA_ENERGIA_POR_TICK
 
     def search(self, objetos, tipo, breed=False):
         
@@ -288,7 +296,7 @@ class Meko:
             np.clip(self.posicao[1] + offset, 0, self.ambiente.size - 1)
         )
         
-        filhote = Meko(nome, genoma, ambiente=self.ambiente, posicao=posicao_nascimento, idade=1)
+        filhote = Meko(nome, genoma, ambiente=self.ambiente, posicao=posicao_nascimento, idade=200)
         self.ambiente.adicionar_meko(filhote)
         mekos_list.append(filhote) 
         print(f"Um novo Meko nasceu: {nome} na posição {filhote.posicao}")
@@ -298,19 +306,12 @@ class Meko:
         Atualiza a máquina de estados do Meko
         """
         
-        self.energia -= 1
+        self.energia -= PERDA_ENERGIA_POR_TICK
         self.calcular_fitness()
-        
-        ## Dano por fome
-        if self.energia <= 0:
-            if self.saude > 5:
-                self.saude -= 5
-            else:
-                self.ambiente.morte_meko(self, causa='Fome')
             
         ## Fertilidade
         is_adulto = self.idade > 30 and self.idade < self.idadeMAX * 0.8
-        is_saudavel = self.saude > self.saudeMAX * 0.5 and self.energia > self.energiaMAX * 0.5
+        is_saudavel = self.saude > self.saudeMAX * 0.4 and self.energia > self.energiaMAX * 0.3
         
         if is_adulto and is_saudavel and self.fertilidade != "Gestante":
             self.fertilidade = "Fertil"

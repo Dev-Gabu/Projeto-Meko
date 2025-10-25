@@ -49,6 +49,9 @@ class Ambiente:
             self.total_mortes_fome += 1
         elif causa == 'Idade':
             self.total_mortes_idade += 1
+            
+        if meko in mekos_list:
+            mekos_list.remove(meko)
 
         print(f"{meko.nome} morreu. Causa: {causa}.")
 
@@ -70,19 +73,21 @@ class Ambiente:
         mekos_remover = []
         
         for meko in self.mekos:
+            meko.idade += 1
             if not meko.esta_vivo():
                 mekos_remover.append(meko)
             else:   
-                meko.idade += 1
-                self.logger.log_meko_data(tick, meko)
                 meko.update()
+                self.logger.log_meko_data(tick, meko)
+                meko.log = []
                 
         for meko in mekos_remover:
             
             meat = Carne(meko.posicao)
             meat_list.append(meat)
-            mekos_list.remove(meko)
-            self.mekos.remove(meko)
+            
+            if meko in self.mekos:
+                self.mekos.remove(meko)
         
         self.total_nascimentos += nascimentos_tick
         self.logger.log_geral_tick(tick, mekos_list, nascimentos_tick)
