@@ -141,7 +141,15 @@ class Meko:
         """
         Verifica se o Meko está vivo com base em sua saúde.
         """
-        return self.saude > 0 and self.idade < self.idadeMAX
+        
+        if self.idade >= self.idadeMAX:
+            self.ambiente.morte_meko(self, causa='Idade')
+            return False
+        elif self.saude <= 0 and self.target and self.target.__class__.__name__ == "Meko" and self.target.target == self:
+            self.ambiente.morte_meko(self, causa='Combate')
+            return False
+            
+        return self.saude > 0
 
     def calcular_estresse_termico(self):
         """
@@ -170,10 +178,10 @@ class Meko:
         longevidade_score = C_LONGEVIDADE * (self.idade / self.idadeMAX)
         saude_score = C_SAUDE * (self.saude / self.saudeMAX)
         energia_score = C_ENERGIA * (self.energia / self.energiaMAX)
-        termico_score = C_TEMPERATURA * self.calcular_estresse_termico()
+       # termico_score = C_TEMPERATURA * self.calcular_estresse_termico()
         
         SCORE_COMBATE = saude_score
-        SCORE_SOBREVIVENCIA = energia_score + termico_score + longevidade_score
+        SCORE_SOBREVIVENCIA = energia_score + longevidade_score# + termico_score
 
         self.fitness = SCORE_COMBATE + SCORE_SOBREVIVENCIA
 
@@ -230,26 +238,26 @@ class Meko:
             self.posicao = (new_i, new_j)
             self.energia -= distancia_passo
 
-    def search(self, objetos, tipo, breed = False):
-        """
-        Busca objetos de um tipo específico no raio de visão.
-        objetos: lista de instâncias (Fruta, Carne, Meko, etc.)
-        tipo: tipo de objeto a ser buscado
-        """
-        # Filtra apenas os que estão no raio de visão
+    def search(self, objetos, tipo, breed=False):
         
-        proximos = [
+        candidatos = [
             obj for obj in objetos
-            if distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == False or distancia(self, obj) <= self.visao and obj != self and obj != self.target and obj.__class__.__name__ == tipo and breed == True and obj.fertilidade == "Fertil" and obj.love == None
+            if distancia(self, obj) <= self.visao and obj != self and obj.__class__.__name__ == tipo
         ]
+        
+        proximos = []
+        for obj in candidatos:
+            if breed:
+                if obj.fertilidade == "Fertil" and obj.love is None:
+                    proximos.append(obj)
+            else:
+                if obj != self.target: 
+                    proximos.append(obj)
 
         if not proximos:
             return None
 
-        # Ordena pelo mais próximo
         alvo = min(proximos, key=lambda o: distancia(self,o))
-        
-        #Retorna o alvo
         return alvo
 #Funções de reprodução do Meko
     def iniciar_gestacao(self, genoma_filhote, parceiro):
@@ -291,12 +299,14 @@ class Meko:
         """
         
         self.energia -= 1
-        self.idade += 1
         self.calcular_fitness()
         
         ## Dano por fome
         if self.energia <= 0:
-            self.saude -= 5
+            if self.saude > 5:
+                self.saude -= 5
+            else:
+                self.ambiente.morte_meko(self, causa='Fome')
             
         ## Fertilidade
         is_adulto = self.idade > 30 and self.idade < self.idadeMAX * 0.8
@@ -307,7 +317,7 @@ class Meko:
         else:
             if self.fertilidade != "Gestante":
                 self.fertilidade = "Incapaz"
-            
+        
         ## Gestação
         if self.fertilidade == "Gestante":
             self.gestacao_contador += 1

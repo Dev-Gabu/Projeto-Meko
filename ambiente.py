@@ -2,6 +2,7 @@ import numpy as np
 
 from utils import generate_perlin_noise_2d
 from settings import CMAP, meat_list, mekos_list
+from logger import *
 
 class Ambiente:
     """
@@ -17,10 +18,18 @@ class Ambiente:
         `tick`: Atualiza o estado do ambiente e dos mekos.
         `renderizar`: Renderiza o ambiente e os mekos em um gráfico.
     """
-    def __init__(self, size, matriz = None, mekos = []):
+    def __init__(self, size, matriz = None, logger = None, mekos = []):
+        # Atributos do Ambiente
         self.size = size
-        self.matriz = matriz #if matriz is not None else np.random.choice([0, 1, 2], size=(size, size), p=[0.2, 0.3, 0.5])
+        self.matriz = matriz
         self.mekos = mekos
+        self.logger = logger
+        
+        #Variáveis de controle
+        self.total_nascimentos = 0
+        self.total_mortes_combate = 0
+        self.total_mortes_fome = 0
+        self.total_mortes_idade = 0
 
     def adicionar_meko(self, meko):
         """
@@ -28,8 +37,23 @@ class Ambiente:
         """
     
         self.mekos.append(meko)
+        
+    def morte_meko(self, meko, causa = "Desconhecida"):
+        """
+        Contabiliza a morte de um Meko.
+        """
+        
+        if causa == 'Combate':
+            self.total_mortes_combate += 1
+        elif causa == 'Fome':
+            self.total_mortes_fome += 1
+        elif causa == 'Idade':
+            self.total_mortes_idade += 1
 
-    def tick(self):
+        print(f"{meko.nome} morreu. Causa: {causa}.")
+
+        
+    def tick(self,tick):
         """
         Atualiza o estado do ambiente e dos mekos.
         
@@ -40,22 +64,29 @@ class Ambiente:
         Se estiver vivo, chama o método `update` do objeto `Meko`. Caso contrário, remove o objeto da lista local de mekos,
         cria um objeto `Carne` na posição do meko morto, adiciona-o à lista global de carnes, remove o Meko da lista global de mekos e imprime uma mensagem indicando que o Meko morreu.
         """
-        for meko in mekos_list:
-            if meko in self.mekos:
-                continue
-            else:
-                self.adicionar_meko(meko)
-
+        
+        print(f"\n--- Tick {tick} ---")
+        nascimentos_tick = 0
+        mekos_remover = []
+        
         for meko in self.mekos:
-            if meko.esta_vivo():
+            if not meko.esta_vivo():
+                mekos_remover.append(meko)
+            else:   
+                meko.idade += 1
+                self.logger.log_meko_data(tick, meko)
                 meko.update()
-            else:
-                self.mekos.remove(meko)
-                meat = Carne(meko.posicao)
-                meat_list.append(meat)
-                mekos_list.remove(meko)
-                print(f"{meko.nome} morreu.")
-    
+                
+        for meko in mekos_remover:
+            
+            meat = Carne(meko.posicao)
+            meat_list.append(meat)
+            mekos_list.remove(meko)
+            self.mekos.remove(meko)
+        
+        self.total_nascimentos += nascimentos_tick
+        self.logger.log_geral_tick(tick, mekos_list, nascimentos_tick)
+
     def renderizar(self, ax):
         """
         Renderiza o ambiente e os mekos em um gráfico.

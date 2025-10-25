@@ -548,18 +548,9 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
         
         if is_paused:
             return
-            
-        print("\n Passo:", i)
-        ambiente.tick()
+
+        ambiente.tick(i)
         ambiente.renderizar(ax_sim)
-        
-        ambiente.tick()
-        ambiente.renderizar(ax_sim)
-        
-        # Log da simulação
-        sim_logger.log_geral_tick(i, mekos_list)
-        for meko in mekos_list:
-            sim_logger.log_meko_data(i, meko)
         
         return ax_sim
 
@@ -577,7 +568,7 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     ambiente_base = fruit_gen(ambiente_base,size)
     ambiente_base = river_gen(ambiente_base,size)
     
-    ambiente = Ambiente(size, ambiente_base)
+    ambiente = Ambiente(size, ambiente_base, sim_logger)
 
 #--- Frutas ---
     for i, linha in enumerate(ambiente.matriz):
@@ -632,6 +623,10 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     plt.show()
     
     sim_logger.export_logs()
+    
+    # GERAR E EXIBIR O RELATÓRIO FINAL
+    relatorio = sim_logger.gerar_relatorio_final(ambiente)
+    messagebox.showinfo("Relatório Final da Simulação", relatorio)
 
 def GUI_Home():
     """

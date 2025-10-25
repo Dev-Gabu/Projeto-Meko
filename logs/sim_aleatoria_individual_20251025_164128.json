@@ -1,0 +1,185 @@
+[
+    {
+        "tick": 0,
+        "nome": "Bargorlos",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Agua",
+        "fertilidade": "Incapaz",
+        "agressividade": 19,
+        "target_nome": null,
+        "posicao": {
+            "x": 24,
+            "y": 20
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Noriondor",
+        "fitness": 0,
+        "saude": 40,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Fogo",
+        "fertilidade": "Incapaz",
+        "agressividade": 20,
+        "target_nome": null,
+        "posicao": {
+            "x": 25,
+            "y": 49
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Tinrix",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Inseto",
+        "fertilidade": "Incapaz",
+        "agressividade": 13,
+        "target_nome": null,
+        "posicao": {
+            "x": 45,
+            "y": 36
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Vexaigonkhor",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Inseto",
+        "fertilidade": "Incapaz",
+        "agressividade": 6,
+        "target_nome": null,
+        "posicao": {
+            "x": 2,
+            "y": 47
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Oananai",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Agua",
+        "fertilidade": "Incapaz",
+        "agressividade": 20,
+        "target_nome": null,
+        "posicao": {
+            "x": 28,
+            "y": 15
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Aurzergron",
+        "fitness": 0,
+        "saude": 40,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Luz",
+        "fertilidade": "Incapaz",
+        "agressividade": 11,
+        "target_nome": null,
+        "posicao": {
+            "x": 13,
+            "y": 4
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Thaldunbal",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Sombra",
+        "fertilidade": "Incapaz",
+        "agressividade": 20,
+        "target_nome": null,
+        "posicao": {
+            "x": 22,
+            "y": 13
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Brensolzulmon",
+        "fitness": 0,
+        "saude": 100,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Terra",
+        "fertilidade": "Incapaz",
+        "agressividade": 13,
+        "target_nome": null,
+        "posicao": {
+            "x": 1,
+            "y": 26
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Krakzenzerarth",
+        "fitness": 0,
+        "saude": 100,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Agua",
+        "fertilidade": "Incapaz",
+        "agressividade": 16,
+        "target_nome": null,
+        "posicao": {
+            "x": 17,
+            "y": 23
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Anlok",
+        "fitness": 0,
+        "saude": 70,
+        "energia": 200,
+        "idade": 1,
+        "estado": "Caminhando",
+        "tipo": "Fogo",
+        "fertilidade": "Incapaz",
+        "agressividade": 20,
+        "target_nome": null,
+        "posicao": {
+            "x": 45,
+            "y": 35
+        }
+    },
+    {
+        "tick": 0,
+        "nome": "Bargorlos",
+        "fitness": 4.0,
+        "saude": 70,
+        "energia": 198,
+        "idade": 2,
+        "estado": "Caminhando",
+        "tipo": "Agua",
+        "fertilidade": "Incapaz",
+        "agressividade": 19,
+        "target_nome": null,
+        "posicao": {
+            "x": 

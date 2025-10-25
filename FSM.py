@@ -184,7 +184,11 @@ class MoveToPartner(State):
 
     def __init__(self): super().__init__("Seguindo")
     def execute(self, meko):
-
+        
+        if meko.love is None:
+            meko.fsm.change_state(Wander())
+            return
+        
         x, y = meko.posicao
         tx, ty = meko.love.posicao
         distancia_passo = random.randint(0, max(1,meko.velocidade))
@@ -196,9 +200,8 @@ class MoveToPartner(State):
         if y < ty:
             y = min(y + distancia_passo, ty)
         elif y > ty:
-            y = max(y - distancia_passo, ty) # CORREÇÃO DE LÓGICA AQUI
+            y = max(y - distancia_passo, ty)
         
-        # CORREÇÃO CRÍTICA: Aplica o CLIPPING
         x = np.clip(x, 0, meko.ambiente.size - 1) 
         y = np.clip(y, 0, meko.ambiente.size - 1)
 
@@ -335,6 +338,11 @@ class Reproduce(State):
     def execute(self, meko):
         
         parceiro = meko.love
+        
+        if not meko.esta_vivo() or not parceiro or not parceiro.esta_vivo():
+            meko.love = None
+            meko.fsm.change_state(Wander())
+            return
         
         if meko.fertilidade != "Fertil":
             print(f"{meko.nome} não é mais fértil e desistiu de reproduzir.")

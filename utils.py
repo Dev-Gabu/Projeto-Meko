@@ -302,4 +302,3 @@ def importar_ambiente():
 
 def distancia(meko, outro):
         return np.linalg.norm(meko.posicao - np.array(outro.posicao))
-
