@@ -38,23 +38,23 @@ class SimulationLogger:
         if nome not in self.log_meko_individual:
             self.log_meko_individual[nome] = {
                 "Genoma": meko.genoma,
-                "Idade máxima": meko.idadeMAX,
+                "Idade maxima": meko.idadeMAX,
                 "Atributos": {
-                    "Força": meko.forca,
-                    "Resistência": meko.resistencia,
+                    "Forca": meko.forca,
+                    "Resistencia": meko.resistencia,
                     "Velocidade": meko.velocidade,
-                    "Visão": meko.visao,
+                    "Visao": meko.visao,
                     "Agressividade": meko.agressividade,
                     "Temperatura": meko.temperatura
                 },
-                "Histórico": [] 
+                "Historico": [] 
             }
         
         estado_fsm = meko.fsm.current_state.name
 
         evento_log = f"HP: {meko.saude}/{meko.saudeMAX}, E: {meko.energia}/{meko.energiaMAX}, Fit: {meko.fitness:.2f}\n {estado_fsm} em ({int(meko.posicao[0])}, {int(meko.posicao[1])})\n {meko.log}"
 
-        self.log_meko_individual[nome]["Histórico"].append({
+        self.log_meko_individual[nome]["Historico"].append({
             "tick": int(tick),
             "log": evento_log
         })

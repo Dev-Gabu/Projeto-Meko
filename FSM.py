@@ -116,7 +116,7 @@ class Combat(State):
     def execute(self, meko):
         
         if meko.target and meko.target.esta_vivo():
-            if random.random() > 1 / max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10))):
+            if random.random() > 2 / max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10))):
                 meko.fsm.change_state(Flee())
             else:
                 if meko.posicao == meko.target.posicao:

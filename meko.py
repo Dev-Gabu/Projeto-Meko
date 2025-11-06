@@ -148,8 +148,8 @@ class Meko:
             self.ambiente.morte_meko(self, causa='Idade')
             return False
         if self.energia <= 0:
-            if self.saude > 5:
-                self.saude -= 5
+            if self.saude > 10:
+                self.saude -= 10
             else:
                 self.ambiente.morte_meko(self, causa='Fome')
                 return False
