@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 from utils import gerar_nome, validar_genoma, distancia
-from settings import C_TEMPERATURA, CUSTO_TERRENO, EFEITOS, GRID_SIZE, PERDA_ENERGIA_POR_TICK, TEMPERATURA_MAP, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE
+from settings import CUSTO_TERRENO, EFEITOS, GRID_SIZE, PERDA_ENERGIA_POR_TICK, TERRENO_FLORESTA, TERRENO_MONTANHA, TERRENO_RIO, C_ENERGIA, C_SAUDE, C_LONGEVIDADE, PERCENTUAL_GESTAO
 from FSM import *
 from habilidades import *
 
@@ -20,14 +20,13 @@ class Meko:
         target (obj): O objeto que o Meko está atualmente buscando ou atacando.
         saude (int): O valor que representa a sobrevivência, diminui ao ser atacado ou quando a energia está baixa (fome). Quando chegar a zero ou menos, o indivíduo morre.
         energia(int): O valor que representa a capacidade de agir, sendo gasta com o tempo, ao se mover, ao usar habilidades em combate ou reprodução.
-        fertilidade(int): Representa a capacidade do indivíduo se reproduzir. Aumenta quanto mais próximo a temperatura do ambiente for do seu nível ideal e dependendo da sua idade.
+        fertilidade(int): Representa a capacidade do indivíduo se reproduzir. Pode ser "Incapaz", "Fertil" ou "Gestante".
         velocidade(int): Representa a distância que o indivíduo é capaz de se movimentar a cada iteração.
         peso(int): Afeta sua velocidade, força, resistência e gasto de energia.
         forca(int): Representa a quantidade de dano que o indivíduo pode causar em seus ataques.
         resistencia(int): Representa a quantidade de dano que o indivíduo pode reduzir dos ataques recebidos.
         visao(int): Representa a distância que o indivíduo pode ver outros objetos no ambiente.
-        agressividade(int): Representa a pré-disposição do indivíduo a atacar outros indivíduos.
-        temperatura(int): Representa a temperatura ideal para o indivíduo. Afeta a sua fertilidade e consumo de energia.
+        agressividade(int): Representa a pré-disposição do indivíduo a atacar outros indivíduos
 
     """
 # Criação do Meko
@@ -84,7 +83,6 @@ class Meko:
         self.visao = max(3, min(20, self.visao)) # Limita visão entre 3 e 20
         self.velocidade = max(1, min(10, self.velocidade)) # Limita velocidade entre 1 e 10
         self.agressividade = max(0, min(20, self.agressividade)) # Limita agressividade entre 0 e 20
-        self.temperatura = max(0, min(40, self.temperatura)) # Limita temperatura entre 0°C e 40°C
 
     def gerar_habilidades(self, genoma):
         categorias_genoma = [
@@ -101,7 +99,7 @@ class Meko:
 
         return habilidades_do_meko
 
-    def __init__(self, nome, genoma, ambiente = None, posicao = (0,0),idade = 200):
+    def __init__(self, nome, genoma, ambiente = None, posicao = (0,0),idade = 200, nome_mae=None, nome_pai=None, genoma_mae=None, genoma_pai=None):
         
         # Atributos de criação
         self.posicao = posicao
@@ -117,14 +115,20 @@ class Meko:
         self.energia = 500
         self.fitness = 0
         self.ambiente = ambiente
-        self.temperatura = 20
+        self.abates = 0
         self.log = []
         
         # Atributos de Reprodução
         self.fertilidade = "Incapaz"
-        self.tempo_gestacao = round(self.idadeMAX * 0.05)
+        self.tempo_gestacao = round(self.idadeMAX * PERCENTUAL_GESTAO)
         self.gestacao_contador = 0
         self.genoma_espera = None
+        
+        # Atributos de nascimento
+        self.nome_mae = nome_mae
+        self.nome_pai = nome_pai
+        self.genoma_mae = genoma_mae
+        self.genoma_pai = genoma_pai
 
         # Atributos de estado
         self.fsm = FSM(self)
@@ -143,40 +147,22 @@ class Meko:
         """
         Verifica se o Meko está vivo com base em sua saúde.
         """
+        if self.saude < 0: return False
         
-        if self.idade >= self.idadeMAX:
-            self.ambiente.morte_meko(self, causa='Idade')
-            return False
         if self.energia <= 0:
             if self.saude > 10:
                 self.saude -= 10
             else:
                 self.ambiente.morte_meko(self, causa='Fome')
                 return False
-        elif self.saude <= 0 and self.target and self.target.__class__.__name__ == "Meko" and self.target.target == self:
-            self.ambiente.morte_meko(self, causa='Combate')
+        if self.idade >= self.idadeMAX:
+            self.ambiente.morte_meko(self, causa='Idade')
             return False
+        
+        return True
             
-        return self.saude > 0
-
-    def calcular_estresse_termico(self):
-        """
-        Calcula a penalidade de saúde ou energia baseada na diferença de temperatura.
-        """
         
-        x, y = self.posicao
-        tipo_terreno = self.ambiente.matriz[x, y]
-        temp_ambiente = TEMPERATURA_MAP.get(tipo_terreno, 30) # Temperatura média do terreno atual
-
-        diferenca_temp = abs(self.temperatura - temp_ambiente) # Diferença absoluta entre o ideal do Meko e o ambiente
-
-        if diferenca_temp > 15:  # Penalidade: Aumenta drasticamente se a diferença for maior que 15 graus
-            # Penaliza a Energia
-            self.energia -= 1
-            print(f"{self.nome} sofre estresse térmico ({self.temperatura}°C - {temp_ambiente}°C).")
-        
-        return diferenca_temp
-    
+ 
     def calcular_fitness(self):
         """
         Calcula o Fitness baseado na Longevidade, Sobrevivência, Eficiência e Combate.
@@ -186,10 +172,9 @@ class Meko:
         longevidade_score = C_LONGEVIDADE * (self.idade / self.idadeMAX)
         saude_score = C_SAUDE * (self.saude / self.saudeMAX)
         energia_score = C_ENERGIA * (self.energia / self.energiaMAX)
-       # termico_score = C_TEMPERATURA * self.calcular_estresse_termico()
         
         SCORE_COMBATE = saude_score
-        SCORE_SOBREVIVENCIA = energia_score + longevidade_score# + termico_score
+        SCORE_SOBREVIVENCIA = energia_score + longevidade_score
 
         self.fitness = SCORE_COMBATE + SCORE_SOBREVIVENCIA
 
@@ -276,12 +261,9 @@ class Meko:
         self.gestacao_contador = 0
         self.genoma_espera = genoma_filhote
         self.fertilidade = "Gestante"
-        
-        if parceiro.love == self:
-            parceiro.love = None
-            
-        self.love = None
-        print(f"{self.nome} iniciou a gestação. Filhote nascerá em {int(self.idadeMAX * 0.05)} ticks.")
+
+        log = f"{self.nome} iniciou a gestação. Filhote nascerá em {int(self.idadeMAX * PERCENTUAL_GESTAO)} ticks."
+        self.log.append(log)
 
     def gerar_filhote(self, genoma_espera):
         """
@@ -295,11 +277,22 @@ class Meko:
             np.clip(self.posicao[0] + offset, 0, self.ambiente.size - 1),
             np.clip(self.posicao[1] + offset, 0, self.ambiente.size - 1)
         )
+
+        filhote = Meko(nome, genoma, ambiente=self.ambiente, posicao=posicao_nascimento, idade=200, nome_mae=self.nome, nome_pai=self.love.nome, genoma_mae=self.genoma, genoma_pai=self.love.genoma)
+
         
-        filhote = Meko(nome, genoma, ambiente=self.ambiente, posicao=posicao_nascimento, idade=200)
+        self.fertilidade = "Incapaz"
+        self.love.fertilidade = "Incapaz"
+        
+        if self.love.love == self:
+            self.love.love = None
+            
+        self.love = None
+        
         self.ambiente.adicionar_meko(filhote)
         mekos_list.append(filhote) 
-        print(f"Um novo Meko nasceu: {nome} na posição {filhote.posicao}")
+        log = f"Um novo Meko nasceu: {nome} na posição {filhote.posicao}"
+        self.log.append(log)
 # Função de atualização do Meko
     def update(self):
         """
@@ -326,6 +319,5 @@ class Meko:
                 self.gerar_filhote(self.genoma_espera)
                 self.gestacao_contador = 0
                 self.genoma_espera = None
-                self.fertilidade = "Incapaz"
 
         self.fsm.update()

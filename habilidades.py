@@ -24,7 +24,8 @@ class Habilidade():
 
     def execute(self, user, alvo):
         if self.custo_energia > user.energia:
-            print(f"{user.nome} não tem energia suficiente para usar {self.nome}.")
+            log = f"{user.nome} não tem energia suficiente para usar {self.nome}."
+            user.log.append(log)
             return False
         user.energia -= self.custo_energia
         return True
@@ -48,7 +49,8 @@ class HabilidadeLancarBrasas(Habilidade):
         dano_total = self.calcular_dano_base(atacante,alvo,self.dano) * self.calcular_fraqueza("Fogo",alvo.genoma[0])
         alvo.saude -= dano_total
         
-        print(f"{atacante.nome} usa Lançar Brasas em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Lançar Brasas em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeJatoDagua(Habilidade):
     """
@@ -65,7 +67,8 @@ class HabilidadeJatoDagua(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Jato d'Água em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Jato d'Água em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeEnterrar(Habilidade):
     """
@@ -83,7 +86,8 @@ class HabilidadeEnterrar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Enterrar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Enterrar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeSanguessuga(Habilidade):
     """
@@ -105,7 +109,8 @@ class HabilidadeSanguessuga(Habilidade):
         atacante.saude -= cura
 
         # Resposta
-        print(f"{atacante.nome} usa Sanguessuga em {alvo.nome}, causa {dano_total} de dano e recupera {cura} de saúde.")
+        log = f"{atacante.nome} usa Sanguessuga em {alvo.nome}, causa {dano_total} de dano e recupera {cura} de saúde."
+        atacante.log.append(log)
 
 class HabilidadeGarraNoturna(Habilidade):
     """
@@ -124,11 +129,13 @@ class HabilidadeGarraNoturna(Habilidade):
         # Efeito
         if random.random() > 0.2:
             dano_total *= 2
-            print(f"A habilidade Garra Noturna de {atacante.nome} causou um golpe crítico!")
+            log = f"A habilidade Garra Noturna de {atacante.nome} causou um golpe crítico!"
+            atacante.log.append(log)
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Garra Noturna em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Garra Noturna em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeCura(Habilidade):
     """
@@ -145,7 +152,8 @@ class HabilidadeCura(Habilidade):
         atacante.saude = max(atacante.saude + 20, atacante.saudeMAX)
 
         # Resposta
-        print(f"{atacante.nome} usa Cura e recupera 20 de saúde.")
+        log = f"{atacante.nome} usa Cura e recupera 20 de saúde."
+        atacante.log.append(log)
 
 ## POR TAMANHO
 
@@ -171,7 +179,8 @@ class HabilidadeEsquivar(Habilidade):
         atacante.posicao = (i, j)
         
         # Resposta
-        print(f"{atacante.nome} usa Esquivar e se move para {atacante.posicao}.")
+        log = f"{atacante.nome} usa Esquivar e se move para {atacante.posicao}."
+        atacante.log.append(log)
 
 class HabilidadeEsmagar(Habilidade):
     """
@@ -197,7 +206,8 @@ class HabilidadeEsmagar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Esmagar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Esmagar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeMordiscar(Habilidade):
     """
@@ -219,7 +229,8 @@ class HabilidadeMordiscar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Mordiscar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Mordiscar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeMordida(Habilidade):
     """
@@ -241,7 +252,8 @@ class HabilidadeMordida(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Mordida em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Mordida em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeMordidaAprimorada(Habilidade):
     """
@@ -262,7 +274,8 @@ class HabilidadeMordidaAprimorada(Habilidade):
         # Efeito
         alvo.saude -= dano_total
         # Resposta
-        print(f"{atacante.nome} usa Mordida Aprimorada em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Mordida Aprimorada em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadePrender(Habilidade):
     def __init__(self):
@@ -273,7 +286,8 @@ class HabilidadePrender(Habilidade):
             return
         # TODO Implementar Prender
         # Resposta
-        print(f"{atacante.nome} usa Prender em {alvo.nome}.")
+        log = f"{atacante.nome} usa Prender em {alvo.nome}."
+        atacante.log.append(log)
 
 class HabilidadeEscalar(Habilidade):
     def __init__(self):
@@ -284,7 +298,8 @@ class HabilidadeEscalar(Habilidade):
             return
         # TODO Implementar Escalar
         # Resposta
-        print(f"{atacante.nome} usa Escalar.")
+        log = f"{atacante.nome} usa Escalar."
+        atacante.log.append(log)
 
 class HabilidadeCorrer(Habilidade):
     def __init__(self):
@@ -295,7 +310,8 @@ class HabilidadeCorrer(Habilidade):
             return
         # TODO Implementar Correr
         # Resposta
-        print(f"{atacante.nome} usa Correr.")
+        log = f"{atacante.nome} usa Correr."
+        atacante.log.append(log)
 
 class HabilidadeArranhar(Habilidade):
     """
@@ -317,8 +333,9 @@ class HabilidadeArranhar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Arranhar em {alvo.nome} e causa {dano_total} de dano.")
-    
+        log = f"{atacante.nome} usa Arranhar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
+
 class HabilidadeRasgar(Habilidade):
     def __init__(self):
         super().__init__(custo_energia=5,nome="Rasgar")
@@ -337,7 +354,8 @@ class HabilidadeRasgar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Rasgar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Rasgar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeMartelar(Habilidade):
     def __init__(self):
@@ -358,7 +376,8 @@ class HabilidadeMartelar(Habilidade):
         #TODO Efeito Confusão
 
         # Resposta
-        print(f"{atacante.nome} usa Martelar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Martelar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeRetaliar(Habilidade):
     def __init__(self):
@@ -376,7 +395,8 @@ class HabilidadeRetaliar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Retaliar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Retaliar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 class HabilidadeNadar(Habilidade):
     def __init__(self):
@@ -387,7 +407,8 @@ class HabilidadeNadar(Habilidade):
             return
         # TODO Implementar Nadar
         # Resposta
-        print(f"{atacante.nome} usa Nadar.")
+        log = f"{atacante.nome} usa Nadar."
+        atacante.log.append(log)
 
 class HabilidadeDefender(Habilidade):
     def __init__(self):
@@ -398,7 +419,8 @@ class HabilidadeDefender(Habilidade):
             return
         # TODO Implementar Defender
         # Resposta
-        print(f"{atacante.nome} usa Defender.")
+        log = f"{atacante.nome} usa Defender."
+        atacante.log.append(log)
 
 class HabilidadeCamuflagem(Habilidade):
     def __init__(self):
@@ -409,7 +431,8 @@ class HabilidadeCamuflagem(Habilidade):
             return
         # TODO Efeito Camuflagem
         # Resposta
-        print(f"{atacante.nome} usa Camuflagem.")
+        log = f"{atacante.nome} usa Camuflagem."
+        atacante.log.append(log)
 
 class HabilidadeVeneno(Habilidade):
     def __init__(self):
@@ -420,7 +443,8 @@ class HabilidadeVeneno(Habilidade):
             return
         # TODO Efeito Veneno
         # Resposta
-        print(f"{atacante.nome} usa Veneno.")
+        log = f"{atacante.nome} usa Veneno."
+        atacante.log.append(log)
 
 class HabilidadeIluminar(Habilidade):
     def __init__(self):
@@ -431,7 +455,8 @@ class HabilidadeIluminar(Habilidade):
             return
         # TODO Efeito Cegueira
         # Resposta
-        print(f"{atacante.nome} usa Iluminar.")
+        log = f"{atacante.nome} usa Iluminar."
+        atacante.log.append(log)
 
 class HabilidadeEletrocutar(Habilidade):
     def __init__(self):
@@ -452,7 +477,8 @@ class HabilidadeEletrocutar(Habilidade):
         alvo.saude -= dano_total
 
         # Resposta
-        print(f"{atacante.nome} usa Eletrocutar em {alvo.nome} e causa {dano_total} de dano.")
+        log = f"{atacante.nome} usa Eletrocutar em {alvo.nome} e causa {dano_total} de dano."
+        atacante.log.append(log)
 
 
 HABILIDADES_POR_GENOMA = {

@@ -10,18 +10,7 @@ NORM = BoundaryNorm(bounds, CMAP.N)
 # AMBIENTE
 GRID_SIZE = 50
 SIMULATION_STEPS = 200
-SIMULATION_DELAY = 0.1
-
-## TEMERATURA AMBIENTAL
-TEMPERATURA_MAP = {
-    0: 40, # Deserto - 40°C Quente
-    1: 30, # Campo - 30°C Ameno
-    2: 25, # Floresta - 25°C Fresco
-    3: 20, # Montanha - 20°C Frio
-    4: 25, # Frutas - 25°C Fresco
-    5: 15} # Rios - 15°C Frio
-
-## CUSTOS DE MOVIMENTO
+SIMULATION_DELAY = 0
 
 CUSTO_TERRENO = {
     0: 0,   # Deserto (0) - Custo normal
@@ -45,6 +34,8 @@ meat_list = []
 # MEKOS
 
 PERDA_ENERGIA_POR_TICK = 0.5
+PERCENTUAL_GESTAO = 0.2
+CUSTO_REPRODUCAO = 80
 
 LOC_CARACTERISTICAS = {
 
@@ -131,7 +122,6 @@ CARACTERISTICAS = [
 C_LONGEVIDADE = 3
 C_SAUDE = 2
 C_ENERGIA = 2
-C_TEMPERATURA = 1
 
 ## HABILIDADES
 
@@ -172,12 +162,12 @@ TABELA_EFETIVIDADE_TIPO = {
 ## MODIFICADORES
 
 efeitos_tipo = {
-    "Fogo":         {"agressividade": 4, "forca": 5, "temperatura": 10},
-    "Agua":         {"velocidade": 1, "peso": -5, "temperatura": -5},
-    "Terra":        {"peso": 10, "forca": 3, "velocidade": -1, "resistencia": 3, "temperatura": 5},
-    "Inseto":       {"peso": -10, "velocidade": 2, "forca": -3, "resistencia": -3, "temperatura": 0},
-    "Sombra":       {"agressividade": 5, "velocidade": 2, "forca": 4, "temperatura": 0},
-    "Luz":          {"visao": 5, "velocidade": 2, "agressividade": -5, "temperatura": 5}
+    "Fogo":         {"agressividade": 4, "forca": 5},
+    "Agua":         {"velocidade": 1, "peso": -5},
+    "Terra":        {"peso": 10, "forca": 3, "velocidade": -1, "resistencia": 3},
+    "Inseto":       {"peso": -10, "velocidade": 2, "forca": -3, "resistencia": -3},
+    "Sombra":       {"agressividade": 5, "velocidade": 2, "forca": 4},
+    "Luz":          {"visao": 5, "velocidade": 2, "agressividade": -5}
 }
 
 efeitos_alimentacao = {
@@ -223,14 +213,14 @@ efeitos_cauda = {
     "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
     "Equilibrio":   {"peso": 2, "velocidade": 2, "resistencia": 3},
     "Ataque":       {"peso": 5, "velocidade": 1, "forca": 4},
-    "Aquatica":     {"peso": 3, "velocidade": 1, "resistencia": 2, "temperatura": -2}
+    "Aquatica":     {"peso": 3, "velocidade": 1, "resistencia": 2}
 }
 
 efeitos_defesa = {
-    "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0, "temperatura": 3},
-    "Carapaça":     {"peso": 10, "velocidade": -2, "resistencia": 5, "temperatura": -2},
-    "Escamas":      {"peso": 5, "velocidade": -1, "resistencia": 2, "temperatura": -5},
-    "Pelagem":      {"peso": 6, "velocidade": -1, "resistencia": 4, "temperatura": -5}
+    "Nenhuma":      {"peso": 0, "velocidade": 0, "resistencia": 0},
+    "Carapaça":     {"peso": 10, "velocidade": -2, "resistencia": 5},
+    "Escamas":      {"peso": 5, "velocidade": -1, "resistencia": 2},
+    "Pelagem":      {"peso": 6, "velocidade": -1, "resistencia": 4}
 }
 
 efeitos_extras = {

@@ -3,6 +3,7 @@ import os, random
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import time
 
 from matplotlib import gridspec, animation
 from tkinter import ttk, messagebox, filedialog
@@ -72,7 +73,7 @@ class MekoOverviewWindow(tk.Toplevel):
             f"FITNESS: {meko.fitness:.2f} | Estado: {meko.fsm.current_state.name}\n\n"
             f"HP: {meko.saude}/{meko.saudeMAX} | EN: {meko.energia}/{meko.energiaMAX}\n"
             f"Fr/Rs/Vs: {meko.forca}/{meko.resistencia}/{meko.visao}\n"
-            f"Ve/Ag/Pe,Tp: {meko.velocidade}/{meko.agressividade}/{meko.peso}/{meko.temperatura}\n"
+            f"Ve/Ag/Pe,Tp: {meko.velocidade}/{meko.agressividade}/{meko.peso}\n"
             )
         
             tk.Label(meko_frame, text=attr_text, justify=tk.LEFT, anchor="w").pack(padx=5, pady=5)
@@ -204,7 +205,7 @@ def GUI_Gera_Meko():
 
         # Atributos à esquerda
         row = 0
-        for attr in ["peso", "velocidade", "resistencia", "forca", "visao", "agressividade", "temperatura"]:
+        for attr in ["peso", "velocidade", "resistencia", "forca", "visao", "agressividade"]:
             valor = getattr(meko, attr)
             tk.Label(janela_atributos, text=f"{attr.capitalize()}: {valor}").grid(row=row, column=0, padx=10, pady=5, sticky="w")
             row += 1
@@ -265,7 +266,7 @@ def GUI_Gera_Meko():
 
         # Atributos à esquerda
         row = 0
-        for attr in ["peso", "velocidade", "resistencia", "forca", "visao", "agressividade", "temperatura"]:
+        for attr in ["peso", "velocidade", "resistencia", "forca", "visao", "agressividade"]:
             valor = getattr(meko, attr)
             tk.Label(janela_atributos, text=f"{attr.capitalize()}: {valor}").grid(row=row, column=0, padx=10, pady=5, sticky="w")
             row += 1
@@ -422,6 +423,8 @@ def GUI_Simulacao(N_mekos):
     global is_paused
     is_paused = False
     monitor_window = None
+    inicio = time.time()
+    sim_logger = SimulationLogger(filename_prefix="sim_controlada")
 
     def toggle_pause_monitor(event, mekos_list):
         global is_paused, monitor_window
@@ -445,7 +448,7 @@ def GUI_Simulacao(N_mekos):
 
     # --- Ambiente ---
     ambiente_base = importar_ambiente()
-    ambiente = Ambiente(GRID_SIZE, ambiente_base)
+    ambiente = Ambiente(GRID_SIZE, ambiente_base, sim_logger)
 
     #--- Frutas ---
     for i, linha in enumerate(ambiente.matriz):
@@ -507,16 +510,24 @@ def GUI_Simulacao(N_mekos):
         while is_paused:
             plt.pause(0.1)
 
-        print("\n Passo:", step)
         ambiente.tick()
         ambiente.renderizar(ax_sim)
 
         plt.draw()
         plt.pause(SIMULATION_DELAY)
+        
+    
+    sim_logger.log_geral_final(ambiente, inicio, time.time(),SIMULATION_STEPS,N_mekos.get())
+    sim_logger.export_logs()
+    
+    # GERAR E EXIBIR O RELATÓRIO FINAL
+    relatorio = sim_logger.gerar_relatorio_final(ambiente)
+    messagebox.showinfo("Relatório Final da Simulação", relatorio)
 
 def GUI_Aleatoria(n_mekos,size_var,loop_var):
     global is_paused, monitor_window, anim
     is_paused = False
+    inicio = time.time()
     monitor_window = None
     size = size_var.get()
     loop = loop_var.get()
@@ -629,6 +640,7 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     plt.show()
     
     sim_logger.export_logs()
+    sim_logger.log_geral_final(ambiente, inicio, time.time(),loop,n_mekos.get())
     
     # GERAR E EXIBIR O RELATÓRIO FINAL
     relatorio = sim_logger.gerar_relatorio_final(ambiente)

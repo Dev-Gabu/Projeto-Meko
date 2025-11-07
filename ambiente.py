@@ -26,6 +26,7 @@ class Ambiente:
         self.logger = logger
         
         #Variáveis de controle
+        self.nascimentos_tick = 0
         self.total_nascimentos = 0
         self.total_mortes_combate = 0
         self.total_mortes_fome = 0
@@ -35,6 +36,7 @@ class Ambiente:
         """
         Adiciona um objeto Meko à lista de mekos.
         """
+        self.nascimentos_tick += 1
     
         self.mekos.append(meko)
         
@@ -53,9 +55,9 @@ class Ambiente:
         if meko in mekos_list:
             mekos_list.remove(meko)
 
-        print(f"{meko.nome} morreu. Causa: {causa}.")
+        log = f"{meko.nome} morreu. Causa: {causa}."
+        meko.log.append(log)
 
-        
     def tick(self,tick):
         """
         Atualiza o estado do ambiente e dos mekos.
@@ -67,9 +69,6 @@ class Ambiente:
         Se estiver vivo, chama o método `update` do objeto `Meko`. Caso contrário, remove o objeto da lista local de mekos,
         cria um objeto `Carne` na posição do meko morto, adiciona-o à lista global de carnes, remove o Meko da lista global de mekos e imprime uma mensagem indicando que o Meko morreu.
         """
-        
-        print(f"\n--- Tick {tick} ---")
-        nascimentos_tick = 0
         mekos_remover = []
         
         for meko in self.mekos:
@@ -89,8 +88,13 @@ class Ambiente:
             if meko in self.mekos:
                 self.mekos.remove(meko)
         
-        self.total_nascimentos += nascimentos_tick
-        self.logger.log_geral_tick(tick, mekos_list, nascimentos_tick)
+        self.total_nascimentos += self.nascimentos_tick
+        # if len(self.mekos) <= 0:
+        #     self.logger.log_geral_final_.append({
+        #     "tick_extincao": tick,
+        # })
+        self.logger.log_geral_tick(tick, mekos_list, self.nascimentos_tick)
+        self.nascimentos_tick = 0
 
     def renderizar(self, ax):
         """

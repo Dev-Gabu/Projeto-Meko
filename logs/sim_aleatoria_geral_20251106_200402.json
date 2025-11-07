@@ -1,0 +1,6010 @@
+[
+    [
+        {
+            "tick": 0,
+            "populacao_total": 50,
+            "fitness_medio": 4.01,
+            "nascimentos": 50
+        },
+        {
+            "tick": 0,
+            "populacao_total": 50,
+            "fitness_medio": 4.02,
+            "nascimentos": 0
+        },
+        {
+            "tick": 1,
+            "populacao_total": 50,
+            "fitness_medio": 4.03,
+            "nascimentos": 0
+        },
+        {
+            "tick": 2,
+            "populacao_total": 50,
+            "fitness_medio": 4.03,
+            "nascimentos": 0
+        },
+        {
+            "tick": 3,
+            "populacao_total": 50,
+            "fitness_medio": 4.04,
+            "nascimentos": 0
+        },
+        {
+            "tick": 4,
+            "populacao_total": 50,
+            "fitness_medio": 4.05,
+            "nascimentos": 0
+        },
+        {
+            "tick": 5,
+            "populacao_total": 50,
+            "fitness_medio": 4.06,
+            "nascimentos": 0
+        },
+        {
+            "tick": 6,
+            "populacao_total": 50,
+            "fitness_medio": 4.07,
+            "nascimentos": 0
+        },
+        {
+            "tick": 7,
+            "populacao_total": 50,
+            "fitness_medio": 4.08,
+            "nascimentos": 0
+        },
+        {
+            "tick": 8,
+            "populacao_total": 50,
+            "fitness_medio": 4.08,
+            "nascimentos": 0
+        },
+        {
+            "tick": 9,
+            "populacao_total": 50,
+            "fitness_medio": 4.08,
+            "nascimentos": 0
+        },
+        {
+            "tick": 10,
+            "populacao_total": 50,
+            "fitness_medio": 4.09,
+            "nascimentos": 0
+        },
+        {
+            "tick": 11,
+            "populacao_total": 50,
+            "fitness_medio": 4.1,
+            "nascimentos": 0
+        },
+        {
+            "tick": 12,
+            "populacao_total": 50,
+            "fitness_medio": 4.1,
+            "nascimentos": 0
+        },
+        {
+            "tick": 13,
+            "populacao_total": 50,
+            "fitness_medio": 4.11,
+            "nascimentos": 0
+        },
+        {
+            "tick": 14,
+            "populacao_total": 50,
+            "fitness_medio": 4.12,
+            "nascimentos": 0
+        },
+        {
+            "tick": 15,
+            "populacao_total": 50,
+            "fitness_medio": 4.12,
+            "nascimentos": 0
+        },
+        {
+            "tick": 16,
+            "populacao_total": 50,
+            "fitness_medio": 4.13,
+            "nascimentos": 0
+        },
+        {
+            "tick": 17,
+            "populacao_total": 50,
+            "fitness_medio": 4.13,
+            "nascimentos": 0
+        },
+        {
+            "tick": 18,
+            "populacao_total": 50,
+            "fitness_medio": 4.14,
+            "nascimentos": 0
+        },
+        {
+            "tick": 19,
+            "populacao_total": 50,
+            "fitness_medio": 4.15,
+            "nascimentos": 0
+        },
+        {
+            "tick": 20,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 21,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 22,
+            "populacao_total": 50,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 23,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 24,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 25,
+            "populacao_total": 50,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 26,
+            "populacao_total": 50,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 27,
+            "populacao_total": 50,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 28,
+            "populacao_total": 50,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 29,
+            "populacao_total": 50,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 30,
+            "populacao_total": 50,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 31,
+            "populacao_total": 50,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 32,
+            "populacao_total": 50,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 33,
+            "populacao_total": 50,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 34,
+            "populacao_total": 50,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 35,
+            "populacao_total": 50,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 36,
+            "populacao_total": 50,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 37,
+            "populacao_total": 50,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 38,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 39,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 40,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 41,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 42,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 43,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 44,
+            "populacao_total": 50,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 45,
+            "populacao_total": 50,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 46,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 47,
+            "populacao_total": 50,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 48,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 49,
+            "populacao_total": 50,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 50,
+            "populacao_total": 50,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 51,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 52,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 53,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 54,
+            "populacao_total": 50,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 55,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 56,
+            "populacao_total": 50,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 57,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 58,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 59,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 60,
+            "populacao_total": 50,
+            "fitness_medio": 4.15,
+            "nascimentos": 0
+        },
+        {
+            "tick": 61,
+            "populacao_total": 50,
+            "fitness_medio": 4.15,
+            "nascimentos": 0
+        },
+        {
+            "tick": 62,
+            "populacao_total": 50,
+            "fitness_medio": 4.16,
+            "nascimentos": 0
+        },
+        {
+            "tick": 63,
+            "populacao_total": 50,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 64,
+            "populacao_total": 50,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 65,
+            "populacao_total": 49,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 66,
+            "populacao_total": 49,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 67,
+            "populacao_total": 49,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 68,
+            "populacao_total": 49,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 69,
+            "populacao_total": 49,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 70,
+            "populacao_total": 49,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 71,
+            "populacao_total": 49,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 72,
+            "populacao_total": 49,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 73,
+            "populacao_total": 49,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 74,
+            "populacao_total": 52,
+            "fitness_medio": 4.22,
+            "nascimentos": 3
+        },
+        {
+            "tick": 75,
+            "populacao_total": 52,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 76,
+            "populacao_total": 52,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 77,
+            "populacao_total": 55,
+            "fitness_medio": 4.21,
+            "nascimentos": 3
+        },
+        {
+            "tick": 78,
+            "populacao_total": 56,
+            "fitness_medio": 4.18,
+            "nascimentos": 1
+        },
+        {
+            "tick": 79,
+            "populacao_total": 57,
+            "fitness_medio": 4.17,
+            "nascimentos": 1
+        },
+        {
+            "tick": 80,
+            "populacao_total": 57,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 81,
+            "populacao_total": 58,
+            "fitness_medio": 4.19,
+            "nascimentos": 1
+        },
+        {
+            "tick": 82,
+            "populacao_total": 59,
+            "fitness_medio": 4.19,
+            "nascimentos": 1
+        },
+        {
+            "tick": 83,
+            "populacao_total": 59,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 84,
+            "populacao_total": 59,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 85,
+            "populacao_total": 60,
+            "fitness_medio": 4.2,
+            "nascimentos": 1
+        },
+        {
+            "tick": 86,
+            "populacao_total": 60,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 87,
+            "populacao_total": 60,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 88,
+            "populacao_total": 60,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 89,
+            "populacao_total": 60,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 90,
+            "populacao_total": 60,
+            "fitness_medio": 4.17,
+            "nascimentos": 0
+        },
+        {
+            "tick": 91,
+            "populacao_total": 61,
+            "fitness_medio": 4.18,
+            "nascimentos": 1
+        },
+        {
+            "tick": 92,
+            "populacao_total": 61,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 93,
+            "populacao_total": 62,
+            "fitness_medio": 4.19,
+            "nascimentos": 1
+        },
+        {
+            "tick": 94,
+            "populacao_total": 62,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 95,
+            "populacao_total": 63,
+            "fitness_medio": 4.2,
+            "nascimentos": 1
+        },
+        {
+            "tick": 96,
+            "populacao_total": 64,
+            "fitness_medio": 4.21,
+            "nascimentos": 1
+        },
+        {
+            "tick": 97,
+            "populacao_total": 64,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 98,
+            "populacao_total": 64,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 99,
+            "populacao_total": 64,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 100,
+            "populacao_total": 64,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 101,
+            "populacao_total": 64,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 102,
+            "populacao_total": 64,
+            "fitness_medio": 4.21,
+            "nascimentos": 0
+        },
+        {
+            "tick": 103,
+            "populacao_total": 63,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 104,
+            "populacao_total": 63,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 105,
+            "populacao_total": 62,
+            "fitness_medio": 4.27,
+            "nascimentos": 0
+        },
+        {
+            "tick": 106,
+            "populacao_total": 62,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 107,
+            "populacao_total": 62,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 108,
+            "populacao_total": 62,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 109,
+            "populacao_total": 62,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 110,
+            "populacao_total": 63,
+            "fitness_medio": 4.24,
+            "nascimentos": 1
+        },
+        {
+            "tick": 111,
+            "populacao_total": 63,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 112,
+            "populacao_total": 63,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 113,
+            "populacao_total": 63,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 114,
+            "populacao_total": 63,
+            "fitness_medio": 4.27,
+            "nascimentos": 0
+        },
+        {
+            "tick": 115,
+            "populacao_total": 63,
+            "fitness_medio": 4.28,
+            "nascimentos": 0
+        },
+        {
+            "tick": 116,
+            "populacao_total": 63,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 117,
+            "populacao_total": 64,
+            "fitness_medio": 4.3,
+            "nascimentos": 1
+        },
+        {
+            "tick": 118,
+            "populacao_total": 65,
+            "fitness_medio": 4.3,
+            "nascimentos": 1
+        },
+        {
+            "tick": 119,
+            "populacao_total": 65,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 120,
+            "populacao_total": 64,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 121,
+            "populacao_total": 64,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 122,
+            "populacao_total": 65,
+            "fitness_medio": 4.3,
+            "nascimentos": 1
+        },
+        {
+            "tick": 123,
+            "populacao_total": 64,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 124,
+            "populacao_total": 64,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 125,
+            "populacao_total": 64,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 126,
+            "populacao_total": 66,
+            "fitness_medio": 4.3,
+            "nascimentos": 2
+        },
+        {
+            "tick": 127,
+            "populacao_total": 67,
+            "fitness_medio": 4.29,
+            "nascimentos": 1
+        },
+        {
+            "tick": 128,
+            "populacao_total": 67,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 129,
+            "populacao_total": 67,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 130,
+            "populacao_total": 67,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 131,
+            "populacao_total": 67,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 132,
+            "populacao_total": 67,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 133,
+            "populacao_total": 66,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 134,
+            "populacao_total": 66,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 135,
+            "populacao_total": 67,
+            "fitness_medio": 4.34,
+            "nascimentos": 1
+        },
+        {
+            "tick": 136,
+            "populacao_total": 67,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 137,
+            "populacao_total": 68,
+            "fitness_medio": 4.35,
+            "nascimentos": 1
+        },
+        {
+            "tick": 138,
+            "populacao_total": 68,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 139,
+            "populacao_total": 68,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 140,
+            "populacao_total": 68,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 141,
+            "populacao_total": 70,
+            "fitness_medio": 4.34,
+            "nascimentos": 2
+        },
+        {
+            "tick": 142,
+            "populacao_total": 70,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 143,
+            "populacao_total": 70,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 144,
+            "populacao_total": 70,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 145,
+            "populacao_total": 69,
+            "fitness_medio": 4.39,
+            "nascimentos": 0
+        },
+        {
+            "tick": 146,
+            "populacao_total": 69,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 147,
+            "populacao_total": 70,
+            "fitness_medio": 4.39,
+            "nascimentos": 1
+        },
+        {
+            "tick": 148,
+            "populacao_total": 70,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 149,
+            "populacao_total": 70,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 150,
+            "populacao_total": 70,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 151,
+            "populacao_total": 70,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 152,
+            "populacao_total": 71,
+            "fitness_medio": 4.41,
+            "nascimentos": 1
+        },
+        {
+            "tick": 153,
+            "populacao_total": 71,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 154,
+            "populacao_total": 71,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 155,
+            "populacao_total": 71,
+            "fitness_medio": 4.38,
+            "nascimentos": 0
+        },
+        {
+            "tick": 156,
+            "populacao_total": 70,
+            "fitness_medio": 4.39,
+            "nascimentos": 0
+        },
+        {
+            "tick": 157,
+            "populacao_total": 70,
+            "fitness_medio": 4.4,
+            "nascimentos": 1
+        },
+        {
+            "tick": 158,
+            "populacao_total": 70,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 159,
+            "populacao_total": 70,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 160,
+            "populacao_total": 70,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 161,
+            "populacao_total": 71,
+            "fitness_medio": 4.42,
+            "nascimentos": 1
+        },
+        {
+            "tick": 162,
+            "populacao_total": 72,
+            "fitness_medio": 4.43,
+            "nascimentos": 1
+        },
+        {
+            "tick": 163,
+            "populacao_total": 72,
+            "fitness_medio": 4.43,
+            "nascimentos": 0
+        },
+        {
+            "tick": 164,
+            "populacao_total": 73,
+            "fitness_medio": 4.44,
+            "nascimentos": 1
+        },
+        {
+            "tick": 165,
+            "populacao_total": 73,
+            "fitness_medio": 4.44,
+            "nascimentos": 1
+        },
+        {
+            "tick": 166,
+            "populacao_total": 74,
+            "fitness_medio": 4.44,
+            "nascimentos": 1
+        },
+        {
+            "tick": 167,
+            "populacao_total": 75,
+            "fitness_medio": 4.45,
+            "nascimentos": 1
+        },
+        {
+            "tick": 168,
+            "populacao_total": 75,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 169,
+            "populacao_total": 75,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 170,
+            "populacao_total": 75,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 171,
+            "populacao_total": 75,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 172,
+            "populacao_total": 75,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 173,
+            "populacao_total": 76,
+            "fitness_medio": 4.48,
+            "nascimentos": 1
+        },
+        {
+            "tick": 174,
+            "populacao_total": 76,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 175,
+            "populacao_total": 76,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 176,
+            "populacao_total": 76,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 177,
+            "populacao_total": 76,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 178,
+            "populacao_total": 77,
+            "fitness_medio": 4.52,
+            "nascimentos": 1
+        },
+        {
+            "tick": 179,
+            "populacao_total": 78,
+            "fitness_medio": 4.51,
+            "nascimentos": 1
+        },
+        {
+            "tick": 180,
+            "populacao_total": 78,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 181,
+            "populacao_total": 78,
+            "fitness_medio": 4.52,
+            "nascimentos": 1
+        },
+        {
+            "tick": 182,
+            "populacao_total": 78,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 183,
+            "populacao_total": 78,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 184,
+            "populacao_total": 78,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 185,
+            "populacao_total": 78,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 186,
+            "populacao_total": 79,
+            "fitness_medio": 4.55,
+            "nascimentos": 1
+        },
+        {
+            "tick": 187,
+            "populacao_total": 80,
+            "fitness_medio": 4.55,
+            "nascimentos": 1
+        },
+        {
+            "tick": 188,
+            "populacao_total": 80,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 189,
+            "populacao_total": 79,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 190,
+            "populacao_total": 79,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 191,
+            "populacao_total": 79,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 192,
+            "populacao_total": 80,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 193,
+            "populacao_total": 81,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 194,
+            "populacao_total": 82,
+            "fitness_medio": 4.59,
+            "nascimentos": 1
+        },
+        {
+            "tick": 195,
+            "populacao_total": 81,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 196,
+            "populacao_total": 81,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 197,
+            "populacao_total": 81,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 198,
+            "populacao_total": 43,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 199,
+            "populacao_total": 43,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 200,
+            "populacao_total": 43,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 201,
+            "populacao_total": 43,
+            "fitness_medio": 4.22,
+            "nascimentos": 0
+        },
+        {
+            "tick": 202,
+            "populacao_total": 43,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 203,
+            "populacao_total": 43,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 204,
+            "populacao_total": 43,
+            "fitness_medio": 4.26,
+            "nascimentos": 0
+        },
+        {
+            "tick": 205,
+            "populacao_total": 43,
+            "fitness_medio": 4.26,
+            "nascimentos": 0
+        },
+        {
+            "tick": 206,
+            "populacao_total": 43,
+            "fitness_medio": 4.23,
+            "nascimentos": 0
+        },
+        {
+            "tick": 207,
+            "populacao_total": 43,
+            "fitness_medio": 4.18,
+            "nascimentos": 0
+        },
+        {
+            "tick": 208,
+            "populacao_total": 43,
+            "fitness_medio": 4.19,
+            "nascimentos": 0
+        },
+        {
+            "tick": 209,
+            "populacao_total": 43,
+            "fitness_medio": 4.2,
+            "nascimentos": 0
+        },
+        {
+            "tick": 210,
+            "populacao_total": 42,
+            "fitness_medio": 4.24,
+            "nascimentos": 0
+        },
+        {
+            "tick": 211,
+            "populacao_total": 42,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 212,
+            "populacao_total": 42,
+            "fitness_medio": 4.25,
+            "nascimentos": 0
+        },
+        {
+            "tick": 213,
+            "populacao_total": 42,
+            "fitness_medio": 4.26,
+            "nascimentos": 0
+        },
+        {
+            "tick": 214,
+            "populacao_total": 43,
+            "fitness_medio": 4.26,
+            "nascimentos": 1
+        },
+        {
+            "tick": 215,
+            "populacao_total": 43,
+            "fitness_medio": 4.27,
+            "nascimentos": 0
+        },
+        {
+            "tick": 216,
+            "populacao_total": 43,
+            "fitness_medio": 4.28,
+            "nascimentos": 0
+        },
+        {
+            "tick": 217,
+            "populacao_total": 43,
+            "fitness_medio": 4.28,
+            "nascimentos": 0
+        },
+        {
+            "tick": 218,
+            "populacao_total": 43,
+            "fitness_medio": 4.27,
+            "nascimentos": 0
+        },
+        {
+            "tick": 219,
+            "populacao_total": 43,
+            "fitness_medio": 4.28,
+            "nascimentos": 0
+        },
+        {
+            "tick": 220,
+            "populacao_total": 43,
+            "fitness_medio": 4.28,
+            "nascimentos": 0
+        },
+        {
+            "tick": 221,
+            "populacao_total": 43,
+            "fitness_medio": 4.29,
+            "nascimentos": 0
+        },
+        {
+            "tick": 222,
+            "populacao_total": 43,
+            "fitness_medio": 4.29,
+            "nascimentos": 0
+        },
+        {
+            "tick": 223,
+            "populacao_total": 43,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 224,
+            "populacao_total": 43,
+            "fitness_medio": 4.3,
+            "nascimentos": 0
+        },
+        {
+            "tick": 225,
+            "populacao_total": 43,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 226,
+            "populacao_total": 43,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 227,
+            "populacao_total": 43,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 228,
+            "populacao_total": 43,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 229,
+            "populacao_total": 43,
+            "fitness_medio": 4.29,
+            "nascimentos": 0
+        },
+        {
+            "tick": 230,
+            "populacao_total": 42,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 231,
+            "populacao_total": 43,
+            "fitness_medio": 4.34,
+            "nascimentos": 1
+        },
+        {
+            "tick": 232,
+            "populacao_total": 43,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 233,
+            "populacao_total": 43,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 234,
+            "populacao_total": 43,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 235,
+            "populacao_total": 43,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 236,
+            "populacao_total": 43,
+            "fitness_medio": 4.37,
+            "nascimentos": 0
+        },
+        {
+            "tick": 237,
+            "populacao_total": 43,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 238,
+            "populacao_total": 43,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 239,
+            "populacao_total": 43,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 240,
+            "populacao_total": 44,
+            "fitness_medio": 4.35,
+            "nascimentos": 1
+        },
+        {
+            "tick": 241,
+            "populacao_total": 44,
+            "fitness_medio": 4.33,
+            "nascimentos": 0
+        },
+        {
+            "tick": 242,
+            "populacao_total": 44,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 243,
+            "populacao_total": 44,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 244,
+            "populacao_total": 44,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 245,
+            "populacao_total": 45,
+            "fitness_medio": 4.31,
+            "nascimentos": 1
+        },
+        {
+            "tick": 246,
+            "populacao_total": 47,
+            "fitness_medio": 4.3,
+            "nascimentos": 2
+        },
+        {
+            "tick": 247,
+            "populacao_total": 47,
+            "fitness_medio": 4.31,
+            "nascimentos": 0
+        },
+        {
+            "tick": 248,
+            "populacao_total": 47,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 249,
+            "populacao_total": 47,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 250,
+            "populacao_total": 47,
+            "fitness_medio": 4.33,
+            "nascimentos": 0
+        },
+        {
+            "tick": 251,
+            "populacao_total": 47,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 252,
+            "populacao_total": 47,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 253,
+            "populacao_total": 47,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 254,
+            "populacao_total": 46,
+            "fitness_medio": 4.37,
+            "nascimentos": 0
+        },
+        {
+            "tick": 255,
+            "populacao_total": 46,
+            "fitness_medio": 4.38,
+            "nascimentos": 0
+        },
+        {
+            "tick": 256,
+            "populacao_total": 46,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 257,
+            "populacao_total": 47,
+            "fitness_medio": 4.4,
+            "nascimentos": 1
+        },
+        {
+            "tick": 258,
+            "populacao_total": 47,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 259,
+            "populacao_total": 48,
+            "fitness_medio": 4.41,
+            "nascimentos": 1
+        },
+        {
+            "tick": 260,
+            "populacao_total": 48,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 261,
+            "populacao_total": 48,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 262,
+            "populacao_total": 48,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 263,
+            "populacao_total": 49,
+            "fitness_medio": 4.4,
+            "nascimentos": 1
+        },
+        {
+            "tick": 264,
+            "populacao_total": 49,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 265,
+            "populacao_total": 49,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 266,
+            "populacao_total": 50,
+            "fitness_medio": 4.42,
+            "nascimentos": 1
+        },
+        {
+            "tick": 267,
+            "populacao_total": 50,
+            "fitness_medio": 4.43,
+            "nascimentos": 0
+        },
+        {
+            "tick": 268,
+            "populacao_total": 50,
+            "fitness_medio": 4.44,
+            "nascimentos": 0
+        },
+        {
+            "tick": 269,
+            "populacao_total": 51,
+            "fitness_medio": 4.44,
+            "nascimentos": 1
+        },
+        {
+            "tick": 270,
+            "populacao_total": 51,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 271,
+            "populacao_total": 51,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 272,
+            "populacao_total": 50,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 273,
+            "populacao_total": 48,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 274,
+            "populacao_total": 48,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 275,
+            "populacao_total": 48,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 276,
+            "populacao_total": 47,
+            "fitness_medio": 4.48,
+            "nascimentos": 1
+        },
+        {
+            "tick": 277,
+            "populacao_total": 46,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 278,
+            "populacao_total": 44,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 279,
+            "populacao_total": 44,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 280,
+            "populacao_total": 43,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 281,
+            "populacao_total": 42,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 282,
+            "populacao_total": 42,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 283,
+            "populacao_total": 42,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 284,
+            "populacao_total": 41,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 285,
+            "populacao_total": 41,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 286,
+            "populacao_total": 41,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 287,
+            "populacao_total": 41,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 288,
+            "populacao_total": 41,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 289,
+            "populacao_total": 41,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 290,
+            "populacao_total": 40,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 291,
+            "populacao_total": 40,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 292,
+            "populacao_total": 39,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 293,
+            "populacao_total": 39,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 294,
+            "populacao_total": 39,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 295,
+            "populacao_total": 38,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 296,
+            "populacao_total": 38,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 297,
+            "populacao_total": 38,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 298,
+            "populacao_total": 38,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 299,
+            "populacao_total": 38,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 300,
+            "populacao_total": 38,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 301,
+            "populacao_total": 39,
+            "fitness_medio": 4.54,
+            "nascimentos": 1
+        },
+        {
+            "tick": 302,
+            "populacao_total": 39,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 303,
+            "populacao_total": 39,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 304,
+            "populacao_total": 39,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 305,
+            "populacao_total": 39,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 306,
+            "populacao_total": 39,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 307,
+            "populacao_total": 39,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 308,
+            "populacao_total": 39,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 309,
+            "populacao_total": 39,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 310,
+            "populacao_total": 40,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 311,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 312,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 313,
+            "populacao_total": 41,
+            "fitness_medio": 4.62,
+            "nascimentos": 1
+        },
+        {
+            "tick": 314,
+            "populacao_total": 41,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 315,
+            "populacao_total": 41,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 316,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 317,
+            "populacao_total": 40,
+            "fitness_medio": 4.6,
+            "nascimentos": 1
+        },
+        {
+            "tick": 318,
+            "populacao_total": 40,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 319,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 320,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 321,
+            "populacao_total": 41,
+            "fitness_medio": 4.58,
+            "nascimentos": 2
+        },
+        {
+            "tick": 322,
+            "populacao_total": 41,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 323,
+            "populacao_total": 41,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 324,
+            "populacao_total": 41,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 325,
+            "populacao_total": 39,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 326,
+            "populacao_total": 39,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 327,
+            "populacao_total": 39,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 328,
+            "populacao_total": 40,
+            "fitness_medio": 4.59,
+            "nascimentos": 1
+        },
+        {
+            "tick": 329,
+            "populacao_total": 39,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 330,
+            "populacao_total": 39,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 331,
+            "populacao_total": 40,
+            "fitness_medio": 4.59,
+            "nascimentos": 1
+        },
+        {
+            "tick": 332,
+            "populacao_total": 40,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 333,
+            "populacao_total": 40,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 334,
+            "populacao_total": 40,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 335,
+            "populacao_total": 40,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 336,
+            "populacao_total": 39,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 337,
+            "populacao_total": 39,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 338,
+            "populacao_total": 39,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 339,
+            "populacao_total": 39,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 340,
+            "populacao_total": 37,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 341,
+            "populacao_total": 37,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 342,
+            "populacao_total": 37,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 343,
+            "populacao_total": 37,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 344,
+            "populacao_total": 37,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 345,
+            "populacao_total": 37,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 346,
+            "populacao_total": 36,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 347,
+            "populacao_total": 36,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 348,
+            "populacao_total": 36,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 349,
+            "populacao_total": 36,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 350,
+            "populacao_total": 36,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 351,
+            "populacao_total": 36,
+            "fitness_medio": 4.68,
+            "nascimentos": 1
+        },
+        {
+            "tick": 352,
+            "populacao_total": 36,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 353,
+            "populacao_total": 36,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 354,
+            "populacao_total": 37,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 355,
+            "populacao_total": 37,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 356,
+            "populacao_total": 36,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 357,
+            "populacao_total": 36,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 358,
+            "populacao_total": 36,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 359,
+            "populacao_total": 36,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 360,
+            "populacao_total": 35,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 361,
+            "populacao_total": 34,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 362,
+            "populacao_total": 34,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 363,
+            "populacao_total": 33,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 364,
+            "populacao_total": 32,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 365,
+            "populacao_total": 31,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 366,
+            "populacao_total": 30,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 367,
+            "populacao_total": 30,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 368,
+            "populacao_total": 30,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 369,
+            "populacao_total": 30,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 370,
+            "populacao_total": 30,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 371,
+            "populacao_total": 30,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 372,
+            "populacao_total": 29,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 373,
+            "populacao_total": 29,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 374,
+            "populacao_total": 29,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 375,
+            "populacao_total": 29,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 376,
+            "populacao_total": 30,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 377,
+            "populacao_total": 29,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 378,
+            "populacao_total": 28,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 379,
+            "populacao_total": 28,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 380,
+            "populacao_total": 27,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 381,
+            "populacao_total": 27,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 382,
+            "populacao_total": 27,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 383,
+            "populacao_total": 27,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 384,
+            "populacao_total": 27,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 385,
+            "populacao_total": 27,
+            "fitness_medio": 4.64,
+            "nascimentos": 1
+        },
+        {
+            "tick": 386,
+            "populacao_total": 26,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 387,
+            "populacao_total": 26,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 388,
+            "populacao_total": 26,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 389,
+            "populacao_total": 26,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 390,
+            "populacao_total": 27,
+            "fitness_medio": 4.64,
+            "nascimentos": 1
+        },
+        {
+            "tick": 391,
+            "populacao_total": 26,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 392,
+            "populacao_total": 25,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 393,
+            "populacao_total": 25,
+            "fitness_medio": 4.6,
+            "nascimentos": 1
+        },
+        {
+            "tick": 394,
+            "populacao_total": 25,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 395,
+            "populacao_total": 25,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 396,
+            "populacao_total": 25,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 397,
+            "populacao_total": 25,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 398,
+            "populacao_total": 25,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 399,
+            "populacao_total": 25,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 400,
+            "populacao_total": 25,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 401,
+            "populacao_total": 25,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 402,
+            "populacao_total": 25,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 403,
+            "populacao_total": 25,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 404,
+            "populacao_total": 26,
+            "fitness_medio": 4.69,
+            "nascimentos": 1
+        },
+        {
+            "tick": 405,
+            "populacao_total": 26,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 406,
+            "populacao_total": 27,
+            "fitness_medio": 4.67,
+            "nascimentos": 1
+        },
+        {
+            "tick": 407,
+            "populacao_total": 27,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 408,
+            "populacao_total": 27,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 409,
+            "populacao_total": 27,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 410,
+            "populacao_total": 27,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 411,
+            "populacao_total": 27,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 412,
+            "populacao_total": 27,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 413,
+            "populacao_total": 26,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 414,
+            "populacao_total": 26,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 415,
+            "populacao_total": 26,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 416,
+            "populacao_total": 26,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 417,
+            "populacao_total": 26,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 418,
+            "populacao_total": 26,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 419,
+            "populacao_total": 26,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 420,
+            "populacao_total": 26,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 421,
+            "populacao_total": 26,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 422,
+            "populacao_total": 26,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 423,
+            "populacao_total": 26,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 424,
+            "populacao_total": 26,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 425,
+            "populacao_total": 26,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 426,
+            "populacao_total": 26,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 427,
+            "populacao_total": 26,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 428,
+            "populacao_total": 26,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 429,
+            "populacao_total": 27,
+            "fitness_medio": 4.79,
+            "nascimentos": 1
+        },
+        {
+            "tick": 430,
+            "populacao_total": 26,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 431,
+            "populacao_total": 26,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 432,
+            "populacao_total": 26,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 433,
+            "populacao_total": 26,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 434,
+            "populacao_total": 26,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 435,
+            "populacao_total": 26,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 436,
+            "populacao_total": 26,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 437,
+            "populacao_total": 26,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 438,
+            "populacao_total": 26,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 439,
+            "populacao_total": 25,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 440,
+            "populacao_total": 25,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 441,
+            "populacao_total": 25,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 442,
+            "populacao_total": 25,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 443,
+            "populacao_total": 25,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 444,
+            "populacao_total": 24,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 445,
+            "populacao_total": 23,
+            "fitness_medio": 4.6,
+            "nascimentos": 1
+        },
+        {
+            "tick": 446,
+            "populacao_total": 23,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 447,
+            "populacao_total": 23,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 448,
+            "populacao_total": 23,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 449,
+            "populacao_total": 23,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 450,
+            "populacao_total": 23,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 451,
+            "populacao_total": 23,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 452,
+            "populacao_total": 23,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 453,
+            "populacao_total": 23,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 454,
+            "populacao_total": 22,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 455,
+            "populacao_total": 22,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 456,
+            "populacao_total": 21,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 457,
+            "populacao_total": 21,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 458,
+            "populacao_total": 20,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 459,
+            "populacao_total": 20,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 460,
+            "populacao_total": 20,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 461,
+            "populacao_total": 20,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 462,
+            "populacao_total": 19,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 463,
+            "populacao_total": 19,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 464,
+            "populacao_total": 20,
+            "fitness_medio": 4.57,
+            "nascimentos": 1
+        },
+        {
+            "tick": 465,
+            "populacao_total": 20,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 466,
+            "populacao_total": 20,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 467,
+            "populacao_total": 20,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 468,
+            "populacao_total": 19,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 469,
+            "populacao_total": 19,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 470,
+            "populacao_total": 19,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 471,
+            "populacao_total": 19,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 472,
+            "populacao_total": 19,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 473,
+            "populacao_total": 19,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 474,
+            "populacao_total": 19,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 475,
+            "populacao_total": 18,
+            "fitness_medio": 4.45,
+            "nascimentos": 0
+        },
+        {
+            "tick": 476,
+            "populacao_total": 19,
+            "fitness_medio": 4.44,
+            "nascimentos": 1
+        },
+        {
+            "tick": 477,
+            "populacao_total": 19,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 478,
+            "populacao_total": 19,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 479,
+            "populacao_total": 19,
+            "fitness_medio": 4.43,
+            "nascimentos": 0
+        },
+        {
+            "tick": 480,
+            "populacao_total": 19,
+            "fitness_medio": 4.44,
+            "nascimentos": 0
+        },
+        {
+            "tick": 481,
+            "populacao_total": 19,
+            "fitness_medio": 4.45,
+            "nascimentos": 0
+        },
+        {
+            "tick": 482,
+            "populacao_total": 19,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 483,
+            "populacao_total": 19,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 484,
+            "populacao_total": 19,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 485,
+            "populacao_total": 19,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 486,
+            "populacao_total": 19,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 487,
+            "populacao_total": 19,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 488,
+            "populacao_total": 19,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 489,
+            "populacao_total": 19,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 490,
+            "populacao_total": 19,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 491,
+            "populacao_total": 19,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 492,
+            "populacao_total": 19,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 493,
+            "populacao_total": 19,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 494,
+            "populacao_total": 19,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 495,
+            "populacao_total": 19,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 496,
+            "populacao_total": 19,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 497,
+            "populacao_total": 20,
+            "fitness_medio": 4.6,
+            "nascimentos": 1
+        },
+        {
+            "tick": 498,
+            "populacao_total": 20,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 499,
+            "populacao_total": 20,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 500,
+            "populacao_total": 19,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 501,
+            "populacao_total": 19,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 502,
+            "populacao_total": 19,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 503,
+            "populacao_total": 20,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 504,
+            "populacao_total": 21,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 505,
+            "populacao_total": 21,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 506,
+            "populacao_total": 21,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 507,
+            "populacao_total": 21,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 508,
+            "populacao_total": 21,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 509,
+            "populacao_total": 21,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 510,
+            "populacao_total": 21,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 511,
+            "populacao_total": 21,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 512,
+            "populacao_total": 20,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 513,
+            "populacao_total": 20,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 514,
+            "populacao_total": 21,
+            "fitness_medio": 4.7,
+            "nascimentos": 1
+        },
+        {
+            "tick": 515,
+            "populacao_total": 21,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 516,
+            "populacao_total": 20,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 517,
+            "populacao_total": 20,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 518,
+            "populacao_total": 20,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 519,
+            "populacao_total": 20,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 520,
+            "populacao_total": 18,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 521,
+            "populacao_total": 18,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 522,
+            "populacao_total": 18,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 523,
+            "populacao_total": 18,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 524,
+            "populacao_total": 18,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 525,
+            "populacao_total": 19,
+            "fitness_medio": 4.7,
+            "nascimentos": 1
+        },
+        {
+            "tick": 526,
+            "populacao_total": 19,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 527,
+            "populacao_total": 18,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 528,
+            "populacao_total": 18,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 529,
+            "populacao_total": 18,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 530,
+            "populacao_total": 17,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 531,
+            "populacao_total": 17,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 532,
+            "populacao_total": 17,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 533,
+            "populacao_total": 17,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 534,
+            "populacao_total": 17,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 535,
+            "populacao_total": 17,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 536,
+            "populacao_total": 17,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 537,
+            "populacao_total": 17,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 538,
+            "populacao_total": 17,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 539,
+            "populacao_total": 17,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 540,
+            "populacao_total": 17,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 541,
+            "populacao_total": 17,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 542,
+            "populacao_total": 17,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 543,
+            "populacao_total": 17,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 544,
+            "populacao_total": 17,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 545,
+            "populacao_total": 17,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 546,
+            "populacao_total": 17,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 547,
+            "populacao_total": 17,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 548,
+            "populacao_total": 17,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 549,
+            "populacao_total": 17,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 550,
+            "populacao_total": 16,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 551,
+            "populacao_total": 16,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 552,
+            "populacao_total": 16,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 553,
+            "populacao_total": 15,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 554,
+            "populacao_total": 15,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 555,
+            "populacao_total": 15,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 556,
+            "populacao_total": 15,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 557,
+            "populacao_total": 15,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 558,
+            "populacao_total": 15,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 559,
+            "populacao_total": 15,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 560,
+            "populacao_total": 15,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 561,
+            "populacao_total": 15,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 562,
+            "populacao_total": 15,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 563,
+            "populacao_total": 15,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 564,
+            "populacao_total": 15,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 565,
+            "populacao_total": 17,
+            "fitness_medio": 4.69,
+            "nascimentos": 2
+        },
+        {
+            "tick": 566,
+            "populacao_total": 17,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 567,
+            "populacao_total": 17,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 568,
+            "populacao_total": 17,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 569,
+            "populacao_total": 17,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 570,
+            "populacao_total": 17,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 571,
+            "populacao_total": 17,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 572,
+            "populacao_total": 17,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 573,
+            "populacao_total": 17,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 574,
+            "populacao_total": 17,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 575,
+            "populacao_total": 16,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 576,
+            "populacao_total": 16,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 577,
+            "populacao_total": 16,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 578,
+            "populacao_total": 16,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 579,
+            "populacao_total": 16,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 580,
+            "populacao_total": 16,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 581,
+            "populacao_total": 16,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 582,
+            "populacao_total": 17,
+            "fitness_medio": 4.73,
+            "nascimentos": 1
+        },
+        {
+            "tick": 583,
+            "populacao_total": 17,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 584,
+            "populacao_total": 17,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 585,
+            "populacao_total": 17,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 586,
+            "populacao_total": 18,
+            "fitness_medio": 4.6,
+            "nascimentos": 1
+        },
+        {
+            "tick": 587,
+            "populacao_total": 18,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 588,
+            "populacao_total": 18,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 589,
+            "populacao_total": 18,
+            "fitness_medio": 4.54,
+            "nascimentos": 1
+        },
+        {
+            "tick": 590,
+            "populacao_total": 18,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 591,
+            "populacao_total": 18,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 592,
+            "populacao_total": 17,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 593,
+            "populacao_total": 17,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 594,
+            "populacao_total": 17,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 595,
+            "populacao_total": 17,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 596,
+            "populacao_total": 17,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 597,
+            "populacao_total": 17,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 598,
+            "populacao_total": 17,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 599,
+            "populacao_total": 17,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 600,
+            "populacao_total": 17,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 601,
+            "populacao_total": 17,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 602,
+            "populacao_total": 17,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 603,
+            "populacao_total": 16,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 604,
+            "populacao_total": 16,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 605,
+            "populacao_total": 15,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 606,
+            "populacao_total": 15,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 607,
+            "populacao_total": 15,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 608,
+            "populacao_total": 15,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 609,
+            "populacao_total": 15,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 610,
+            "populacao_total": 15,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 611,
+            "populacao_total": 15,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 612,
+            "populacao_total": 15,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 613,
+            "populacao_total": 15,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 614,
+            "populacao_total": 15,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 615,
+            "populacao_total": 15,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 616,
+            "populacao_total": 15,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 617,
+            "populacao_total": 15,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 618,
+            "populacao_total": 15,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 619,
+            "populacao_total": 15,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 620,
+            "populacao_total": 15,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 621,
+            "populacao_total": 15,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 622,
+            "populacao_total": 15,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 623,
+            "populacao_total": 15,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 624,
+            "populacao_total": 15,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 625,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 626,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 627,
+            "populacao_total": 15,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 628,
+            "populacao_total": 14,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 629,
+            "populacao_total": 14,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 630,
+            "populacao_total": 15,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 631,
+            "populacao_total": 15,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 632,
+            "populacao_total": 15,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 633,
+            "populacao_total": 15,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 634,
+            "populacao_total": 15,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 635,
+            "populacao_total": 15,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 636,
+            "populacao_total": 15,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 637,
+            "populacao_total": 15,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 638,
+            "populacao_total": 15,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 639,
+            "populacao_total": 15,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 640,
+            "populacao_total": 15,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 641,
+            "populacao_total": 15,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 642,
+            "populacao_total": 15,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 643,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 644,
+            "populacao_total": 14,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 645,
+            "populacao_total": 14,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 646,
+            "populacao_total": 14,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 647,
+            "populacao_total": 14,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 648,
+            "populacao_total": 14,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 649,
+            "populacao_total": 14,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 650,
+            "populacao_total": 14,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 651,
+            "populacao_total": 14,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 652,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 653,
+            "populacao_total": 14,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 654,
+            "populacao_total": 14,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 655,
+            "populacao_total": 14,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 656,
+            "populacao_total": 14,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 657,
+            "populacao_total": 14,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 658,
+            "populacao_total": 14,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 659,
+            "populacao_total": 14,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 660,
+            "populacao_total": 14,
+            "fitness_medio": 4.89,
+            "nascimentos": 0
+        },
+        {
+            "tick": 661,
+            "populacao_total": 14,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 662,
+            "populacao_total": 14,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 663,
+            "populacao_total": 13,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 664,
+            "populacao_total": 13,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 665,
+            "populacao_total": 13,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 666,
+            "populacao_total": 13,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 667,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 1
+        },
+        {
+            "tick": 668,
+            "populacao_total": 14,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 669,
+            "populacao_total": 14,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 670,
+            "populacao_total": 14,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 671,
+            "populacao_total": 14,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 672,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 1
+        },
+        {
+            "tick": 673,
+            "populacao_total": 15,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 674,
+            "populacao_total": 15,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 675,
+            "populacao_total": 14,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 676,
+            "populacao_total": 14,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 677,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 678,
+            "populacao_total": 14,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 679,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 680,
+            "populacao_total": 14,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 681,
+            "populacao_total": 14,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 682,
+            "populacao_total": 14,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 683,
+            "populacao_total": 14,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 684,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 1
+        },
+        {
+            "tick": 685,
+            "populacao_total": 15,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 686,
+            "populacao_total": 15,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 687,
+            "populacao_total": 15,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 688,
+            "populacao_total": 15,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 689,
+            "populacao_total": 15,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 690,
+            "populacao_total": 15,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 691,
+            "populacao_total": 15,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 692,
+            "populacao_total": 15,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 693,
+            "populacao_total": 15,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 694,
+            "populacao_total": 15,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 695,
+            "populacao_total": 15,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 696,
+            "populacao_total": 14,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 697,
+            "populacao_total": 14,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 698,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 699,
+            "populacao_total": 14,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 700,
+            "populacao_total": 14,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 701,
+            "populacao_total": 15,
+            "fitness_medio": 4.78,
+            "nascimentos": 1
+        },
+        {
+            "tick": 702,
+            "populacao_total": 14,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 703,
+            "populacao_total": 13,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 704,
+            "populacao_total": 13,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 705,
+            "populacao_total": 13,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 706,
+            "populacao_total": 13,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 707,
+            "populacao_total": 13,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 708,
+            "populacao_total": 13,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 709,
+            "populacao_total": 13,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 710,
+            "populacao_total": 13,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 711,
+            "populacao_total": 13,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 712,
+            "populacao_total": 13,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 713,
+            "populacao_total": 12,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 714,
+            "populacao_total": 12,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 715,
+            "populacao_total": 12,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 716,
+            "populacao_total": 12,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 717,
+            "populacao_total": 12,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 718,
+            "populacao_total": 12,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 719,
+            "populacao_total": 12,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 720,
+            "populacao_total": 12,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 721,
+            "populacao_total": 12,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 722,
+            "populacao_total": 12,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 723,
+            "populacao_total": 12,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 724,
+            "populacao_total": 11,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 725,
+            "populacao_total": 11,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 726,
+            "populacao_total": 11,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 727,
+            "populacao_total": 11,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 728,
+            "populacao_total": 11,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 729,
+            "populacao_total": 12,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 730,
+            "populacao_total": 12,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 731,
+            "populacao_total": 12,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 732,
+            "populacao_total": 12,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 733,
+            "populacao_total": 12,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 734,
+            "populacao_total": 13,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 735,
+            "populacao_total": 13,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 736,
+            "populacao_total": 13,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 737,
+            "populacao_total": 13,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 738,
+            "populacao_total": 13,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 739,
+            "populacao_total": 13,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 740,
+            "populacao_total": 13,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 741,
+            "populacao_total": 13,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 742,
+            "populacao_total": 13,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 743,
+            "populacao_total": 13,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 744,
+            "populacao_total": 14,
+            "fitness_medio": 4.63,
+            "nascimentos": 1
+        },
+        {
+            "tick": 745,
+            "populacao_total": 14,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 746,
+            "populacao_total": 14,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 747,
+            "populacao_total": 14,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 748,
+            "populacao_total": 14,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 749,
+            "populacao_total": 14,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 750,
+            "populacao_total": 14,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 751,
+            "populacao_total": 14,
+            "fitness_medio": 4.69,
+            "nascimentos": 0
+        },
+        {
+            "tick": 752,
+            "populacao_total": 14,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 753,
+            "populacao_total": 14,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 754,
+            "populacao_total": 14,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 755,
+            "populacao_total": 14,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 756,
+            "populacao_total": 14,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 757,
+            "populacao_total": 14,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 758,
+            "populacao_total": 14,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 759,
+            "populacao_total": 14,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 760,
+            "populacao_total": 15,
+            "fitness_medio": 4.71,
+            "nascimentos": 1
+        },
+        {
+            "tick": 761,
+            "populacao_total": 15,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 762,
+            "populacao_total": 15,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 763,
+            "populacao_total": 15,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 764,
+            "populacao_total": 13,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 765,
+            "populacao_total": 13,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 766,
+            "populacao_total": 13,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 767,
+            "populacao_total": 13,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 768,
+            "populacao_total": 13,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 769,
+            "populacao_total": 13,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 770,
+            "populacao_total": 13,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 771,
+            "populacao_total": 13,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 772,
+            "populacao_total": 13,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 773,
+            "populacao_total": 13,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 774,
+            "populacao_total": 13,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 775,
+            "populacao_total": 13,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 776,
+            "populacao_total": 13,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 777,
+            "populacao_total": 13,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 778,
+            "populacao_total": 13,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 779,
+            "populacao_total": 13,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 780,
+            "populacao_total": 13,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 781,
+            "populacao_total": 12,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 782,
+            "populacao_total": 13,
+            "fitness_medio": 4.59,
+            "nascimentos": 1
+        },
+        {
+            "tick": 783,
+            "populacao_total": 12,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 784,
+            "populacao_total": 12,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 785,
+            "populacao_total": 11,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 786,
+            "populacao_total": 11,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 787,
+            "populacao_total": 11,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 788,
+            "populacao_total": 10,
+            "fitness_medio": 4.29,
+            "nascimentos": 0
+        },
+        {
+            "tick": 789,
+            "populacao_total": 10,
+            "fitness_medio": 4.32,
+            "nascimentos": 0
+        },
+        {
+            "tick": 790,
+            "populacao_total": 10,
+            "fitness_medio": 4.33,
+            "nascimentos": 0
+        },
+        {
+            "tick": 791,
+            "populacao_total": 10,
+            "fitness_medio": 4.33,
+            "nascimentos": 0
+        },
+        {
+            "tick": 792,
+            "populacao_total": 10,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 793,
+            "populacao_total": 10,
+            "fitness_medio": 4.34,
+            "nascimentos": 0
+        },
+        {
+            "tick": 794,
+            "populacao_total": 10,
+            "fitness_medio": 4.35,
+            "nascimentos": 0
+        },
+        {
+            "tick": 795,
+            "populacao_total": 10,
+            "fitness_medio": 4.36,
+            "nascimentos": 0
+        },
+        {
+            "tick": 796,
+            "populacao_total": 10,
+            "fitness_medio": 4.37,
+            "nascimentos": 0
+        },
+        {
+            "tick": 797,
+            "populacao_total": 10,
+            "fitness_medio": 4.38,
+            "nascimentos": 0
+        },
+        {
+            "tick": 798,
+            "populacao_total": 10,
+            "fitness_medio": 4.39,
+            "nascimentos": 0
+        },
+        {
+            "tick": 799,
+            "populacao_total": 10,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 800,
+            "populacao_total": 10,
+            "fitness_medio": 4.43,
+            "nascimentos": 0
+        },
+        {
+            "tick": 801,
+            "populacao_total": 10,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 802,
+            "populacao_total": 10,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 803,
+            "populacao_total": 10,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 804,
+            "populacao_total": 10,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 805,
+            "populacao_total": 10,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 806,
+            "populacao_total": 10,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 807,
+            "populacao_total": 10,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 808,
+            "populacao_total": 10,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 809,
+            "populacao_total": 10,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 810,
+            "populacao_total": 10,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 811,
+            "populacao_total": 10,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 812,
+            "populacao_total": 10,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 813,
+            "populacao_total": 11,
+            "fitness_medio": 4.51,
+            "nascimentos": 1
+        },
+        {
+            "tick": 814,
+            "populacao_total": 11,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 815,
+            "populacao_total": 11,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 816,
+            "populacao_total": 11,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 817,
+            "populacao_total": 11,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 818,
+            "populacao_total": 11,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 819,
+            "populacao_total": 11,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 820,
+            "populacao_total": 11,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 821,
+            "populacao_total": 11,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 822,
+            "populacao_total": 11,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 823,
+            "populacao_total": 12,
+            "fitness_medio": 4.54,
+            "nascimentos": 1
+        },
+        {
+            "tick": 824,
+            "populacao_total": 12,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 825,
+            "populacao_total": 13,
+            "fitness_medio": 4.51,
+            "nascimentos": 1
+        },
+        {
+            "tick": 826,
+            "populacao_total": 13,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 827,
+            "populacao_total": 13,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 828,
+            "populacao_total": 13,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 829,
+            "populacao_total": 12,
+            "fitness_medio": 4.44,
+            "nascimentos": 0
+        },
+        {
+            "tick": 830,
+            "populacao_total": 12,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 831,
+            "populacao_total": 12,
+            "fitness_medio": 4.38,
+            "nascimentos": 0
+        },
+        {
+            "tick": 832,
+            "populacao_total": 12,
+            "fitness_medio": 4.39,
+            "nascimentos": 0
+        },
+        {
+            "tick": 833,
+            "populacao_total": 12,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 834,
+            "populacao_total": 12,
+            "fitness_medio": 4.4,
+            "nascimentos": 0
+        },
+        {
+            "tick": 835,
+            "populacao_total": 12,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 836,
+            "populacao_total": 12,
+            "fitness_medio": 4.42,
+            "nascimentos": 0
+        },
+        {
+            "tick": 837,
+            "populacao_total": 12,
+            "fitness_medio": 4.43,
+            "nascimentos": 0
+        },
+        {
+            "tick": 838,
+            "populacao_total": 12,
+            "fitness_medio": 4.44,
+            "nascimentos": 0
+        },
+        {
+            "tick": 839,
+            "populacao_total": 12,
+            "fitness_medio": 4.45,
+            "nascimentos": 0
+        },
+        {
+            "tick": 840,
+            "populacao_total": 12,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 841,
+            "populacao_total": 12,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 842,
+            "populacao_total": 12,
+            "fitness_medio": 4.48,
+            "nascimentos": 0
+        },
+        {
+            "tick": 843,
+            "populacao_total": 12,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 844,
+            "populacao_total": 12,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 845,
+            "populacao_total": 12,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 846,
+            "populacao_total": 12,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 847,
+            "populacao_total": 12,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 848,
+            "populacao_total": 12,
+            "fitness_medio": 4.55,
+            "nascimentos": 0
+        },
+        {
+            "tick": 849,
+            "populacao_total": 12,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 850,
+            "populacao_total": 12,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 851,
+            "populacao_total": 12,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 852,
+            "populacao_total": 12,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 853,
+            "populacao_total": 12,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 854,
+            "populacao_total": 12,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 855,
+            "populacao_total": 12,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 856,
+            "populacao_total": 12,
+            "fitness_medio": 4.62,
+            "nascimentos": 0
+        },
+        {
+            "tick": 857,
+            "populacao_total": 12,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 858,
+            "populacao_total": 12,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 859,
+            "populacao_total": 12,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 860,
+            "populacao_total": 12,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 861,
+            "populacao_total": 12,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 862,
+            "populacao_total": 12,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 863,
+            "populacao_total": 12,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 864,
+            "populacao_total": 12,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 865,
+            "populacao_total": 12,
+            "fitness_medio": 4.56,
+            "nascimentos": 0
+        },
+        {
+            "tick": 866,
+            "populacao_total": 10,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 867,
+            "populacao_total": 10,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 868,
+            "populacao_total": 10,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 869,
+            "populacao_total": 11,
+            "fitness_medio": 4.61,
+            "nascimentos": 1
+        },
+        {
+            "tick": 870,
+            "populacao_total": 12,
+            "fitness_medio": 4.55,
+            "nascimentos": 1
+        },
+        {
+            "tick": 871,
+            "populacao_total": 11,
+            "fitness_medio": 4.46,
+            "nascimentos": 0
+        },
+        {
+            "tick": 872,
+            "populacao_total": 11,
+            "fitness_medio": 4.41,
+            "nascimentos": 0
+        },
+        {
+            "tick": 873,
+            "populacao_total": 11,
+            "fitness_medio": 4.44,
+            "nascimentos": 0
+        },
+        {
+            "tick": 874,
+            "populacao_total": 11,
+            "fitness_medio": 4.47,
+            "nascimentos": 0
+        },
+        {
+            "tick": 875,
+            "populacao_total": 11,
+            "fitness_medio": 4.49,
+            "nascimentos": 0
+        },
+        {
+            "tick": 876,
+            "populacao_total": 11,
+            "fitness_medio": 4.5,
+            "nascimentos": 0
+        },
+        {
+            "tick": 877,
+            "populacao_total": 11,
+            "fitness_medio": 4.51,
+            "nascimentos": 0
+        },
+        {
+            "tick": 878,
+            "populacao_total": 11,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 879,
+            "populacao_total": 11,
+            "fitness_medio": 4.54,
+            "nascimentos": 0
+        },
+        {
+            "tick": 880,
+            "populacao_total": 11,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 881,
+            "populacao_total": 11,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 882,
+            "populacao_total": 11,
+            "fitness_medio": 4.61,
+            "nascimentos": 0
+        },
+        {
+            "tick": 883,
+            "populacao_total": 10,
+            "fitness_medio": 4.52,
+            "nascimentos": 0
+        },
+        {
+            "tick": 884,
+            "populacao_total": 10,
+            "fitness_medio": 4.53,
+            "nascimentos": 0
+        },
+        {
+            "tick": 885,
+            "populacao_total": 10,
+            "fitness_medio": 4.57,
+            "nascimentos": 0
+        },
+        {
+            "tick": 886,
+            "populacao_total": 10,
+            "fitness_medio": 4.58,
+            "nascimentos": 0
+        },
+        {
+            "tick": 887,
+            "populacao_total": 10,
+            "fitness_medio": 4.59,
+            "nascimentos": 0
+        },
+        {
+            "tick": 888,
+            "populacao_total": 10,
+            "fitness_medio": 4.6,
+            "nascimentos": 0
+        },
+        {
+            "tick": 889,
+            "populacao_total": 10,
+            "fitness_medio": 4.63,
+            "nascimentos": 0
+        },
+        {
+            "tick": 890,
+            "populacao_total": 10,
+            "fitness_medio": 4.64,
+            "nascimentos": 0
+        },
+        {
+            "tick": 891,
+            "populacao_total": 10,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 892,
+            "populacao_total": 10,
+            "fitness_medio": 4.65,
+            "nascimentos": 0
+        },
+        {
+            "tick": 893,
+            "populacao_total": 10,
+            "fitness_medio": 4.66,
+            "nascimentos": 0
+        },
+        {
+            "tick": 894,
+            "populacao_total": 10,
+            "fitness_medio": 4.67,
+            "nascimentos": 0
+        },
+        {
+            "tick": 895,
+            "populacao_total": 10,
+            "fitness_medio": 4.68,
+            "nascimentos": 0
+        },
+        {
+            "tick": 896,
+            "populacao_total": 10,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 897,
+            "populacao_total": 10,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 898,
+            "populacao_total": 10,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 899,
+            "populacao_total": 10,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 900,
+            "populacao_total": 10,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 901,
+            "populacao_total": 10,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 902,
+            "populacao_total": 10,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 903,
+            "populacao_total": 10,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 904,
+            "populacao_total": 10,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 905,
+            "populacao_total": 10,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 906,
+            "populacao_total": 10,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 907,
+            "populacao_total": 10,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 908,
+            "populacao_total": 10,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 909,
+            "populacao_total": 10,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 910,
+            "populacao_total": 11,
+            "fitness_medio": 4.75,
+            "nascimentos": 1
+        },
+        {
+            "tick": 911,
+            "populacao_total": 12,
+            "fitness_medio": 4.69,
+            "nascimentos": 1
+        },
+        {
+            "tick": 912,
+            "populacao_total": 12,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 913,
+            "populacao_total": 12,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 914,
+            "populacao_total": 12,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 915,
+            "populacao_total": 12,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 916,
+            "populacao_total": 12,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 917,
+            "populacao_total": 12,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 918,
+            "populacao_total": 12,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 919,
+            "populacao_total": 12,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 920,
+            "populacao_total": 12,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 921,
+            "populacao_total": 12,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 922,
+            "populacao_total": 12,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 923,
+            "populacao_total": 12,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 924,
+            "populacao_total": 12,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 925,
+            "populacao_total": 12,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 926,
+            "populacao_total": 12,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 927,
+            "populacao_total": 12,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 928,
+            "populacao_total": 11,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 929,
+            "populacao_total": 11,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 930,
+            "populacao_total": 11,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 931,
+            "populacao_total": 11,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 932,
+            "populacao_total": 11,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 933,
+            "populacao_total": 10,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 934,
+            "populacao_total": 10,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 935,
+            "populacao_total": 10,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 936,
+            "populacao_total": 10,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 937,
+            "populacao_total": 10,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 938,
+            "populacao_total": 10,
+            "fitness_medio": 4.87,
+            "nascimentos": 0
+        },
+        {
+            "tick": 939,
+            "populacao_total": 10,
+            "fitness_medio": 4.87,
+            "nascimentos": 0
+        },
+        {
+            "tick": 940,
+            "populacao_total": 10,
+            "fitness_medio": 4.88,
+            "nascimentos": 0
+        },
+        {
+            "tick": 941,
+            "populacao_total": 10,
+            "fitness_medio": 4.89,
+            "nascimentos": 0
+        },
+        {
+            "tick": 942,
+            "populacao_total": 10,
+            "fitness_medio": 4.9,
+            "nascimentos": 0
+        },
+        {
+            "tick": 943,
+            "populacao_total": 9,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 944,
+            "populacao_total": 9,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 945,
+            "populacao_total": 10,
+            "fitness_medio": 4.75,
+            "nascimentos": 1
+        },
+        {
+            "tick": 946,
+            "populacao_total": 10,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 947,
+            "populacao_total": 10,
+            "fitness_medio": 4.7,
+            "nascimentos": 0
+        },
+        {
+            "tick": 948,
+            "populacao_total": 10,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 949,
+            "populacao_total": 10,
+            "fitness_medio": 4.71,
+            "nascimentos": 0
+        },
+        {
+            "tick": 950,
+            "populacao_total": 10,
+            "fitness_medio": 4.72,
+            "nascimentos": 0
+        },
+        {
+            "tick": 951,
+            "populacao_total": 10,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 952,
+            "populacao_total": 10,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 953,
+            "populacao_total": 10,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 954,
+            "populacao_total": 10,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 955,
+            "populacao_total": 10,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 956,
+            "populacao_total": 10,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 957,
+            "populacao_total": 10,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 958,
+            "populacao_total": 10,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 959,
+            "populacao_total": 9,
+            "fitness_medio": 4.73,
+            "nascimentos": 0
+        },
+        {
+            "tick": 960,
+            "populacao_total": 9,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 961,
+            "populacao_total": 9,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 962,
+            "populacao_total": 9,
+            "fitness_medio": 4.76,
+            "nascimentos": 0
+        },
+        {
+            "tick": 963,
+            "populacao_total": 9,
+            "fitness_medio": 4.77,
+            "nascimentos": 0
+        },
+        {
+            "tick": 964,
+            "populacao_total": 9,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 965,
+            "populacao_total": 9,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 966,
+            "populacao_total": 9,
+            "fitness_medio": 4.79,
+            "nascimentos": 0
+        },
+        {
+            "tick": 967,
+            "populacao_total": 9,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 968,
+            "populacao_total": 9,
+            "fitness_medio": 4.74,
+            "nascimentos": 0
+        },
+        {
+            "tick": 969,
+            "populacao_total": 9,
+            "fitness_medio": 4.75,
+            "nascimentos": 0
+        },
+        {
+            "tick": 970,
+            "populacao_total": 9,
+            "fitness_medio": 4.78,
+            "nascimentos": 0
+        },
+        {
+            "tick": 971,
+            "populacao_total": 9,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 972,
+            "populacao_total": 9,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 973,
+            "populacao_total": 9,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 974,
+            "populacao_total": 9,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 975,
+            "populacao_total": 9,
+            "fitness_medio": 4.89,
+            "nascimentos": 0
+        },
+        {
+            "tick": 976,
+            "populacao_total": 9,
+            "fitness_medio": 4.92,
+            "nascimentos": 0
+        },
+        {
+            "tick": 977,
+            "populacao_total": 9,
+            "fitness_medio": 4.93,
+            "nascimentos": 0
+        },
+        {
+            "tick": 978,
+            "populacao_total": 9,
+            "fitness_medio": 4.94,
+            "nascimentos": 0
+        },
+        {
+            "tick": 979,
+            "populacao_total": 9,
+            "fitness_medio": 4.95,
+            "nascimentos": 0
+        },
+        {
+            "tick": 980,
+            "populacao_total": 9,
+            "fitness_medio": 4.96,
+            "nascimentos": 0
+        },
+        {
+            "tick": 981,
+            "populacao_total": 8,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 982,
+            "populacao_total": 8,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 983,
+            "populacao_total": 8,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 984,
+            "populacao_total": 8,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 985,
+            "populacao_total": 8,
+            "fitness_medio": 4.87,
+            "nascimentos": 0
+        },
+        {
+            "tick": 986,
+            "populacao_total": 9,
+            "fitness_medio": 4.79,
+            "nascimentos": 1
+        },
+        {
+            "tick": 987,
+            "populacao_total": 9,
+            "fitness_medio": 4.8,
+            "nascimentos": 0
+        },
+        {
+            "tick": 988,
+            "populacao_total": 9,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 989,
+            "populacao_total": 9,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 990,
+            "populacao_total": 9,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 991,
+            "populacao_total": 9,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 992,
+            "populacao_total": 9,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        },
+        {
+            "tick": 993,
+            "populacao_total": 9,
+            "fitness_medio": 4.86,
+            "nascimentos": 0
+        },
+        {
+            "tick": 994,
+            "populacao_total": 9,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 995,
+            "populacao_total": 9,
+            "fitness_medio": 4.81,
+            "nascimentos": 0
+        },
+        {
+            "tick": 996,
+            "populacao_total": 9,
+            "fitness_medio": 4.82,
+            "nascimentos": 0
+        },
+        {
+            "tick": 997,
+            "populacao_total": 9,
+            "fitness_medio": 4.83,
+            "nascimentos": 0
+        },
+        {
+            "tick": 998,
+            "populacao_total": 9,
+            "fitness_medio": 4.84,
+            "nascimentos": 0
+        },
+        {
+            "tick": 999,
+            "populacao_total": 9,
+            "fitness_medio": 4.85,
+            "nascimentos": 0
+        }
+    ]
+]

@@ -2,7 +2,7 @@ import numpy as np
 
 import random
 from ambiente import Fruta, Carne
-from settings import fruit_list, mekos_list, meat_list
+from settings import fruit_list, mekos_list, meat_list, CUSTO_REPRODUCAO
 from habilidades import *
 from utils import distancia
 
@@ -67,15 +67,16 @@ class Defend(State):
     def __init__(self): super().__init__("Defender")
     def execute(self, meko):
         log = f"{meko.nome} foi atacado e vai se defender."
-        print(log)
         meko.log.append(log)
 
-        if random.random() < (meko.agressividade - max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10)))) / 20:
+        prob_lutar = 0.5 + (0.25 * ((meko.saude / meko.saudeMAX) + (1.0 - meko.agressividade / 20)))
+        
+        if random.random() > prob_lutar:
             meko.fsm.change_state(Flee())
         else:
             meko.fsm.change_state(Combat())
             log = f"{meko.nome} decide lutar."
-            print(log)
+
             meko.log.append(log)
 
 class Flee(State):
@@ -92,7 +93,6 @@ class Flee(State):
     def __init__(self): super().__init__("Fugir")
     def execute(self, meko):
         log = f"{meko.nome} foge para sobreviver!"
-        print(log)
         meko.log.append(log)
 
         meko.target = None
@@ -116,23 +116,30 @@ class Combat(State):
     def execute(self, meko):
         
         if meko.target and meko.target.esta_vivo():
-            if random.random() > 2 / max(1, min(10, (11 - (meko.saude / meko.saudeMAX) *10))):
+            prob_lutar = 0.5 + (0.25 * ((meko.saude / meko.saudeMAX) + (1.0 - meko.agressividade / 20)))
+            if random.random() < prob_lutar:
                 meko.fsm.change_state(Flee())
             else:
                 if meko.posicao == meko.target.posicao:
                     log = f"{meko.nome} está em combate com {meko.target.nome}!"
-                    print(log)
+        
                     meko.log.append(log)
                     escolha = random.choice(meko.habilidades)
                     escolha.execute(meko, meko.target)
+                    if( not meko.target.esta_vivo()):
+                        log = f"{meko.target.nome} foi derrotado por {meko.nome}!"
+            
+                        meko.ambiente.morte_meko(meko.target,'Combate')
+                        meko.abates += 1
+                        meko.log.append(log)
                 elif distancia(meko, meko.target) <= meko.visao: 
                     log = f"{meko.nome} persegue {meko.target.nome}!"
-                    print(log)
+        
                     meko.log.append(log)
                     meko.fsm.change_state(MoveToTarget())
                 else:
                     log = f"{meko.nome} decide não perseguir {meko.target.nome}."
-                    print(log)
+        
                     meko.log.append(log)
                     meko.fsm.change_state(Wander())
                     meko.target = None
@@ -176,19 +183,19 @@ class MoveToTarget(State):
         if meko.posicao == meko.target.posicao:
             if meko.target.__class__.__name__ == "Carne" or meko.target.__class__.__name__ == "Fruta":
                 log = f"{meko.nome} chegou ao alvo e agora vai comer."
-                print(log)
+    
                 meko.log.append(log)
                 meko.fsm.change_state(Eat())
             else:
                 log = f"{meko.nome} chegou ao alvo e agora vai combater."
-                print(log)
+    
                 meko.log.append(log)
                 meko.target.fsm.change_state(Defend())
                 meko.fsm.change_state(Combat())
                 meko.target.target = meko
         else:
             log = f"{meko.nome} se move em direção ao alvo."
-            print(log)
+
             meko.log.append(log)
             
 class MoveToPartner(State):
@@ -227,12 +234,12 @@ class MoveToPartner(State):
 
         if meko.posicao == meko.love.posicao:
             log = f"{meko.nome} encontrou seu par e agora vai tentar acasalar."
-            print(log)
+
             meko.log.append(log)
             meko.fsm.change_state(Reproduce())
         else:
             log = f"{meko.nome} se move em direção ao alvo."
-            print(log)
+
             meko.log.append(log)
 
 class HuntCreature(State):
@@ -248,7 +255,6 @@ class HuntCreature(State):
     def __init__(self): super().__init__("Caçar criatura")
     def execute(self, meko):
         log = f"{meko.nome} procura uma criatura para caçar."
-        print(log)
         meko.log.append(log)
 
         meko.random_step()
@@ -256,7 +262,7 @@ class HuntCreature(State):
         if meko.search(mekos_list, 'Meko') is not None:
             meko.target = meko.search(mekos_list, 'Meko')
             log = f"{meko.nome} encontrou {meko.target.nome} em {meko.target.posicao} e começa a caçá-lo."
-            print(log)
+
             meko.log.append(log)
             meko.fsm.change_state(MoveToTarget())
 
@@ -275,7 +281,6 @@ class SearchMeat(State):
     def __init__(self): super().__init__("Buscando carne")
     def execute(self, meko):
         log = f"{meko.nome} procura carne no ambiente."
-        print(log)
         meko.log.append(log)
 
         meko.random_step()
@@ -287,7 +292,7 @@ class SearchMeat(State):
             meko.target = alvo
 
             log = f"{meko.nome} encontrou carne em {alvo.posicao} e vai até lá."
-            print(log)
+
             meko.log.append(log)
         elif random.random() < meko.agressividade / 30:
             meko.fsm.change_state(HuntCreature())
@@ -306,7 +311,6 @@ class SearchFruits(State):
     def __init__(self): super().__init__("Buscando frutas")
     def execute(self, meko):
         log = f"{meko.nome} procura frutas no ambiente."
-        print(log)
         meko.log.append(log)
 
         meko.random_step()
@@ -318,7 +322,7 @@ class SearchFruits(State):
             meko.target = alvo
 
             log = f"{meko.nome} encontrou fruta em {alvo.posicao} e vai até lá."
-            print(log)
+
             meko.log.append(log)
         if meko.genoma[1] == "Onivoro" and random.random() > 0.5:
             meko.fsm.change_state(SearchMeat())
@@ -340,7 +344,6 @@ class Wander(State):
     def execute(self, meko):
 
         log = f"{meko.nome} vagueia sem rumo."
-        print(log)
         meko.log.append(log)
         meko.random_step()
 
@@ -356,6 +359,8 @@ class Wander(State):
                     meko.fsm.change_state(SearchMeat())
         elif meko.fertilidade == "Fertil" and random.random() < 0.3:
             meko.fsm.change_state(FindPartner())
+        if random.random() < meko.agressividade / 40:
+            meko.fsm.change_state(HuntCreature())
 
 class Reproduce(State):
     
@@ -383,21 +388,21 @@ class Reproduce(State):
         if meko.fertilidade != "Fertil":
 
             log = f"{meko.nome} não é mais fértil e desistiu de reproduzir."
-            print(log)
+
             meko.log.append(log)
             meko.fsm.change_state(Wander())
             meko.love = None
             return
+        
         if parceiro is None or parceiro.fertilidade != "Fertil":
             log = f"{meko.nome} desistiu, {parceiro.nome if parceiro else 'o alvo'} não está disponível."
-            print(log)
+
             meko.log.append(log)
             meko.fsm.change_state(Wander())
             meko.love = None
             return
 
         log = f"{meko.nome} e {meko.love.nome} começam a acasalar."
-        print(log)
         meko.log.append(log)
         parceiro = meko.love
         fitness_meko = meko.fitness
@@ -420,8 +425,8 @@ class Reproduce(State):
             genoma_filhote.append(gene_escolhido)
         meko.iniciar_gestacao([genoma_filhote,nome], parceiro)
 
-        meko.energia -= 50
-        parceiro.energia -= 50
+        meko.energia -= CUSTO_REPRODUCAO
+        parceiro.energia -= CUSTO_REPRODUCAO
         meko.fsm.change_state(Wander())
             
 class FindPartner(State):
@@ -438,7 +443,6 @@ class FindPartner(State):
     def __init__(self): super().__init__("Buscar parceiro")
     def execute(self, meko):
         log = f"{meko.nome} procura um parceiro para acasalar."
-        print(log)
         meko.log.append(log)
 
         meko.random_step()
@@ -448,13 +452,13 @@ class FindPartner(State):
         if candidato is not None:
             meko.love = candidato
             log = f"{meko.nome} se interessou por {meko.love.nome} e tenta acasalar."
-            print(log)
+
             meko.log.append(log)
             meko.fsm.change_state(MoveToPartner())
         elif meko.energia <= meko.energiaMAX * 0.5:
             meko.fsm.change_state(Wander())
             log = f"{meko.nome} desistiu de procurar um parceiro."
-            print(log)
+
             meko.log.append(log)
 
 class Eat(State):
@@ -471,7 +475,6 @@ class Eat(State):
     def __init__(self): super().__init__("Comendo")
     def execute(self, meko):
         log = f"{meko.nome} está se alimentando."
-        print(log)
         meko.log.append(log)
         if isinstance(meko.target, Fruta) and meko.genoma[1] == "Herbivoro" or meko.genoma[1] == "Onivoro":
             if meko.target.quant > 0:
@@ -479,7 +482,7 @@ class Eat(State):
                 meko.energia = min(meko.energia + 100, meko.energiaMAX)
             else:
                 log = f"{meko.target.nome} foi consumida."
-                print(log)
+    
                 meko.log.append(log)
                 meko.fsm.change_state(Wander())
         elif isinstance(meko.target, Carne) and meko.genoma[1] == "Carnivoro" or meko.genoma[1] == "Onivoro":
@@ -488,12 +491,12 @@ class Eat(State):
                 meko.energia  = min(meko.energia + 50, meko.energiaMAX)
             else:
                 log = f"{meko.target.nome} foi consumida."
-                print(log)
+    
                 meko.log.append(log)
                 meko.fsm.change_state(Wander())
         else:
             log = f"{meko.nome} não sabe o que fazer com {meko.target.nome}."
-            print(log)
+
             meko.log.append(log)
 
         if meko.energia >= meko.energiaMAX * 0.9 or meko.target.quant <= 0:

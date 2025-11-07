@@ -5,12 +5,35 @@ from datetime import datetime
 class SimulationLogger:
     def __init__(self, filename_prefix="sim_log"):
         self.log_geral = []
+        self.log_geral_final_ = []
         self.log_meko_individual = {}
         self.start_time = datetime.now()
         self.filename_prefix = filename_prefix
         
         # Cria a pasta logs se não existir
         os.makedirs("logs", exist_ok=True)
+        
+    def log_geral_final(self, ambiente, inicio, fim, loop=None, n_mekos=None):
+        """Registra os dados finais da simulação."""
+        total_time = fim - inicio
+        total_ticks = loop if loop is not None else len(self.log_geral)
+        tamanho_grid = ambiente.size
+        populacao_inicial = n_mekos
+        populacao_final = self.log_geral[-1]['populacao_total']
+        total_nascimentos = ambiente.total_nascimentos
+        total_mortes_combate = ambiente.total_mortes_combate
+        total_mortes_fome = ambiente.total_mortes_fome
+        total_mortes_idade = ambiente.total_mortes_idade
+
+        self.log_geral_final_.append({
+            "tempo_simulacao": total_time,
+            "tick": total_ticks,
+            "populacao_final": populacao_final,
+            "total_nascimentos": total_nascimentos,
+            "total_mortes_combate": total_mortes_combate,
+            "total_mortes_fome": total_mortes_fome,
+            "total_mortes_idade": total_mortes_idade
+        })
 
     def log_geral_tick(self, tick, mekos_list, nascimentos_tick=0):
         """Coleta e armazena dados macro da simulação."""
@@ -25,8 +48,7 @@ class SimulationLogger:
             "tick": tick,
             "populacao_total": pop_count,
             "fitness_medio": round(avg_fitness, 2),
-            'nascimentos': nascimentos_tick,
-            # Futuros: n_mortes_fome, etc.
+            'nascimentos': nascimentos_tick
         })
 
     def log_meko_data(self, tick, meko):
@@ -38,16 +60,22 @@ class SimulationLogger:
         if nome not in self.log_meko_individual:
             self.log_meko_individual[nome] = {
                 "Genoma": meko.genoma,
-                "Idade maxima": meko.idadeMAX,
+                "Idade maxima": meko.idade,
+                "Abates": meko.abates,
                 "Atributos": {
                     "Forca": meko.forca,
                     "Resistencia": meko.resistencia,
                     "Velocidade": meko.velocidade,
                     "Visao": meko.visao,
                     "Agressividade": meko.agressividade,
-                    "Temperatura": meko.temperatura
                 },
-                "Historico": [] 
+                "Genetica": {
+                    "Nome Mae": meko.nome_mae,
+                    "Genoma Mae": meko.genoma_mae,
+                    "Nome Pai": meko.nome_pai,
+                    "Genoma Pai": meko.genoma_pai
+                },
+                "Historico": []
             }
         
         estado_fsm = meko.fsm.current_state.name
@@ -116,7 +144,8 @@ class SimulationLogger:
         # Exportar Log Geral
         filename_geral = os.path.join("logs", f"{self.filename_prefix}_geral_{timestamp}.json")
         with open(filename_geral, 'w') as f:
-            json.dump(self.log_geral, f, indent=4)
+            self.log_geral_final_.append(self.log_geral)
+            json.dump(self.log_geral_final_, f, indent=4)
         print(f"\nLOG GERAL salvo em: {filename_geral}")
 
         # Exportar Log Individual Detalhado
