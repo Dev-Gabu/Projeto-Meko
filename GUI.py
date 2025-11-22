@@ -316,7 +316,6 @@ def GUI_Gera_Ambiente(size):
         config_win.title("Distribuição dos Biomas")
 
         n_biomas = 4
-        scales = []
         valores = []
 
         def atualizar_labels():
@@ -326,6 +325,7 @@ def GUI_Gera_Ambiente(size):
                 lbl.config(text=f"{pct:.1f}%")
 
         labels = []
+
         for i in range(n_biomas):
             tk.Label(config_win, text=legendas[i]).grid(row=i, column=0, padx=5, pady=5)
             var = tk.DoubleVar(value=25)

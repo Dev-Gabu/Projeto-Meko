@@ -69,8 +69,8 @@ class Meko:
                 setattr(self, atributo, getattr(self, atributo) + valor)
                 
         # Ajustes Finais Baseados em Peso
-        self.velocidade = max(1, self.velocidade - ((max(0, self.peso - 10)) // 15)) # Reduz 1 de velocidade a cada 15 pontos de peso
-        self.resistencia = max(1, self.resistencia + (self.peso // 8)) # Aumenta 1 de resistência a cada 8 pontos de peso
+        self.velocidade = max(1, min(10,self.velocidade - ((max(0, self.peso - 10)) // 15))) # Reduz 1 de velocidade a cada 15 pontos de peso, Limita velocidade entre 1 e 10
+        self.resistencia = max(1, self.resistencia + (self.peso // 8)) # Aumenta 1 de resistência a cada 8 pontos de peso, garante mínimo 1 resistência
 
         # A vida é maior quanto maior o Meko
         mod_vida = 30 if genoma[2] == "Grande" else 0 if genoma[2] == "Medio" else -30
@@ -79,9 +79,7 @@ class Meko:
 
         # Garantir Limites Mínimos
         self.forca = max(1, self.forca)
-        self.resistencia = max(1, self.resistencia)
         self.visao = max(3, min(20, self.visao)) # Limita visão entre 3 e 20
-        self.velocidade = max(1, min(10, self.velocidade)) # Limita velocidade entre 1 e 10
         self.agressividade = max(0, min(20, self.agressividade)) # Limita agressividade entre 0 e 20
 
     def gerar_habilidades(self, genoma):

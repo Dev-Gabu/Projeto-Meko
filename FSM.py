@@ -125,7 +125,19 @@ class Combat(State):
         
                     meko.log.append(log)
                     escolha = random.choice(meko.habilidades)
-                    escolha.execute(meko, meko.target)
+
+                    # Ativa Habilidade de Defesa, se aplicável
+                    if random.random() > 0.1 and any(habilidade.nome == "Defender" for habilidade in meko.target.habilidades):
+                        for h in meko.target.habilidades:
+                            if h.nome == "Defender":
+                                meko.target.h.execute(meko.target, meko)
+                    else: escolha.execute(meko, meko.target)
+
+                    # Ativa Habilidade de Veneno, se aplicável
+                    if any(habilidade.nome == "Veneno" for habilidade in meko.target.habilidades):
+                        for h in meko.target.habilidades:
+                            if h.nome == "Veneno":
+                                meko.target.h.execute(meko.target, meko)
                     if( not meko.target.esta_vivo()):
                         log = f"{meko.target.nome} foi derrotado por {meko.nome}!"
             

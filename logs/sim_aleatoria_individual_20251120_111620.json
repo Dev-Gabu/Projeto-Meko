@@ -1,0 +1,592 @@
+{
+    "Draglaionurg": {
+        "Genoma": [
+            "Terra",
+            "Onivoro",
+            "Grande",
+            "Simples",
+            "Media",
+            "Apode",
+            "Nenhuma",
+            "Aquatica",
+            "Pelagem",
+            "Camuflagem"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 15,
+            "Resistencia": 27,
+            "Velocidade": 1,
+            "Visao": 6,
+            "Agressividade": 8
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.5/500, Fit: 4.01\n Ca\u00e7ar criatura em (47, 36)\n ['Draglaionurg vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.5/500, Fit: 4.03\n Ca\u00e7ar criatura em (47, 37)\n ['Draglaionurg procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 498.0/500, Fit: 4.04\n Ca\u00e7ar criatura em (47, 37)\n ['Draglaionurg procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 100/100, E: 497.5/500, Fit: 4.05\n Seguindo em (47, 37)\n ['Draglaionurg procura uma criatura para ca\u00e7ar.', 'Draglaionurg encontrou Valelanor em (np.int64(47), np.int64(33)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 100/100, E: 497.0/500, Fit: 4.06\n Seguindo em (47, 36)\n ['Draglaionurg se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.08\n Combate em (47, 36)\n ['Draglaionurg foi atacado e vai se defender.', 'Draglaionurg decide lutar.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 100/100, E: 491.0/500, Fit: 4.09\n Combate em (47, 36)\n ['Draglaionurg est\u00e1 em combate com Valelanor!', 'Draglaionurg usa Mordida em Valelanor e causa 5 de dano.']"
+            }
+        ]
+    },
+    "Lexzulvex": {
+        "Genoma": [
+            "Luz",
+            "Onivoro",
+            "Grande",
+            "Avancado",
+            "Pequena",
+            "Quadrupede",
+            "Curta",
+            "Aquatica",
+            "Nenhuma",
+            "Nenhuma"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 14,
+            "Resistencia": 22,
+            "Velocidade": 6,
+            "Visao": 18,
+            "Agressividade": 5
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.0/500, Fit: 4.01\n Caminhando em (14, 18)\n ['Lexzulvex vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 497.0/500, Fit: 4.02\n Caminhando em (15, 18)\n ['Lexzulvex vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.03\n Caminhando em (15, 18)\n ['Lexzulvex vagueia sem rumo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 100/100, E: 494.5/500, Fit: 4.04\n Ca\u00e7ar criatura em (18, 21)\n ['Lexzulvex vagueia sem rumo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 100/100, E: 493.0/500, Fit: 4.05\n Seguindo em (16, 19)\n ['Lexzulvex procura uma criatura para ca\u00e7ar.', 'Lexzulvex encontrou Anli\u00ebela em (np.int64(17), np.int64(21)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 100/100, E: 492.5/500, Fit: 4.06\n Combate em (17, 17)\n ['Lexzulvex chegou ao alvo e agora vai combater.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 100/100, E: 492.0/500, Fit: 4.07\n Fugir em (17, 17)\n []"
+            }
+        ]
+    },
+    "Xilkladrakdor": {
+        "Genoma": [
+            "Terra",
+            "Onivoro",
+            "Pequeno",
+            "Simples",
+            "Grande",
+            "Apode",
+            "Nenhuma",
+            "Nenhuma",
+            "Carapaca",
+            "Nenhuma"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 16,
+            "Resistencia": 7,
+            "Velocidade": 6,
+            "Visao": 6,
+            "Agressividade": 11
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 499.5/500, Fit: 4.01\n Caminhando em (22, 15)\n ['Xilkladrakdor vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 497.5/500, Fit: 4.03\n Ca\u00e7ar criatura em (25, 15)\n ['Xilkladrakdor vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 494.0/500, Fit: 4.03\n Ca\u00e7ar criatura em (31, 21)\n ['Xilkladrakdor procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 40/40, E: 493.0/500, Fit: 4.03\n Ca\u00e7ar criatura em (31, 22)\n ['Xilkladrakdor procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 40/40, E: 489.5/500, Fit: 4.04\n Ca\u00e7ar criatura em (31, 16)\n ['Xilkladrakdor procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 40/40, E: 486.5/500, Fit: 4.05\n Seguindo em (36, 16)\n ['Xilkladrakdor procura uma criatura para ca\u00e7ar.', 'Xilkladrakdor encontrou Monbal em (np.int64(40), np.int64(19)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 40/40, E: 486.0/500, Fit: 4.05\n Combate em (36, 16)\n ['Xilkladrakdor foi atacado e vai se defender.', 'Xilkladrakdor decide lutar.']"
+            }
+        ]
+    },
+    "Valelanor": {
+        "Genoma": [
+            "Luz",
+            "Carnivoro",
+            "Grande",
+            "Simples",
+            "Grande",
+            "Quadrupede",
+            "Retrateis",
+            "Equilibrio",
+            "Carapaca",
+            "Nenhuma"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 17,
+            "Resistencia": 19,
+            "Velocidade": 7,
+            "Visao": 11,
+            "Agressividade": 17
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 497.5/500, Fit: 4.01\n Ca\u00e7ar criatura em (44, 29)\n ['Valelanor vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 497.0/500, Fit: 4.02\n Seguindo em (44, 29)\n ['Valelanor procura uma criatura para ca\u00e7ar.', 'Valelanor encontrou Draglaionurg em (np.int64(47), np.int64(37)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.03\n Seguindo em (47, 33)\n ['Valelanor se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 100/100, E: 496.0/500, Fit: 4.04\n Seguindo em (47, 34)\n ['Valelanor se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 100/100, E: 495.5/500, Fit: 4.06\n Combate em (47, 36)\n ['Valelanor chegou ao alvo e agora vai combater.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 100/100, E: 495.0/500, Fit: 4.07\n Fugir em (47, 36)\n []"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 95/100, E: 492.5/500, Fit: 3.98\n Caminhando em (49, 36)\n ['Valelanor foge para sobreviver!']"
+            }
+        ]
+    },
+    "Elaaedanlar": {
+        "Genoma": [
+            "Sombra",
+            "Carnivoro",
+            "Grande",
+            "Simples",
+            "Grande",
+            "Apode",
+            "Nenhuma",
+            "Nenhuma",
+            "Pelagem",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 17,
+            "Resistencia": 19,
+            "Velocidade": 1,
+            "Visao": 6,
+            "Agressividade": 20
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.0/500, Fit: 4.01\n Caminhando em (5, 18)\n ['Elaaedanlar vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.0/500, Fit: 4.02\n Caminhando em (4, 18)\n ['Elaaedanlar vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 497.5/500, Fit: 4.04\n Ca\u00e7ar criatura em (4, 18)\n ['Elaaedanlar vagueia sem rumo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 100/100, E: 497.0/500, Fit: 4.05\n Ca\u00e7ar criatura em (4, 18)\n ['Elaaedanlar procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.06\n Ca\u00e7ar criatura em (4, 18)\n ['Elaaedanlar procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 100/100, E: 496.0/500, Fit: 4.07\n Ca\u00e7ar criatura em (4, 18)\n ['Elaaedanlar procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 100/100, E: 495.0/500, Fit: 4.09\n Ca\u00e7ar criatura em (5, 17)\n ['Elaaedanlar procura uma criatura para ca\u00e7ar.']"
+            }
+        ]
+    },
+    "Anli\u00ebela": {
+        "Genoma": [
+            "Luz",
+            "Carnivoro",
+            "Pequeno",
+            "Simples",
+            "Media",
+            "Bipede",
+            "Retrateis",
+            "Nenhuma",
+            "Carapaca",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 16,
+            "Resistencia": 4,
+            "Velocidade": 10,
+            "Visao": 11,
+            "Agressividade": 14
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 498.0/500, Fit: 4.01\n Caminhando em (17, 34)\n ['Anli\u00ebela vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 494.0/500, Fit: 4.02\n Caminhando em (17, 27)\n ['Anli\u00ebela vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 490.5/500, Fit: 4.02\n Caminhando em (17, 21)\n ['Anli\u00ebela vagueia sem rumo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 40/40, E: 490.0/500, Fit: 4.02\n Ca\u00e7ar criatura em (17, 21)\n ['Anli\u00ebela vagueia sem rumo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 40/40, E: 487.5/500, Fit: 4.03\n Seguindo em (17, 17)\n ['Anli\u00ebela procura uma criatura para ca\u00e7ar.', 'Anli\u00ebela encontrou Lexzulvex em (np.int64(16), np.int64(19)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 40/40, E: 487.0/500, Fit: 4.04\n Combate em (17, 17)\n ['Anli\u00ebela foi atacado e vai se defender.', 'Anli\u00ebela decide lutar.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 40/40, E: 486.5/500, Fit: 4.05\n Combate em (17, 17)\n ['Anli\u00ebela foi atacado e vai se defender.', 'Anli\u00ebela decide lutar.']"
+            }
+        ]
+    },
+    "Helius": {
+        "Genoma": [
+            "Agua",
+            "Onivoro",
+            "Grande",
+            "Avancado",
+            "Pequena",
+            "Multipede",
+            "Curta",
+            "Nenhuma",
+            "Escamas",
+            "Campo-eletrico"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 14,
+            "Resistencia": 27,
+            "Velocidade": 3,
+            "Visao": 13,
+            "Agressividade": 10
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.5/500, Fit: 4.01\n Ca\u00e7ar criatura em (18, 24)\n ['Helius vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.02\n Seguindo em (21, 27)\n ['Helius procura uma criatura para ca\u00e7ar.', 'Helius encontrou Anli\u00ebela em (np.int64(17), np.int64(27)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 496.0/500, Fit: 4.03\n Seguindo em (21, 27)\n ['Helius se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 100/100, E: 495.5/500, Fit: 4.04\n Seguindo em (20, 26)\n ['Helius se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 100/100, E: 495.0/500, Fit: 4.05\n Seguindo em (17, 23)\n ['Helius se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 100/100, E: 494.5/500, Fit: 4.07\n Seguindo em (17, 23)\n ['Helius se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 100/100, E: 494.0/500, Fit: 4.08\n Seguindo em (17, 22)\n ['Helius se move em dire\u00e7\u00e3o ao alvo.']"
+            }
+        ]
+    },
+    "Iuslothtor": {
+        "Genoma": [
+            "Fogo",
+            "Carnivoro",
+            "Medio",
+            "Simples",
+            "Media",
+            "Multipede",
+            "Longa",
+            "Aquatica",
+            "Pelagem",
+            "Bioluminescencia"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 26,
+            "Resistencia": 21,
+            "Velocidade": 7,
+            "Visao": 6,
+            "Agressividade": 20
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 496.0/500, Fit: 4.01\n Ca\u00e7ar criatura em (16, 27)\n ['Iuslothtor vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 495.5/500, Fit: 4.01\n Seguindo em (16, 27)\n ['Iuslothtor procura uma criatura para ca\u00e7ar.', 'Iuslothtor encontrou Anli\u00ebela em (np.int64(17), np.int64(27)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 70/70, E: 495.0/500, Fit: 4.03\n Seguindo em (17, 25)\n ['Iuslothtor se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 70/70, E: 494.5/500, Fit: 4.04\n Seguindo em (17, 22)\n ['Iuslothtor se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 70/70, E: 494.0/500, Fit: 4.05\n Seguindo em (17, 22)\n ['Iuslothtor se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 70/70, E: 493.5/500, Fit: 4.06\n Combate em (17, 17)\n ['Iuslothtor chegou ao alvo e agora vai combater.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 70/70, E: 493.0/500, Fit: 4.08\n Fugir em (17, 17)\n []"
+            }
+        ]
+    },
+    "Monbal": {
+        "Genoma": [
+            "Luz",
+            "Onivoro",
+            "Medio",
+            "Avancado",
+            "Grande",
+            "Multipede",
+            "Retrateis",
+            "Nenhuma",
+            "Escamas",
+            "Nenhuma"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 17,
+            "Resistencia": 21,
+            "Velocidade": 10,
+            "Visao": 18,
+            "Agressividade": 12
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 495.0/500, Fit: 4.01\n Caminhando em (37, 20)\n ['Monbal vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 493.5/500, Fit: 4.01\n Caminhando em (39, 18)\n ['Monbal vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 70/70, E: 492.5/500, Fit: 4.02\n Ca\u00e7ar criatura em (40, 18)\n ['Monbal vagueia sem rumo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 70/70, E: 491.5/500, Fit: 4.03\n Seguindo em (40, 19)\n ['Monbal procura uma criatura para ca\u00e7ar.', 'Monbal encontrou Xilkladrakdor em (np.int64(31), np.int64(22)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 70/70, E: 491.0/500, Fit: 4.04\n Seguindo em (40, 19)\n ['Monbal se move em dire\u00e7\u00e3o ao alvo.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 70/70, E: 490.5/500, Fit: 4.05\n Combate em (36, 16)\n ['Monbal chegou ao alvo e agora vai combater.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 70/70, E: 490.0/500, Fit: 4.06\n Fugir em (36, 16)\n []"
+            }
+        ]
+    },
+    "Ri\u00ebyvdraketh": {
+        "Genoma": [
+            "Luz",
+            "Carnivoro",
+            "Medio",
+            "Avancado",
+            "Pequena",
+            "Multipede",
+            "Curta",
+            "Equilibrio",
+            "Nenhuma",
+            "Camuflagem"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 14,
+            "Resistencia": 17,
+            "Velocidade": 10,
+            "Visao": 18,
+            "Agressividade": 10
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 495.0/500, Fit: 4.01\n Caminhando em (5, 49)\n ['Ri\u00ebyvdraketh vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 494.5/500, Fit: 4.01\n Caminhando em (5, 49)\n ['Ri\u00ebyvdraketh vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 70/70, E: 494.0/500, Fit: 4.02\n Ca\u00e7ar criatura em (5, 49)\n ['Ri\u00ebyvdraketh vagueia sem rumo.']"
+            },
+            {
+                "tick": 2,
+                "log": "HP: 70/70, E: 491.0/500, Fit: 4.03\n Ca\u00e7ar criatura em (0, 44)\n ['Ri\u00ebyvdraketh procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 3,
+                "log": "HP: 70/70, E: 488.0/500, Fit: 4.04\n Ca\u00e7ar criatura em (0, 49)\n ['Ri\u00ebyvdraketh procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 4,
+                "log": "HP: 70/70, E: 484.0/500, Fit: 4.04\n Ca\u00e7ar criatura em (7, 49)\n ['Ri\u00ebyvdraketh procura uma criatura para ca\u00e7ar.']"
+            },
+            {
+                "tick": 5,
+                "log": "HP: 70/70, E: 481.0/500, Fit: 4.04\n Ca\u00e7ar criatura em (2, 49)\n ['Ri\u00ebyvdraketh procura uma criatura para ca\u00e7ar.']"
+            }
+        ]
+    }
+}

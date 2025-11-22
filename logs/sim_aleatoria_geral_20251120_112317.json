@@ -1,0 +1,22 @@
+[
+    [
+        {
+            "tick": 0,
+            "populacao_total": 10,
+            "fitness_medio": 4.01,
+            "nascimentos": 10
+        },
+        {
+            "tick": 0,
+            "populacao_total": 10,
+            "fitness_medio": 4.02,
+            "nascimentos": 0
+        },
+        {
+            "tick": 1,
+            "populacao_total": 10,
+            "fitness_medio": 4.03,
+            "nascimentos": 0
+        }
+    ]
+]

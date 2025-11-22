@@ -412,15 +412,17 @@ class HabilidadeNadar(Habilidade):
 
 class HabilidadeDefender(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5,nome="Defender")
+        super().__init__(custo_energia=0,nome="Defender")
 
     def execute(self, atacante, alvo):
         if not super().execute(atacante, alvo):
             return
-        # TODO Implementar Defender
-        # Resposta
-        log = f"{atacante.nome} usa Defender."
+        
+        log = f"{atacante.nome} usa Defender e neutraliza o Dano."
         atacante.log.append(log)
+
+        log = f"{alvo.nome} teve seu ataque anulado por Defender de {atacante}."
+        alvo.log.append(log)
 
 class HabilidadeCamuflagem(Habilidade):
     def __init__(self):
@@ -436,15 +438,21 @@ class HabilidadeCamuflagem(Habilidade):
 
 class HabilidadeVeneno(Habilidade):
     def __init__(self):
-        super().__init__(custo_energia=5,nome="Veneno")
+        super().__init__(custo_energia=0,nome="Veneno")
+        self.dano = 3
 
     def execute(self, atacante, alvo):
         if not super().execute(atacante, alvo):
             return
-        # TODO Efeito Veneno
-        # Resposta
-        log = f"{atacante.nome} usa Veneno."
-        atacante.log.append(log)
+        
+        if any(habilidade.nome == "Veneno" for habilidade in alvo.habilidades):
+            alvo.saude -= self.dano
+
+            log = f"{alvo.nome} sofre com veneno e toma {self.dano}."
+            atacante.log.append(log)
+        else:
+            log = f"{alvo.nome} é imune ao veneno."
+            atacante.log.append(log)
 
 class HabilidadeIluminar(Habilidade):
     def __init__(self):

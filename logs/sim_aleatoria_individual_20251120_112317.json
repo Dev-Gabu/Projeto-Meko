@@ -1,0 +1,432 @@
+{
+    "Urgvenel": {
+        "Genoma": [
+            "Fogo",
+            "Herbivoro",
+            "Grande",
+            "Avancado",
+            "Pequena",
+            "Apode",
+            "Nenhuma",
+            "Equilibrio",
+            "Escamas",
+            "Camuflagem"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 16,
+            "Resistencia": 26,
+            "Velocidade": 1,
+            "Visao": 13,
+            "Agressividade": 4
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.5/500, Fit: 4.01\n Caminhando em (48, 48)\n ['Urgvenel vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.5/500, Fit: 4.03\n Caminhando em (48, 49)\n ['Urgvenel vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 497.5/500, Fit: 4.04\n Ca\u00e7ar criatura em (48, 48)\n ['Urgvenel vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Osskalthalius": {
+        "Genoma": [
+            "Fogo",
+            "Onivoro",
+            "Grande",
+            "Avancado",
+            "Grande",
+            "Apode",
+            "Nenhuma",
+            "Aquatica",
+            "Nenhuma",
+            "Campo-eletrico"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 18,
+            "Resistencia": 20,
+            "Velocidade": 1,
+            "Visao": 13,
+            "Agressividade": 15
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.5/500, Fit: 4.01\n Caminhando em (34, 20)\n ['Osskalthalius vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.0/500, Fit: 4.03\n Caminhando em (34, 20)\n ['Osskalthalius vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 498.0/500, Fit: 4.04\n Ca\u00e7ar criatura em (35, 20)\n ['Osskalthalius vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Korsolmordrak": {
+        "Genoma": [
+            "Agua",
+            "Carnivoro",
+            "Grande",
+            "Simples",
+            "Nenhuma",
+            "Bipede",
+            "Nenhuma",
+            "Aquatica",
+            "Pelagem",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 8,
+            "Resistencia": 22,
+            "Velocidade": 4,
+            "Visao": 6,
+            "Agressividade": 7
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.5/500, Fit: 4.01\n Ca\u00e7ar criatura em (36, 13)\n ['Korsolmordrak vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 497.0/500, Fit: 4.02\n Seguindo em (38, 11)\n ['Korsolmordrak procura uma criatura para ca\u00e7ar.', 'Korsolmordrak encontrou Li\u00ebzyrzyx em (np.int64(42), np.int64(15)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.03\n Seguindo em (38, 11)\n ['Korsolmordrak se move em dire\u00e7\u00e3o ao alvo.']"
+            }
+        ]
+    },
+    "Li\u00ebzyrzyx": {
+        "Genoma": [
+            "Fogo",
+            "Herbivoro",
+            "Pequeno",
+            "Avancado",
+            "Grande",
+            "Multipede",
+            "Nenhuma",
+            "Aquatica",
+            "Carapaca",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 18,
+            "Resistencia": 21,
+            "Velocidade": 10,
+            "Visao": 13,
+            "Agressividade": 10
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 499.0/500, Fit: 4.01\n Caminhando em (42, 15)\n ['Li\u00ebzyrzyx vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 497.0/500, Fit: 4.02\n Caminhando em (45, 15)\n ['Li\u00ebzyrzyx vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 492.5/500, Fit: 4.03\n Caminhando em (49, 15)\n ['Li\u00ebzyrzyx vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Urgthaldra": {
+        "Genoma": [
+            "Terra",
+            "Onivoro",
+            "Pequeno",
+            "Simples",
+            "Nenhuma",
+            "Quadrupede",
+            "Longa",
+            "Nenhuma",
+            "Escamas",
+            "Campo-eletrico"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 16,
+            "Resistencia": 17,
+            "Velocidade": 9,
+            "Visao": 6,
+            "Agressividade": 9
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 495.0/500, Fit: 4.01\n Caminhando em (8, 32)\n ['Urgthaldra vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 494.0/500, Fit: 4.01\n Caminhando em (8, 33)\n ['Urgthaldra vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 492.5/500, Fit: 4.02\n Caminhando em (10, 31)\n ['Urgthaldra vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Xusvorxilvok": {
+        "Genoma": [
+            "Inseto",
+            "Herbivoro",
+            "Grande",
+            "Simples",
+            "Pequena",
+            "Quadrupede",
+            "Curta",
+            "Aquatica",
+            "Pelagem",
+            "Campo-eletrico"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 11,
+            "Resistencia": 30,
+            "Velocidade": 5,
+            "Visao": 6,
+            "Agressividade": 5
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 499.0/500, Fit: 4.01\n Caminhando em (23, 27)\n ['Xusvorxilvok vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 100/100, E: 498.0/500, Fit: 4.02\n Caminhando em (24, 27)\n ['Xusvorxilvok vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 100/100, E: 496.5/500, Fit: 4.04\n Caminhando em (22, 25)\n ['Xusvorxilvok vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Danvenai": {
+        "Genoma": [
+            "Luz",
+            "Onivoro",
+            "Medio",
+            "Avancado",
+            "Nenhuma",
+            "Bipede",
+            "Retrateis",
+            "Aquatica",
+            "Nenhuma",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 12,
+            "Resistencia": 20,
+            "Velocidade": 10,
+            "Visao": 18,
+            "Agressividade": 3
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 495.5/500, Fit: 4.01\n Caminhando em (11, 31)\n ['Danvenai vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 491.5/500, Fit: 4.01\n Caminhando em (18, 24)\n ['Danvenai vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 70/70, E: 488.5/500, Fit: 4.01\n Caminhando em (18, 19)\n ['Danvenai vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Morntal": {
+        "Genoma": [
+            "Terra",
+            "Onivoro",
+            "Pequeno",
+            "Avancado",
+            "Nenhuma",
+            "Quadrupede",
+            "Curta",
+            "Nenhuma",
+            "Carapaca",
+            "Camuflagem"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 14,
+            "Resistencia": 11,
+            "Velocidade": 10,
+            "Visao": 13,
+            "Agressividade": 7
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 496.5/500, Fit: 4.01\n Caminhando em (30, 21)\n ['Morntal vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 492.0/500, Fit: 4.01\n Ca\u00e7ar criatura em (38, 21)\n ['Morntal vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 488.5/500, Fit: 4.01\n Seguindo em (32, 27)\n ['Morntal procura uma criatura para ca\u00e7ar.', 'Morntal encontrou Osskalthalius em (np.int64(35), np.int64(20)) e come\u00e7a a ca\u00e7\u00e1-lo.']"
+            }
+        ]
+    },
+    "Barkrulvok": {
+        "Genoma": [
+            "Luz",
+            "Onivoro",
+            "Pequeno",
+            "Avancado",
+            "Media",
+            "Quadrupede",
+            "Curta",
+            "Aquatica",
+            "Pelagem",
+            "Camuflagem"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 15,
+            "Resistencia": 15,
+            "Velocidade": 10,
+            "Visao": 18,
+            "Agressividade": 8
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 499.5/500, Fit: 4.01\n Caminhando em (1, 11)\n ['Barkrulvok vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 40/40, E: 495.5/500, Fit: 4.03\n Caminhando em (0, 18)\n ['Barkrulvok vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 40/40, E: 495.0/500, Fit: 4.03\n Caminhando em (0, 18)\n ['Barkrulvok vagueia sem rumo.']"
+            }
+        ]
+    },
+    "Alzhagwen": {
+        "Genoma": [
+            "Luz",
+            "Onivoro",
+            "Medio",
+            "Avancado",
+            "Nenhuma",
+            "Quadrupede",
+            "Curta",
+            "Aquatica",
+            "Nenhuma",
+            "Veneno"
+        ],
+        "Idade maxima": 1,
+        "Abates": 0,
+        "Atributos": {
+            "Forca": 11,
+            "Resistencia": 22,
+            "Velocidade": 10,
+            "Visao": 18,
+            "Agressividade": 2
+        },
+        "Genetica": {
+            "Nome Mae": null,
+            "Genoma Mae": null,
+            "Nome Pai": null,
+            "Genoma Pai": null
+        },
+        "Historico": [
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 499.0/500, Fit: 4.01\n Caminhando em (28, 41)\n ['Alzhagwen vagueia sem rumo.']"
+            },
+            {
+                "tick": 0,
+                "log": "HP: 70/70, E: 497.5/500, Fit: 4.02\n Caminhando em (30, 41)\n ['Alzhagwen vagueia sem rumo.']"
+            },
+            {
+                "tick": 1,
+                "log": "HP: 70/70, E: 492.0/500, Fit: 4.03\n Caminhando em (40, 49)\n ['Alzhagwen vagueia sem rumo.']"
+            }
+        ]
+    }
+}

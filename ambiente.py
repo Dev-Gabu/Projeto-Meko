@@ -202,6 +202,7 @@ def biome_gen(grid, size, n_biomas=4, scale=10.0, seed=None, biome_weights=None)
 
 
     new_grid = np.zeros_like(grid)
+
     for b in range(n_biomas):
         mask = (noise_map >= thresholds[b]) & (noise_map < thresholds[b+1])
         new_grid[mask] = b
@@ -281,5 +282,5 @@ def river_gen(grid, size, i = 0, j = None, chance = 0.06):
         if np.random.rand() < chance and chance > 0:
             chance = chance * 0.5
             river_gen(grid, size, i, j, chance)
-            
+
     return grid
