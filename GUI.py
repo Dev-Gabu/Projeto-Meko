@@ -16,7 +16,7 @@ from logger import SimulationLogger
 from ambiente import Ambiente, biome_gen, fruit_gen, river_gen, Fruta
 from meko import Meko
 from settings import CARACTERISTICAS, GRID_SIZE, CMAP, cores, NORM, legendas, SIMULATION_STEPS, SIMULATION_DELAY, mekos_list
-from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente, gerar_nome
+from utils import sprite_por_genoma, importar_meko, exportar_meko, importar_ambiente, gerar_nome, limpar_simulacao
 
 class MekoDetailWindow(tk.Toplevel):
     def __init__(self, parent_root, meko):
@@ -523,6 +523,7 @@ def GUI_Simulacao(N_mekos):
     # GERAR E EXIBIR O RELATÓRIO FINAL
     relatorio = sim_logger.gerar_relatorio_final(ambiente)
     messagebox.showinfo("Relatório Final da Simulação", relatorio)
+    limpar_simulacao(ambiente, sim_logger)
 
 def GUI_Aleatoria(n_mekos,size_var,loop_var):
     global is_paused, monitor_window, anim
@@ -645,6 +646,7 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     # GERAR E EXIBIR O RELATÓRIO FINAL
     relatorio = sim_logger.gerar_relatorio_final(ambiente)
     messagebox.showinfo("Relatório Final da Simulação", relatorio)
+    limpar_simulacao(ambiente, sim_logger)
 
 def GUI_SimulacaoRapida(n_mekos, size_var, loop_var):
     """
@@ -727,6 +729,7 @@ def GUI_SimulacaoRapida(n_mekos, size_var, loop_var):
     
     # Exibe o relatório em uma caixa de mensagem Tkinter
     messagebox.showinfo("Relatório Final da Simulação Rápida", relatorio)
+    limpar_simulacao(ambiente, sim_logger)
 
 def GUI_Home():
     """

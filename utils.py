@@ -2,6 +2,7 @@ import numpy as np
 import pickle as pick
 import os
 import random
+import settings
 
 from PIL import Image
 from tkinter import filedialog
@@ -302,3 +303,27 @@ def importar_ambiente():
 
 def distancia(meko, outro):
         return np.linalg.norm(meko.posicao - np.array(outro.posicao))
+
+# Funções Gerais
+
+def limpar_simulacao(ambiente, sim_logger):
+    """
+    Limpa listas globais e zera contadores de ambiente e logger.
+    """
+    
+    # 1. Limpeza de Listas Globais
+    settings.mekos_list.clear()
+    settings.fruit_list.clear()
+    settings.meat_list.clear()
+    
+    # 2. Reset de Contadores do Ambiente (ambiente.py)
+    ambiente.total_nascimentos = 0
+    ambiente.total_mortes_combate = 0
+    ambiente.total_mortes_fome = 0
+    ambiente.total_mortes_idade = 0
+    
+    # 3. Reset do Logger (logger.py)
+    sim_logger.log_geral = []
+    sim_logger.log_meko_individual = {}
+    
+    print("Ambiente de simulação limpo e pronto para um novo ciclo.")
