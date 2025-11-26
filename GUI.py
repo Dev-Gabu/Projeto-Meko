@@ -738,7 +738,7 @@ def GUI_Home():
     root = tk.Tk()
     root.title("Projeto Meko")
     
-    N_Mekos = tk.IntVar(value=10)
+    N_Mekos = tk.IntVar(value=20)
     loop = tk.IntVar(value=SIMULATION_STEPS)
     size = tk.IntVar(value=GRID_SIZE)
 

@@ -2,7 +2,7 @@ import numpy as np
 
 import random
 from ambiente import Fruta, Carne
-from settings import fruit_list, mekos_list, meat_list, CUSTO_REPRODUCAO
+from settings import fruit_list, mekos_list, meat_list, CUSTO_REPRODUCAO, CARACTERISTICAS, TAXA_MUTACAO
 from habilidades import *
 from utils import distancia
 
@@ -436,7 +436,11 @@ class Reproduce(State):
         nome = f"{meko.nome[:len(meko.nome)//2]}{parceiro.nome[len(parceiro.nome)//2:]}".capitalize()
         
         for i in range(len(meko.genoma)):
-            gene_escolhido = random.choices(
+            if random.random() < TAXA_MUTACAO:
+                gene_escolhido = random.choice(CARACTERISTICAS[i][1])
+                log = f"O filhote de {meko.nome} e {meko.love.nome} sofreu uma mutação."
+                meko.log.append(log)
+            else: gene_escolhido = random.choices(
                 [meko.genoma[i], parceiro.genoma[i]],
                 weights=[peso_meko, peso_parceiro],
                 k=1
