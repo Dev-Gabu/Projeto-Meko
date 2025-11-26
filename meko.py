@@ -171,7 +171,7 @@ class Meko:
         saude_score = C_SAUDE * (self.saude / self.saudeMAX)
         energia_score = C_ENERGIA * (self.energia / self.energiaMAX)
         
-        SCORE_COMBATE = saude_score
+        SCORE_COMBATE = saude_score + (self.abates / 2)
         SCORE_SOBREVIVENCIA = energia_score + longevidade_score
 
         self.fitness = SCORE_COMBATE + SCORE_SOBREVIVENCIA

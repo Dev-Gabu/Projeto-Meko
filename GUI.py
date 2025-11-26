@@ -639,12 +639,94 @@ def GUI_Aleatoria(n_mekos,size_var,loop_var):
     
     plt.show()
     
-    sim_logger.export_logs()
     sim_logger.log_geral_final(ambiente, inicio, time.time(),loop,n_mekos.get())
+    sim_logger.export_logs()
     
     # GERAR E EXIBIR O RELATÓRIO FINAL
     relatorio = sim_logger.gerar_relatorio_final(ambiente)
     messagebox.showinfo("Relatório Final da Simulação", relatorio)
+
+def GUI_SimulacaoRapida(n_mekos, size_var, loop_var):
+    """
+    Executa a simulação sem interface gráfica (headless) para máxima velocidade
+    e coleta de logs de longo prazo.
+    """
+    size = size_var.get()
+    tick_f = 0
+    loop_max = loop_var.get()
+
+    # --- Logger ---
+    
+    inicio = time.time()
+    sim_logger = SimulationLogger(filename_prefix="sim_rapida") 
+    
+    # --- Ambiente ---
+    grid = np.zeros((size, size))
+    n_biomas = random.randint(2, 4)
+    scale = random.uniform(5.0, 30.0)
+    random_weights = [random.random() for _ in range(n_biomas)]
+    soma_total = sum(random_weights)
+    biome_weights = [w / soma_total for w in random_weights]
+    seed = random.randint(0, 99999) 
+    
+    ambiente_base = biome_gen(grid, size, n_biomas, scale, seed, biome_weights)
+    ambiente_base = fruit_gen(ambiente_base, size)
+    ambiente_base = river_gen(ambiente_base, size)
+    
+    ambiente = Ambiente(size, ambiente_base, logger=sim_logger)
+
+    #--- Frutas ---
+    for i, linha in enumerate(ambiente.matriz):
+        for j, valor in enumerate(linha):
+            if valor == 4:
+                fruta = Fruta((i, j))
+                settings.fruit_list.append(fruta)
+
+    # --- Mekos ---
+    n_iteracoes = max(n_mekos.get(),1)
+    for i in range(n_iteracoes):
+        
+        genoma = [random.choice(valores) for _, valores in CARACTERISTICAS]
+        
+        try:
+            meko_inst = Meko(
+                gerar_nome(),
+                genoma,
+                ambiente,
+                (random.randint(0, ambiente.size-1), random.randint(0, ambiente.size-1))
+            )
+            
+        except Exception as e:
+            messagebox.showerror("Erro ao criar meko aleatório", str(e))
+            continue
+
+        ambiente.adicionar_meko(meko_inst)
+        mekos_list.append(meko_inst)
+    
+    # ----------------------------
+    # LOOP PRINCIPAL HEADLESS
+    # --------------------------
+
+    print(f"Iniciando Simulação Rápida ({loop_max} ticks)...")
+    
+    for tick in range(1, loop_max + 1):
+        ambiente.tick(tick) 
+        tick_f += 1
+        
+        if not settings.mekos_list and tick > 10:
+             print("Extinção total alcançada. Encerrando simulação.")
+             break
+    
+    # --- Finalização e Relatório ---
+
+    sim_logger.log_geral_final(ambiente, inicio, time.time(),tick_f,n_mekos.get())
+    sim_logger.export_logs()
+    
+    # GERAR E EXIBIR O RELATÓRIO FINAL
+    relatorio = sim_logger.gerar_relatorio_final(ambiente)
+    
+    # Exibe o relatório em uma caixa de mensagem Tkinter
+    messagebox.showinfo("Relatório Final da Simulação Rápida", relatorio)
 
 def GUI_Home():
     """
@@ -733,5 +815,13 @@ def GUI_Home():
         width=20,
         height=2
     ).pack(side=tk.LEFT)
+
+    tk.Button(
+        root,
+        text="Simulação Rápida",
+        command=lambda: GUI_SimulacaoRapida(N_Mekos, size, loop),
+        width=30,
+        height=2
+    ).pack(pady=15)
 
     root.mainloop()

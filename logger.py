@@ -28,6 +28,8 @@ class SimulationLogger:
         self.log_geral_final_.append({
             "tempo_simulacao": total_time,
             "tick": total_ticks,
+            "grid": tamanho_grid,
+            "populacao_inicial": populacao_inicial,
             "populacao_final": populacao_final,
             "total_nascimentos": total_nascimentos,
             "total_mortes_combate": total_mortes_combate,
@@ -45,7 +47,7 @@ class SimulationLogger:
             avg_fitness = sum(m.fitness for m in mekos_list) / pop_count
 
         self.log_geral.append({
-            "tick": tick,
+            "tick": int(tick),
             "populacao_total": pop_count,
             "fitness_medio": round(avg_fitness, 2),
             'nascimentos': nascimentos_tick
